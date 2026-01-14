@@ -1,0 +1,156 @@
+master instructions
+
+harness_suite_25_full_max.py
+
+to run suite
+
+python harness_suite_25_full_max.py  (do not change, script is too large);  output is HarnessSuite_2_6_FULL.csv
+
+key race level stats:  Track,  Race, Gait, TCR,  Purse, Condition , FieldStrength
+
+then:
+
+python new_merge.py
+
+
+model:
+
+python run_superfav_real_final3.py
+
+AFTER SUPER FAV, run the morning line
+python harnesselite_line_v5_apply.py   . The output of this is:  
+
+
+insights extract
+python harness_insights_extract_v1_auto.py   (what are the outputs of all of this work)
+
+
+RACE CLASSIFICATION AND IDENTIFICATION
+
+classifier
+python race_classifier_v3_final.py   ;  output is Race_Classification
+
+key race level stats:  Class Tag,  AdjustedPoints,  Classband
+
+
+HTB report:
+python generate_htb_report.py.  This drives HTB tag
+
+
+Rebound Report
+python generate_rebound_report.py
+
+python layoff.py
+python second.py
+
+Race Classification Report
+python generate_race_ratings_report.py  . Generates PDF Race Ratings.  No logic in this report
+
+Top Heavy Favorites
+python generate_superfav_report.py   (pace and trot) draws from superfav-real
+python generate_superfav_report_trot.py 
+
+Identify Contenders
+python identify_contenders_v2.py
+
+Find Winning Streaks
+python find_winning_streaks_v3.py  .  This drives WS tag
+
+python horsemetrics.py  (driver, post, finish position),  is this likely improver.  THis drives LI improver tag.  Output is the Horse_Metrics_Summary_ALL
+python value.pty
+python value.pty(top horse top post bad driver),  THIS DRIVES VP TAG  Output is Value_Plays_XXXX  CSV and PDF
+python class.py  MUST RUN EFORE RACECARDS INSIGHT
+
+
+False Favorites
+
+RACECOMPS - MUST RUN
+python racecomps.py (MUST BE RUN HEREa report to help find the best races for Excacta wagering).  Output is:  RaceCompetitiveness_Exacta_20251025.csv
+
+race level:  FieldSize, FieldStrength,  Below2.0_Count	Below3.0_Count	Below5.0_Count	Cluster_2.5to6_Count	Odds_SD	Top5_Range	Odds_Range	RaceType	CompetitiveClusterFlag,
+
+CLASS - MUST RUN
+python class.py  MUST RUN EFORE RACECARDS INSIGHT
+
+
+
+WAGERING - OPTIONAL
+
+Generate Today's Excel Tracker (uses harnesselite ile)
+python exacta_tracker.py    (dustbin
+python placeshow.py            (2 PS wagers excludes 6,7,8 PP on 1/2 mile tracks
+python exacta_box_upload_v4.py   (excacta box on races with field strength higher than 158)
+python create_show_upload.py    (4 dollar wagers excludes 6,7,8 PP on 1/2 mile tracks, odds must be >2 at 0 MTP)
+python valueexactas.py  (Balanced Competitive fields with strong score for field strenhgth...racecomps must be run first)
+python todayswagers.py (a report on whats available today)
+
+DO THESE
+
+python todayswagers.py (a report on whats available today)
+python valueexactas.py  (Balanced Competitive fields with strong score for field strenhgth...racecomps must be run first)
+
+todays horizontalwagers
+python horizontal.py   (MUST DO TODAYSWAGERS FIRST_
+
+
+Create Win Upload File
+python create_wager_upload.py
+
+CORE HANDICAPPING REPORT
+
+the holy grail report: 
+python racecards_insights.py
+python racecards_insights.py  (output is 
+
+PACE REPORTS
+
+Lead Probability Report
+python lead_probability_report.py
+
+Closers Report
+python closers.py
+
+python make_lead_closer_report.py    - this is the joined closer report/early speed with table  >output LeadCloserReport_XXXX.csv.  Field is:  RaceSpeedType
+
+MASTER MERGE FOR ARCHIVE
+
+STEP1
+python mastermerge.py   (pulls together all race level data and custom race level fieldss), STEP1,  output is:Race_Level_Metrics_20251026.csv.  RACECOMPS is prerequ
+
+STEP2
+python mergesteptwo.py   (aoppends initial horse + race level data together output is:HarnessEliteLine_WithRaceMetrics_20251026.csv
+
+STEP3
+
+python finalmerge.py  (adds in custom tags). Output is:HarnessEliteLine_FinalMerge_20251026.csv   THIS FILE MUST MOVE DAILY ARCHIVE
+
+STEP4 
+python resultsprep.py (Preps results file)
+
+Step 5 
+Run of SHow
+python runofshow.py
+mak
+DRIVERS
+
+python driverdump.py
+
+powershell xtendsions
+pip install reportlab
+pip install pandas
+pip install scikit-learn==1.1.3
+pip install matplotlib
+
+
+MERGE RESULTS
+
+python resultsprep.py (Preps results)
+
+in RESULTS
+python harnessresults.py  (runs all XML in Results folder and spits out CSV Harness_ResultsXXX)
+
+
+ICEBOX
+
+
+python dailyinsights.py  (multiple conditions met,  pre-req is racecomps)   - ICEBOX
