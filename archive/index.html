@@ -1,223 +1,214 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Harness Elite Tip Sheet Index</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #07111f;
-      color: #f5f7fb;
-    }
-
-    .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 32px 20px 60px;
-    }
-
-    h1 {
-      margin: 0 0 8px;
-      font-size: 34px;
-      color: #ffffff;
-    }
-
-    .sub {
-      margin: 0 0 28px;
-      color: #b8c3d6;
-      font-size: 15px;
-    }
-
-    .notice {
-      background: #101d31;
-      border: 1px solid #263855;
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin-bottom: 24px;
-      color: #dce6f8;
-    }
-
-    .status {
-      color: #ffd166;
-      margin-bottom: 18px;
-    }
-
-    .date-section {
-      background: #0d182a;
-      border: 1px solid #20324f;
-      border-radius: 14px;
-      padding: 18px;
-      margin: 18px 0;
-    }
-
-    .date-section h2 {
-      margin: 0 0 14px;
-      font-size: 22px;
-      color: #ffffff;
-      border-bottom: 1px solid #263855;
-      padding-bottom: 10px;
-    }
-
-    .links {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
-      gap: 10px;
-    }
-
-    a.report-link {
-      display: block;
-      text-decoration: none;
-      color: #ffffff;
-      background: #172842;
-      border: 1px solid #2f466a;
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-weight: bold;
-      transition: 0.15s ease;
-    }
-
-    a.report-link:hover {
-      background: #224068;
-      transform: translateY(-1px);
-    }
-
-    .count {
-      font-size: 13px;
-      color: #9fb0ca;
-      font-weight: normal;
-    }
-
-    footer {
-      margin-top: 34px;
-      color: #91a2bd;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Harness Elite TipSheet Index</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background:#0b1220;
+  color:#fff;
+  margin:0;
+  padding:20px;
+}
+h1 { margin-bottom:10px; }
+.date-block {
+  margin:20px 0;
+  padding:15px;
+  background:#111a2e;
+  border-radius:10px;
+}
+.date-title {
+  font-size:18px;
+  margin-bottom:10px;
+  border-bottom:1px solid #2a3b5e;
+  padding-bottom:6px;
+}
+.track-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+  gap:8px;
+}
+a {
+  color:#fff;
+  text-decoration:none;
+  padding:8px;
+  background:#1b2a44;
+  border-radius:6px;
+  display:block;
+  text-align:center;
+}
+a:hover { background:#2b4470; }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>Harness Elite Tip Sheet Index</h1>
-    <p class="sub">Tip sheets grouped by race date. Each link opens in a new browser tab/window.</p>
 
-    <div class="notice">
-      <strong>Premium Subscriber Access Notice:</strong>
-      Access to this information is strictly limited to paid Premium Subscribers.
-      Do not copy, share, redistribute, publish, forward, or commercially exploit these materials.
-    </div>
+<h1>Harness Elite Tip Sheets</h1>
+<div id="app">Loading...</div>
 
-    <div id="status" class="status">Loading tip sheets...</div>
-    <div id="index"></div>
+<script>
+const files = [
+"TipSheet_ACES_20260519.html",
+"TipSheet_ACES_20260521.html",
+"TipSheet_ACES_20260524.html",
+"TipSheet_ACES_20260526.html",
+"TipSheet_ACES_20260531.html",
+"TipSheet_ACES_20260602.html",
+"TipSheet_ACES_20260607.html",
+"TipSheet_ACES_20260609.html",
+"TipSheet_ACES_20260616.html",
+"TipSheet_ACES_20260618.html",
+"TipSheet_ACES_20260621.html",
 
-    <footer>
-      Advanced Wagering Strategies LLC d/b/a Harness Elite. All rights reserved.
-      Harness Elite reports, ratings, rankings, labels, formats, naming conventions, and proprietary analysis are protected intellectual property.
-    </footer>
-  </div>
+"TipSheet_BANG_20260426.html",
+"TipSheet_BANG_20260429.html",
+"TipSheet_BANG_20260503.html",
+"TipSheet_BANG_20260506.html",
+"TipSheet_BANG_20260510.html",
+"TipSheet_BANG_20260513.html",
+"TipSheet_BANG_20260517.html",
+"TipSheet_BANG_20260520.html",
+"TipSheet_BANG_20260524.html",
+"TipSheet_BANG_20260527.html",
+"TipSheet_BANG_20260531.html",
+"TipSheet_BANG_20260603.html",
+"TipSheet_BANG_20260605.html",
+"TipSheet_BANG_20260610.html",
+"TipSheet_BANG_20260612.html",
+"TipSheet_BANG_20260617.html",
+"TipSheet_BANG_20260619.html",
 
-  <script>
-    /*
-      Simple setup:
-      1. Put this index.html in the same GitHub Pages folder as the TipSheet_*.html files.
-      2. Confirm OWNER / REPO / BRANCH below match your GitHub Pages repo.
-      3. The page will automatically group every TipSheet_TRACK_YYYYMMDD.html file by date.
-    */
+"TipSheet_BR_20260424.html",
+"TipSheet_BR_20260425.html",
+"TipSheet_BR_20260429.html",
+"TipSheet_BR_20260506.html",
+"TipSheet_BR_20260508.html",
+"TipSheet_BR_20260509.html",
+"TipSheet_BR_20260513.html",
+"TipSheet_BR_20260515.html",
+"TipSheet_BR_20260516.html",
+"TipSheet_BR_20260520.html",
+"TipSheet_BR_20260522.html",
+"TipSheet_BR_20260523.html",
+"TipSheet_BR_20260527.html",
+"TipSheet_BR_20260529.html",
+"TipSheet_BR_20260530.html",
+"TipSheet_BR_20260603.html",
+"TipSheet_BR_20260605.html",
+"TipSheet_BR_20260606.html",
+"TipSheet_BR_20260610.html",
+"TipSheet_BR_20260612.html",
+"TipSheet_BR_20260613.html",
+"TipSheet_BR_20260619.html",
+"TipSheet_BR_20260620.html",
 
-    const OWNER = "demersj0";
-    const REPO = "demersj0.github.io";
-    const BRANCH = "main";
+"TipSheet_CHRTN_20260425.html",
+"TipSheet_CHRTN_20260502.html",
+"TipSheet_CHRTN_20260507.html",
+"TipSheet_CHRTN_20260508.html",
+"TipSheet_CHRTN_20260509.html",
+"TipSheet_CHRTN_20260514.html",
+"TipSheet_CHRTN_20260516.html",
+"TipSheet_CHRTN_20260521.html",
+"TipSheet_CHRTN_20260523.html",
+"TipSheet_CHRTN_20260530.html",
+"TipSheet_CHRTN_20260604.html",
+"TipSheet_CHRTN_20260606.html",
+"TipSheet_CHRTN_20260611.html",
+"TipSheet_CHRTN_20260613.html",
+"TipSheet_CHRTN_20260618.html",
 
-    function formatDate(yyyymmdd) {
-      const y = yyyymmdd.slice(0, 4);
-      const m = yyyymmdd.slice(4, 6);
-      const d = yyyymmdd.slice(6, 8);
-      const date = new Date(`${y}-${m}-${d}T12:00:00`);
-      return date.toLocaleDateString("en-US", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      });
-    }
+"TipSheet_CLNTN_20260531.html",
+"TipSheet_CLNTN_20260614.html",
+"TipSheet_CLNTN_20260621.html",
 
-    function getCurrentFolderPath() {
-      let path = window.location.pathname;
-      path = path.replace(/\/index\.html$/i, "/");
-      path = path.replace(/^\/+|\/+$/g, "");
-      return path;
-    }
+"TipSheet_CND_20260424.html",
+"TipSheet_CND_20260425.html",
+"TipSheet_CND_20260501.html",
+"TipSheet_CND_20260502.html",
+"TipSheet_CND_20260508.html",
+"TipSheet_CND_20260509.html",
+"TipSheet_CND_20260515.html",
+"TipSheet_CND_20260516.html",
+"TipSheet_CND_20260522.html",
+"TipSheet_CND_20260523.html",
+"TipSheet_CND_20260529.html",
+"TipSheet_CND_20260530.html",
+"TipSheet_CND_20260603.html",
+"TipSheet_CND_20260605.html",
+"TipSheet_CND_20260606.html",
+"TipSheet_CND_20260610.html",
+"TipSheet_CND_20260612.html",
+"TipSheet_CND_20260613.html",
+"TipSheet_CND_20260617.html",
+"TipSheet_CND_20260619.html",
+"TipSheet_CND_20260621.html",
 
-    async function loadFiles() {
-      const folder = getCurrentFolderPath();
-      const apiPath = folder
-        ? `https://api.github.com/repos/${OWNER}/${REPO}/contents/${folder}?ref=${BRANCH}`
-        : `https://api.github.com/repos/${OWNER}/${REPO}/contents?ref=${BRANCH}`;
+"TipSheet_CUMB_20260424.html",
+"TipSheet_CUMB_20260425.html",
+"TipSheet_CUMB_20260501.html",
+"TipSheet_CUMB_20260502.html",
+"TipSheet_CUMB_20260508.html",
+"TipSheet_CUMB_20260509.html",
+"TipSheet_CUMB_20260515.html",
+"TipSheet_CUMB_20260516.html",
+"TipSheet_CUMB_20260522.html",
+"TipSheet_CUMB_20260523.html",
+"TipSheet_CUMB_20260529.html",
+"TipSheet_CUMB_20260530.html",
+"TipSheet_CUMB_20260606.html",
+"TipSheet_CUMB_20260607.html",
+"TipSheet_CUMB_20260613.html",
+"TipSheet_CUMB_20260614.html",
+"TipSheet_CUMB_20260620.html",
+"TipSheet_CUMB_20260621.html",
 
-      const response = await fetch(apiPath);
-      if (!response.ok) {
-        throw new Error("Could not load the GitHub folder contents. Check OWNER, REPO, BRANCH, and folder path.");
-      }
+"TipSheet_DRES_20260524.html",
+"TipSheet_DRES_20260531.html",
+"TipSheet_DRES_20260607.html",
+"TipSheet_DRES_20260614.html",
+"TipSheet_DRES_20260621.html"
 
-      const items = await response.json();
+];
 
-      return items
-        .filter(item => item.type === "file")
-        .map(item => item.name)
-        .filter(name => /^TipSheet_[A-Z0-9]+_\d{8}\.html$/i.test(name))
-        .sort();
-    }
+function groupByDate(files){
+  const grouped = {};
 
-    function render(files) {
-      const grouped = {};
+  files.forEach(f=>{
+    const m = f.match(/_(\d{8})\.html$/);
+    if(!m) return;
+    const date = m[1];
+    if(!grouped[date]) grouped[date]=[];
+    grouped[date].push(f);
+  });
 
-      files.forEach(file => {
-        const match = file.match(/^TipSheet_([A-Z0-9]+)_(\d{8})\.html$/i);
-        if (!match) return;
+  return grouped;
+}
 
-        const track = match[1].toUpperCase();
-        const date = match[2];
+function render(){
+  const grouped = groupByDate(files);
+  const dates = Object.keys(grouped).sort().reverse();
 
-        if (!grouped[date]) grouped[date] = [];
-        grouped[date].push({ track, file });
-      });
+  let html = "";
 
-      const dates = Object.keys(grouped).sort().reverse();
-      const index = document.getElementById("index");
-      const status = document.getElementById("status");
+  dates.forEach(date=>{
+    html += `<div class="date-block">`;
+    html += `<div class="date-title">${date}</div>`;
+    html += `<div class="track-grid">`;
 
-      if (!dates.length) {
-        status.textContent = "No TipSheet HTML files found in this folder.";
-        return;
-      }
+    grouped[date].sort().forEach(file=>{
+      const track = file.split("_")[1];
+      html += `<a href="${file}" target="_blank">${track}</a>`;
+    });
 
-      status.textContent = `${files.length} tip sheets found.`;
+    html += `</div></div>`;
+  });
 
-      index.innerHTML = dates.map(date => {
-        const links = grouped[date]
-          .sort((a, b) => a.track.localeCompare(b.track))
-          .map(item => `
-            <a class="report-link" href="${item.file}" target="_blank" rel="noopener noreferrer">
-              ${item.track}
-            </a>
-          `).join("");
+  document.getElementById("app").innerHTML = html;
+}
 
-        return `
-          <section class="date-section">
-            <h2>${formatDate(date)} <span class="count">(${grouped[date].length} tracks)</span></h2>
-            <div class="links">${links}</div>
-          </section>
-        `;
-      }).join("");
-    }
+render();
+</script>
 
-    loadFiles()
-      .then(render)
-      .catch(error => {
-        document.getElementById("status").textContent = error.message;
-      });
-  </script>
 </body>
 </html>
