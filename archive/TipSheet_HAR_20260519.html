@@ -1,0 +1,5453 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harness Elite Today's Dashboard</title>
+<style>
+:root {
+  --ink:#0f172a;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --blue:#1d4ed8;
+  --blue-soft:#eff6ff;
+  --green:#16a34a;
+  --green-soft:#dcfce7;
+  --amber:#d97706;
+  --amber-soft:#fef3c7;
+  --red:#dc2626;
+  --red-soft:#fee2e2;
+  --panel:#ffffff;
+  --bg:#f8fafc;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+}
+.he-wrapper {
+  max-width:1180px;
+  margin:0 auto;
+  padding:20px;
+}
+.hero {
+  background:linear-gradient(135deg,#0f172a,#1e3a8a);
+  color:white;
+  border-radius:22px;
+  padding:26px;
+  margin-bottom:22px;
+  box-shadow:0 18px 40px rgba(15,23,42,.18);
+}
+.hero-kicker { font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.75; font-weight:800; }
+.hero-title { font-size:34px; line-height:1.05; font-weight:900; margin:8px 0 6px; }
+.hero-subtitle { color:#dbeafe; font-size:15px; }
+.legend {
+  display:grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin:14px 0 22px;
+}
+.legend-item {
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px 12px;
+  font-size:12px;
+  color:var(--muted);
+}
+.legend-item strong { display:block; color:var(--ink); font-size:13px; margin-bottom:2px; }
+.race-card {
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:22px;
+  margin-bottom:22px;
+  overflow:hidden;
+  box-shadow:0 10px 28px rgba(15,23,42,.07);
+}
+.race-top {
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:14px;
+  padding:18px;
+  border-bottom:1px solid var(--line);
+  background:white;
+}
+.race-title { font-size:22px; font-weight:900; }
+.race-sub { color:var(--muted); margin-top:4px; font-size:13px; }
+.overview-grid {
+  display:grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap:8px;
+}
+.stat {
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:9px 10px;
+  background:#fbfdff;
+}
+.stat-label { font-size:10px; color:var(--muted); text-transform:uppercase; font-weight:800; letter-spacing:.08em; }
+.stat-value { font-size:15px; font-weight:900; margin-top:3px; }
+.shape-predictable { color:var(--green); }
+.shape-playable { color:var(--amber); }
+.shape-chaos { color:var(--red); }
+.race-body { padding:18px; }
+.section-title {
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.contender-grid {
+  display:grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.contender-card {
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px;
+  background:#fff;
+}
+.contender-card.grade-a { border-color:#86efac; background:linear-gradient(180deg,#f0fdf4,#fff); }
+.contender-card.grade-b { border-color:#bfdbfe; background:linear-gradient(180deg,#eff6ff,#fff); }
+.contender-card.grade-c { border-color:#fde68a; background:linear-gradient(180deg,#fffbeb,#fff); }
+.horse-row { display:flex; align-items:center; gap:10px; }
+.pp-bubble {
+  width:42px; height:42px; border-radius:999px;
+  background:#0f172a; color:white;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:900;
+}
+.horse-main { flex:1; min-width:0; }
+.horse-name { font-weight:900; font-size:16px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.horse-meta { color:var(--muted); font-size:12px; margin-top:2px; }
+.grade {
+  width:42px; height:42px; border-radius:12px;
+  background:#e0f2fe; color:#075985;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:900; font-size:18px;
+}
+.role { margin-top:10px; font-weight:800; font-size:13px; color:#334155; }
+.meter { height:8px; border-radius:999px; background:#e5e7eb; overflow:hidden; margin:9px 0 11px; }
+.meter div { height:100%; background:#2563eb; border-radius:999px; }
+.signals { display:flex; flex-wrap:wrap; gap:6px; }
+.sig {
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:11px;
+  font-weight:800;
+  border:1px solid var(--line);
+}
+.sig.on { background:var(--green-soft); color:#166534; border-color:#bbf7d0; }
+.sig.off { background:#f8fafc; color:#94a3b8; }
+.wager-box {
+  margin-top:16px;
+  border:1px solid #bfdbfe;
+  background:var(--blue-soft);
+  border-radius:18px;
+  padding:14px;
+}
+.wager-line {
+  background:white;
+  border:1px solid #dbeafe;
+  border-radius:12px;
+  padding:8px 10px;
+  margin-top:8px;
+  font-weight:800;
+  font-size:13px;
+}
+.note { color:var(--muted); font-size:12px; line-height:1.45; margin-top:10px; }
+
+.front-card {
+  background:white;
+  border:1px solid var(--line);
+  border-radius:22px;
+  margin:0 0 22px;
+  overflow:hidden;
+  box-shadow:0 10px 28px rgba(15,23,42,.07);
+}
+.front-head {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  padding:18px;
+  border-bottom:1px solid var(--line);
+}
+.front-title { font-size:24px; font-weight:900; }
+.front-note { color:var(--muted); font-size:13px; font-weight:800; }
+.selection-table-wrap, .detail-table-wrap { width:100%; overflow-x:auto; }
+.selection-table, .detail-table { width:100%; border-collapse:collapse; font-size:13px; }
+.selection-table th, .selection-table td, .detail-table th, .detail-table td {
+  border-bottom:1px solid var(--line);
+  padding:10px;
+  vertical-align:top;
+  text-align:left;
+}
+.selection-table th, .detail-table th { background:#f1f5f9; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:#475569; }
+.race-cell { width:150px; font-weight:900; }
+.race-cell a { color:#1d4ed8; text-decoration:none; }
+.race-cell span { display:block; margin-top:4px; color:var(--muted); font-weight:700; font-size:11px; }
+.best-cell { background:#f0fdf4; }
+.pick-chip { min-width:190px; }
+.pick-horse { font-weight:900; color:#0f172a; }
+.pick-meta { color:#64748b; font-size:11px; margin-top:3px; line-height:1.35; }
+.full-grid-panel { margin-top:18px; border:1px solid var(--line); border-radius:16px; background:#fff; overflow:hidden; padding:14px; }
+.full-name { min-width:150px; }
+.good { background:#dcfce7 !important; color:#166534; font-weight:900; }
+.bad { background:#fee2e2 !important; color:#991b1b; font-weight:900; }
+
+@media screen and (max-width: 860px) {
+  .he-wrapper { padding:10px; }
+  .hero-title { font-size:26px; }
+  .legend { grid-template-columns:1fr 1fr; }
+  .race-top { grid-template-columns:1fr; }
+  .contender-grid { grid-template-columns:1fr; }
+}
+@media print {
+  body { background:white; }
+  .race-card { break-inside:avoid; box-shadow:none; }
+}
+</style>
+</head>
+<body>
+<div class="he-wrapper">
+  <div class="hero">
+    <div class="hero-kicker">Harness Elite</div>
+    <div class="hero-title">Today's Dashboard</div>
+    <div class="hero-subtitle">Racecard Date: 20260519 · A complete race dashboard with A/B/C selections, contender cards, wager ideas, and the full race grid.</div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><strong>Top 3</strong>Horse ranks inside the model's core race contenders.</div>
+    <div class="legend-item"><strong>Dominant</strong>Strong top profile, separation, or elite contender profile.</div>
+    <div class="legend-item"><strong>FA+ / Sit+</strong>Form alert improving and/or positive race setup.</div>
+    <div class="legend-item"><strong>Value</strong>Harness Elite line is shorter than the morning line.</div>
+  </div>
+
+  <div class="front-card">
+    <div class="front-head">
+      <div>
+        <div class="section-title">Front Selection Grid</div>
+        <div class="front-title">A/B/C contenders by race</div>
+      </div>
+      <div class="front-note">A = Best · B = Better · C = Good</div>
+    </div>
+    <div class="selection-table-wrap">
+      <table class="selection-table">
+        <thead><tr><th>Race / Gait / Purse</th><th>A - Best</th><th>B - Better</th><th>C - Good</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="race-cell"><a href="#race-1">Race 1</a><span>4:30 · PACE · $5000 · Playable</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#7 Hangon Cowgirl</div>
+        <div class="pick-meta">Major Contender · Score 14 · HER 717 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#2 Burnin Roses</div>
+        <div class="pick-meta">Live Improver · Score 10 · HER 595 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#4 Mad Anne</div>
+        <div class="pick-meta">Live Improver · Score 10 · HER 545 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-2">Race 2</a><span>4:48 · PACE · $7000 · Playable</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#1 Feathers Ruffled</div>
+        <div class="pick-meta">Primary Win/Underneath Anchor · Score 16 · HER 769 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#5 Marineryleigh</div>
+        <div class="pick-meta">Live Improver · Score 11 · HER 524 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#8 Lilbitofgossip</div>
+        <div class="pick-meta">Core Contender · Score 6 · HER 621 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-3">Race 3</a><span>5:06 · PACE · $10000 · Playable</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#5 Bueckers</div>
+        <div class="pick-meta">Major Contender · Score 18 · HER 718 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#2 Git Goin</div>
+        <div class="pick-meta">Live Improver · Score 12 · HER 611 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#4 Sweetpea Pat</div>
+        <div class="pick-meta">Positive Setup · Score 6 · HER 377 · Rank 6</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-4">Race 4</a><span>5:24 · PACE · $12500 · Chaos Risk</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#4 Barbados Babe</div>
+        <div class="pick-meta">Major Contender · Score 20 · HER 674 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#7 She Prefers Gin</div>
+        <div class="pick-meta">Form Upside · Score 13 · HER 674 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#6 Act Classy</div>
+        <div class="pick-meta">Form Upside · Score 10 · HER 665 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-5">Race 5</a><span>5:42 · PACE · $22500 · Playable</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#4 Almost Persuaded</div>
+        <div class="pick-meta">Major Contender · Score 20 · HER 737 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#7 Jett Propelled</div>
+        <div class="pick-meta">Form Upside · Score 16 · HER 771 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#5 Gogettermisscheddr</div>
+        <div class="pick-meta">Live Improver · Score 13 · HER 551 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-6">Race 6</a><span>6:00 · PACE · $7500 · Playable</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#1 Little Miss Peyton</div>
+        <div class="pick-meta">Major Contender · Score 17 · HER 677 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#5 Clear The Way</div>
+        <div class="pick-meta">Positive Setup · Score 11 · HER 604 · Rank 3</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#7 Century Keyanna</div>
+        <div class="pick-meta">Form Upside · Score 8 · HER 635 · Rank 2</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-7">Race 7</a><span>6:18 · PACE · $8000 · Playable</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#8 Cake Pop</div>
+        <div class="pick-meta">Form Upside · Score 11 · HER 686 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#6 Pretty Pricey</div>
+        <div class="pick-meta">Form Upside · Score 10 · HER 583 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#7 She'Sagoldengirl</div>
+        <div class="pick-meta">Form Upside · Score 8 · HER 632 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-8">Race 8</a><span>6:36 · PACE · $8500 · Playable</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#4 Dance With Tabby</div>
+        <div class="pick-meta">Positive Setup · Score 12 · HER 620 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#7 Amelia Maximus</div>
+        <div class="pick-meta">Form Upside · Score 10 · HER 711 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#2 River Of Fear</div>
+        <div class="pick-meta">Live Improver · Score 9 · HER 649 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-9">Race 9</a><span>6:54 · PACE · $7000 · Playable</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#3 Philly View</div>
+        <div class="pick-meta">Major Contender · Score 15 · HER 704 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#2 Front And Center</div>
+        <div class="pick-meta">Positive Setup · Score 10 · HER 677 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#1 Imaginethechecks</div>
+        <div class="pick-meta">Live Improver · Score 9 · HER 645 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-10">Race 10</a><span>7:12 · PACE · $6500 · Playable</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#5 Cntnobdytelmenothn</div>
+        <div class="pick-meta">Major Contender · Score 15 · HER 718 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#3 Caliber</div>
+        <div class="pick-meta">Live Improver · Score 11 · HER 565 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#7 Truthfinder</div>
+        <div class="pick-meta">Form Upside · Score 7 · HER 556 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-11">Race 11</a><span>7:30 · PACE · $18000 · Playable</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#4 Pasta Delight</div>
+        <div class="pick-meta">Live Improver · Score 12 · HER 557 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#6 Phoenix Rising</div>
+        <div class="pick-meta">Core Contender · Score 8 · HER 563 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#2 Scrivener Hanover</div>
+        <div class="pick-meta">Positive Setup · Score 7 · HER 592 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-12">Race 12</a><span>7:48 · PACE · $5000 · Playable</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#3 Free Flying Freddy</div>
+        <div class="pick-meta">Major Contender · Score 16 · HER 678 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#8 Rock Lights</div>
+        <div class="pick-meta">Form Upside · Score 7 · HER 615 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#2 Stroman</div>
+        <div class="pick-meta">Form Upside · Score 7 · HER 506 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-13">Race 13</a><span>8:06 · PACE · $10000 · Playable</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#1 Talkingatthetable</div>
+        <div class="pick-meta">Major Contender · Score 15 · HER 610 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#3 Mama Matcha</div>
+        <div class="pick-meta">Live Improver · Score 10 · HER 539 · Rank 3</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#7 Pure Decision</div>
+        <div class="pick-meta">Core Contender · Score 6 · HER 582 · Rank 2</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-14">Race 14</a><span>8:24 · PACE · $8500 · Playable</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#1 Pure Princess</div>
+        <div class="pick-meta">Major Contender · Score 12 · HER 648 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#2 Seriously Fearless</div>
+        <div class="pick-meta">Positive Setup · Score 8 · HER 628 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#3 Pd'S Gem</div>
+        <div class="pick-meta">Positive Setup · Score 8 · HER 598 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell"><a href="#race-15">Race 15</a><span>8:42 · PACE · $6000 · Chaos Risk</span></td>
+          <td class="best-cell">
+      <div class="pick-chip">
+        <div class="pick-horse">#5 Lyons Black Magic</div>
+        <div class="pick-meta">Live Improver · Score 15 · HER 739 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#1 Shady'S Shark Bait</div>
+        <div class="pick-meta">Live Improver · Score 12 · HER 613 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip">
+        <div class="pick-horse">#3 Aidan</div>
+        <div class="pick-meta">Live Improver · Score 11 · HER 635 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+    
+  <div class="race-card" id="race-1">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 1</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">4:30</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$5000</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-playable">Playable</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">46</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#7</div>
+    <div class="horse-main">
+      <div class="horse-name">Hangon Cowgirl</div>
+      <div class="horse-meta">Driver: Beyer, Troy · ML: 6/1</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Major Contender</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig on">✓ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#2</div>
+    <div class="horse-main">
+      <div class="horse-name">Burnin Roses</div>
+      <div class="horse-meta">Driver: Roglitz, Jacob · ML: 7/2</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:80%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#4</div>
+    <div class="horse-main">
+      <div class="horse-name">Mad Anne</div>
+      <div class="horse-meta">Driver: Foster, Russell · ML: 2/1</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:80%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#3</div>
+    <div class="horse-main">
+      <div class="horse-name">Designs On You</div>
+      <div class="horse-meta">Driver: Morgan, Anthony · ML: 5/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 1 - $2 WIN - #7</div><div class="wager-line">Race 1 - $2 WIN-PLACE - #7</div><div class="wager-line">Race 1 - $2 EXACTA BOX - Horses 7, 2, 4</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">Hangon Cowgirl</td>
+          <td>Beyer, Troy</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="good">7</td>
+          <td class="good">6/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">11</td>
+          <td class="">-8.0</td>
+          <td>Strong Declining</td>
+          <td class="">-0.7</td>
+          <td class="good">717</td>
+          <td class="good">15.1</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">Burnin Roses</td>
+          <td>Roglitz, Jacob</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">4.50</td>
+          <td class="">7/2</td>
+          <td class="good">2</td>
+          <td class="bad">0</td>
+          <td class="">7</td>
+          <td class="">20</td>
+          <td class="good">9</td>
+          <td>Strong Improving</td>
+          <td class="good">0.7</td>
+          <td class="">595</td>
+          <td class="">10.3</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Mad Anne</td>
+          <td>Foster, Russell</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">3</td>
+          <td class="">2/1</td>
+          <td class="good">3</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">11</td>
+          <td class="good">11.8</td>
+          <td>Strong Improving</td>
+          <td class="good">1.4</td>
+          <td class="">545</td>
+          <td class="">9.7</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Brown Betty</td>
+          <td>Givens, Brandon</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">8</td>
+          <td class="">7/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">-1</td>
+          <td class="">7</td>
+          <td class="">20</td>
+          <td class="">-4.6</td>
+          <td>Declining</td>
+          <td class="">-1.3</td>
+          <td class="">592</td>
+          <td class="">9.3</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Designs On You</td>
+          <td>Morgan, Anthony</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">6</td>
+          <td class="">5/1</td>
+          <td class="good">1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">0</td>
+          <td class="good">1.1</td>
+          <td>Stable / Neutral</td>
+          <td class="good">0.3</td>
+          <td class="">494</td>
+          <td class="">7.9</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Mary Puffins</td>
+          <td>Poliseno, Cody</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">9</td>
+          <td class="">8/1</td>
+          <td class="good">3</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">10</td>
+          <td class="">-2.2</td>
+          <td>Declining</td>
+          <td class="good">1.1</td>
+          <td class="">412</td>
+          <td class="">5.5</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Sea Princess</td>
+          <td>Thompson, Jason</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="good">2</td>
+          <td class="bad">1</td>
+          <td class="">14</td>
+          <td class="">0</td>
+          <td class="">-9.2</td>
+          <td>Strong Declining</td>
+          <td class="good">0.1</td>
+          <td class="">400</td>
+          <td class="">4.1</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Grin N Sin</td>
+          <td>Davis, Eric</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">0</td>
+          <td class="good">2.2</td>
+          <td>Improving</td>
+          <td class="">-0.4</td>
+          <td class="">247</td>
+          <td class="">3.6</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-2">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 2</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">4:48</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$7000</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-playable">Playable</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">29</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#1</div>
+    <div class="horse-main">
+      <div class="horse-name">Feathers Ruffled</div>
+      <div class="horse-meta">Driver: Thompson, Jason · ML: 7/5</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Primary Win/Underneath Anchor</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig on">✓ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#5</div>
+    <div class="horse-main">
+      <div class="horse-name">Marineryleigh</div>
+      <div class="horse-meta">Driver: Berry, Pat · ML: 7/2</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:88%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#8</div>
+    <div class="horse-main">
+      <div class="horse-name">Lilbitofgossip</div>
+      <div class="horse-meta">Driver: Cruse, Brandon · ML: 20/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Core Contender</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#2</div>
+    <div class="horse-main">
+      <div class="horse-name">Papi Said</div>
+      <div class="horse-meta">Driver: Callahan, Corey · ML: 3/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#3</div>
+    <div class="horse-main">
+      <div class="horse-name">Miss B Dreamin</div>
+      <div class="horse-meta">Driver: Green, Jason · ML: 20/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Positive Setup</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 2 - $2 PLACE-SHOW - #1</div><div class="wager-line">Race 2 - $2 SHOW - #1</div><div class="wager-line">Race 2 - $2 EXACTA - 1 w/5, 2, 3</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Feathers Ruffled</td>
+          <td>Thompson, Jason</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="">2.40</td>
+          <td class="">7/5</td>
+          <td class="good">3</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="good">62</td>
+          <td class="">-3.1</td>
+          <td>Declining</td>
+          <td class="good">0.7</td>
+          <td class="good">769</td>
+          <td class="good">16.0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Marineryleigh</td>
+          <td>Berry, Pat</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="">4.50</td>
+          <td class="">7/2</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="">44</td>
+          <td class="good">7.0</td>
+          <td>Strong Improving</td>
+          <td class="good">0.8</td>
+          <td class="">524</td>
+          <td class="">9.4</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Lilbitofgossip</td>
+          <td>Cruse, Brandon</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="good">21</td>
+          <td class="good">20/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">-1</td>
+          <td class="bad">21</td>
+          <td class="">0</td>
+          <td class="">-10.9</td>
+          <td>Strong Declining</td>
+          <td class="">-1.4</td>
+          <td class="">621</td>
+          <td class="">8.5</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">Papi Said</td>
+          <td>Callahan, Corey</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="">4</td>
+          <td class="">3/1</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">6</td>
+          <td class="">25</td>
+          <td class="good">5.5</td>
+          <td>Improving</td>
+          <td class="good">0.2</td>
+          <td class="">467</td>
+          <td class="">8.2</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">Youllthankmelater</td>
+          <td>Beyer, Troy</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="">7</td>
+          <td class="">6/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="">50</td>
+          <td class="good">3.1</td>
+          <td>Improving</td>
+          <td class="">-1.3</td>
+          <td class="">450</td>
+          <td class="">7.3</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Penny Pack Park</td>
+          <td>Griffith, Shane</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="good">3</td>
+          <td class="bad">0</td>
+          <td class="">7</td>
+          <td class="">0</td>
+          <td class="good">1.8</td>
+          <td>Stable / Neutral</td>
+          <td class="">0</td>
+          <td class="">388</td>
+          <td class="">5.3</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Hollywood Hit</td>
+          <td>Foster, Russell</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="">13</td>
+          <td class="">12/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">0</td>
+          <td class="good">13.5</td>
+          <td>Strong Improving</td>
+          <td class="">-0.9</td>
+          <td class="">408</td>
+          <td class="">5.0</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Miss B Dreamin</td>
+          <td>Green, Jason</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="good">21</td>
+          <td class="good">20/1</td>
+          <td class="good">1</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="">12</td>
+          <td class="">-3.4</td>
+          <td>Declining</td>
+          <td class="good">0.1</td>
+          <td class="">373</td>
+          <td class="">4.4</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-3">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 3</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">5:06</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$10000</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-playable">Playable</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">27.6</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#5</div>
+    <div class="horse-main">
+      <div class="horse-name">Bueckers</div>
+      <div class="horse-meta">Driver: Stafford, Art Jr · ML: 8/5</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Major Contender</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig on">✓ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#2</div>
+    <div class="horse-main">
+      <div class="horse-name">Git Goin</div>
+      <div class="horse-meta">Driver: Copeland, Vince · ML: 4/1</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:96%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#4</div>
+    <div class="horse-main">
+      <div class="horse-name">Sweetpea Pat</div>
+      <div class="horse-meta">Driver: Beyer, Troy · ML: 20/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Positive Setup</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#3</div>
+    <div class="horse-main">
+      <div class="horse-name">Kiss Cam</div>
+      <div class="horse-meta">Driver: Thompson, Jason · ML: 6/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Core Contender</div>
+  <div class="meter"><div style="width:40%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#1</div>
+    <div class="horse-main">
+      <div class="horse-name">Devotion</div>
+      <div class="horse-meta">Driver: Skinner, Ryder · ML: 7/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:40%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 3 - $2 WIN - #5</div><div class="wager-line">Race 3 - $2 WIN-PLACE - #5</div><div class="wager-line">Race 3 - $2 EXACTA BOX - Horses 5, 2, 3</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Bueckers</td>
+          <td>Stafford, Art Jr</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="good">2.60</td>
+          <td class="good">8/5</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="good">62</td>
+          <td class="">-5.4</td>
+          <td>Declining</td>
+          <td class="good">0.1</td>
+          <td class="good">718</td>
+          <td class="good">15.7</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">Git Goin</td>
+          <td>Copeland, Vince</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="good">5</td>
+          <td class="good">4/1</td>
+          <td class="good">2</td>
+          <td class="bad">0</td>
+          <td class="">14</td>
+          <td class="">0</td>
+          <td class="good">3.4</td>
+          <td>Improving</td>
+          <td class="good">0.5</td>
+          <td class="">611</td>
+          <td class="">10.9</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Kiss Cam</td>
+          <td>Thompson, Jason</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="">7</td>
+          <td class="">6/1</td>
+          <td class="good">1</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">50</td>
+          <td class="">-8.4</td>
+          <td>Strong Declining</td>
+          <td class="">-0.0</td>
+          <td class="">592</td>
+          <td class="">10.0</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">Just Applause</td>
+          <td>Foster, Russell</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="">4.50</td>
+          <td class="">7/2</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="good">70</td>
+          <td class="">-2.8</td>
+          <td>Declining</td>
+          <td class="">-1.6</td>
+          <td class="">540</td>
+          <td class="">9.2</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Southwind Sassie</td>
+          <td>Porter, Trae</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="">13</td>
+          <td class="">12/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">1</td>
+          <td class="">14</td>
+          <td class="">20</td>
+          <td class="">-4.6</td>
+          <td>Declining</td>
+          <td class="">-1.3</td>
+          <td class="">470</td>
+          <td class="">7.0</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Sweetpea Pat</td>
+          <td>Beyer, Troy</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="good">21</td>
+          <td class="good">20/1</td>
+          <td class="good">3</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">33</td>
+          <td class="">-2.2</td>
+          <td>Declining</td>
+          <td class="good">1.6</td>
+          <td class="">377</td>
+          <td class="">5.5</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Devotion</td>
+          <td>Skinner, Ryder</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="">8</td>
+          <td class="">7/1</td>
+          <td class="good">3</td>
+          <td class="bad">0</td>
+          <td class="">7</td>
+          <td class="">30</td>
+          <td class="good">0.7</td>
+          <td>Stable / Neutral</td>
+          <td class="good">0.2</td>
+          <td class="">325</td>
+          <td class="">4.7</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Pelican Bay</td>
+          <td>Davis, Eric</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="good">56</td>
+          <td class="">-6.0</td>
+          <td>Declining</td>
+          <td class="">-0.9</td>
+          <td class="">367</td>
+          <td class="">3.3</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-4">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 4</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">5:24</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$12500</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-chaos">Chaos Risk</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">53</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#4</div>
+    <div class="horse-main">
+      <div class="horse-name">Barbados Babe</div>
+      <div class="horse-meta">Driver: Stafford, Art Jr · ML: 5/2</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Major Contender</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig on">✓ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#7</div>
+    <div class="horse-main">
+      <div class="horse-name">She Prefers Gin</div>
+      <div class="horse-meta">Driver: Teague, Montrell · ML: 6/1</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#6</div>
+    <div class="horse-main">
+      <div class="horse-name">Act Classy</div>
+      <div class="horse-meta">Driver: Callahan, Corey · ML: 9/2</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:80%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#5</div>
+    <div class="horse-main">
+      <div class="horse-name">Squeaky Wheel</div>
+      <div class="horse-meta">Driver: Scicluna, Chris · ML: 15/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#3</div>
+    <div class="horse-main">
+      <div class="horse-name">Wired Blue Chip</div>
+      <div class="horse-meta">Driver: Berry, Pat · ML: 3/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:40%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 4 - $2 SHOW - #4</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Barbados Babe</td>
+          <td>Stafford, Art Jr</td>
+          <td>PACE</td>
+          <td>12500</td>
+          <td class="good">3.50</td>
+          <td class="good">5/2</td>
+          <td class="good">3</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="good">78</td>
+          <td class="good">1.3</td>
+          <td>Stable / Neutral</td>
+          <td class="good">0.7</td>
+          <td class="good">674</td>
+          <td class="good">15.0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">She Prefers Gin</td>
+          <td>Teague, Montrell</td>
+          <td>PACE</td>
+          <td>12500</td>
+          <td class="good">7</td>
+          <td class="good">6/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="good">56</td>
+          <td class="good">4.3</td>
+          <td>Improving</td>
+          <td class="">-0.7</td>
+          <td class="good">674</td>
+          <td class="">11.2</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Act Classy</td>
+          <td>Callahan, Corey</td>
+          <td>PACE</td>
+          <td>12500</td>
+          <td class="">5.50</td>
+          <td class="">9/2</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="good">67</td>
+          <td class="good">2.2</td>
+          <td>Improving</td>
+          <td class="">-0.4</td>
+          <td class="good">665</td>
+          <td class="">10.8</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Wired Blue Chip</td>
+          <td>Berry, Pat</td>
+          <td>PACE</td>
+          <td>12500</td>
+          <td class="">4</td>
+          <td class="">3/1</td>
+          <td class="good">1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="good">67</td>
+          <td class="good">5.6</td>
+          <td>Improving</td>
+          <td class="">-0.0</td>
+          <td class="">596</td>
+          <td class="">9.8</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Squeaky Wheel</td>
+          <td>Scicluna, Chris</td>
+          <td>PACE</td>
+          <td>12500</td>
+          <td class="">16</td>
+          <td class="">15/1</td>
+          <td class="good">2</td>
+          <td class="bad">0</td>
+          <td class="">7</td>
+          <td class="good">60</td>
+          <td class="good">6.8</td>
+          <td>Strong Improving</td>
+          <td class="good">0.9</td>
+          <td class="">464</td>
+          <td class="">6.8</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Daytona Miss</td>
+          <td>Cole, Mike</td>
+          <td>PACE</td>
+          <td>12500</td>
+          <td class="">6</td>
+          <td class="">5/1</td>
+          <td class="good">3</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">40</td>
+          <td class="good">8.7</td>
+          <td>Strong Improving</td>
+          <td class="good">0.6</td>
+          <td class="">323</td>
+          <td class="">5.8</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">Rwehomeyet</td>
+          <td>Porter, Trae</td>
+          <td>PACE</td>
+          <td>12500</td>
+          <td class="">9</td>
+          <td class="">8/1</td>
+          <td class="good">2</td>
+          <td class="bad">1</td>
+          <td class="bad">21</td>
+          <td class="">50</td>
+          <td class="good">0.1</td>
+          <td>Stable / Neutral</td>
+          <td class="good">1.0</td>
+          <td class="">418</td>
+          <td class="">5.4</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Makemymommaproud</td>
+          <td>Beyer, Troy</td>
+          <td>PACE</td>
+          <td>12500</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">40</td>
+          <td class="good">2.3</td>
+          <td>Improving</td>
+          <td class="good">0.2</td>
+          <td class="">185</td>
+          <td class="">2.3</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-5">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 5</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">5:42</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$22500</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-playable">Playable</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">29.7</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#4</div>
+    <div class="horse-main">
+      <div class="horse-name">Almost Persuaded</div>
+      <div class="horse-meta">Driver: Foster, Russell · ML: 3/1</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Major Contender</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig on">✓ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#7</div>
+    <div class="horse-main">
+      <div class="horse-name">Jett Propelled</div>
+      <div class="horse-meta">Driver: Thompson, Jason · ML: 7/2</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig on">✓ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#5</div>
+    <div class="horse-main">
+      <div class="horse-name">Gogettermisscheddr</div>
+      <div class="horse-meta">Driver: Morgan, Anthony · ML: 6/1</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#2</div>
+    <div class="horse-main">
+      <div class="horse-name">Nite Time Deal</div>
+      <div class="horse-meta">Driver: Stafford, Art Jr · ML: 9/2</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:56%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#3</div>
+    <div class="horse-main">
+      <div class="horse-name">Fengshuiprosperity</div>
+      <div class="horse-meta">Driver: Berry, Pat · ML: 6/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:40%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 5 - $2 WIN - #4</div><div class="wager-line">Race 5 - $2 WIN-PLACE - #4</div><div class="wager-line">Race 5 - $2 EXACTA BOX - Horses 4, 7, 5</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Almost Persuaded</td>
+          <td>Foster, Russell</td>
+          <td>PACE</td>
+          <td>22500</td>
+          <td class="good">4</td>
+          <td class="good">3/1</td>
+          <td class="good">3</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="good">70</td>
+          <td class="good">4.1</td>
+          <td>Improving</td>
+          <td class="good">1.3</td>
+          <td class="good">737</td>
+          <td class="good">14.9</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">Jett Propelled</td>
+          <td>Thompson, Jason</td>
+          <td>PACE</td>
+          <td>22500</td>
+          <td class="good">4.50</td>
+          <td class="good">7/2</td>
+          <td class="bad">-1</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="good">80</td>
+          <td class="good">5.0</td>
+          <td>Improving</td>
+          <td class="">-0.2</td>
+          <td class="good">771</td>
+          <td class="">12.5</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Gogettermisscheddr</td>
+          <td>Morgan, Anthony</td>
+          <td>PACE</td>
+          <td>22500</td>
+          <td class="good">7</td>
+          <td class="good">6/1</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="good">67</td>
+          <td class="good">2.0</td>
+          <td>Stable / Neutral</td>
+          <td class="good">1.1</td>
+          <td class="">551</td>
+          <td class="">10.5</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Stevie Hanover</td>
+          <td>Teague, Montrell</td>
+          <td>PACE</td>
+          <td>22500</td>
+          <td class="">5.50</td>
+          <td class="">9/2</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="good">70</td>
+          <td class="good">8.5</td>
+          <td>Strong Improving</td>
+          <td class="">-0.9</td>
+          <td class="">531</td>
+          <td class="">9.1</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">Nite Time Deal</td>
+          <td>Stafford, Art Jr</td>
+          <td>PACE</td>
+          <td>22500</td>
+          <td class="">5.50</td>
+          <td class="">9/2</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="good">60</td>
+          <td class="good">1.4</td>
+          <td>Stable / Neutral</td>
+          <td class="good">0.4</td>
+          <td class="">500</td>
+          <td class="">8.6</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Fengshuiprosperity</td>
+          <td>Berry, Pat</td>
+          <td>PACE</td>
+          <td>22500</td>
+          <td class="">7</td>
+          <td class="">6/1</td>
+          <td class="good">1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="good">56</td>
+          <td class="good">7.1</td>
+          <td>Strong Improving</td>
+          <td class="">-0.5</td>
+          <td class="">387</td>
+          <td class="">6.4</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Hold My Wine</td>
+          <td>Cole, Mike</td>
+          <td>PACE</td>
+          <td>22500</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="good">3</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">40</td>
+          <td class="good">6.5</td>
+          <td>Strong Improving</td>
+          <td class="good">0.3</td>
+          <td class="">226</td>
+          <td class="">3.4</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Lil Miss Wondrphyl</td>
+          <td>Givens, Brandon</td>
+          <td>PACE</td>
+          <td>22500</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">-1</td>
+          <td class="">14</td>
+          <td class="">50</td>
+          <td class="good">0.7</td>
+          <td>Stable / Neutral</td>
+          <td class="">-1.9</td>
+          <td class="">296</td>
+          <td class="">3.1</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-6">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 6</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">6:00</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$7500</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-playable">Playable</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">46</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#1</div>
+    <div class="horse-main">
+      <div class="horse-name">Little Miss Peyton</div>
+      <div class="horse-meta">Driver: Givens, Brandon · ML: 2/1</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Major Contender</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig on">✓ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#5</div>
+    <div class="horse-main">
+      <div class="horse-name">Clear The Way</div>
+      <div class="horse-meta">Driver: Davis, Allan · ML: 6/1</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Positive Setup</div>
+  <div class="meter"><div style="width:88%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#7</div>
+    <div class="horse-main">
+      <div class="horse-name">Century Keyanna</div>
+      <div class="horse-meta">Driver: Thompson, Jason · ML: 5/1</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:64%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#4</div>
+    <div class="horse-main">
+      <div class="horse-name">Rockinwithdave</div>
+      <div class="horse-meta">Driver: Morgan, Anthony · ML: 6/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#2</div>
+    <div class="horse-main">
+      <div class="horse-name">Here We Go Bb</div>
+      <div class="horse-meta">Driver: Green, Jason · ML: 20/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 6 - $2 WIN - #1</div><div class="wager-line">Race 6 - $2 WIN-PLACE - #1</div><div class="wager-line">Race 6 - $2 EXACTA BOX - Horses 1, 7, 5</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Little Miss Peyton</td>
+          <td>Givens, Brandon</td>
+          <td>PACE</td>
+          <td>7500</td>
+          <td class="">3</td>
+          <td class="">2/1</td>
+          <td class="good">3</td>
+          <td class="bad">-1</td>
+          <td class="">7</td>
+          <td class="good">80</td>
+          <td class="good">1.9</td>
+          <td>Stable / Neutral</td>
+          <td class="good">1.4</td>
+          <td class="good">677</td>
+          <td class="good">15.3</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">Century Keyanna</td>
+          <td>Thompson, Jason</td>
+          <td>PACE</td>
+          <td>7500</td>
+          <td class="">6</td>
+          <td class="">5/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="good">70</td>
+          <td class="good">4.8</td>
+          <td>Improving</td>
+          <td class="">-1.2</td>
+          <td class="">635</td>
+          <td class="">10.7</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Clear The Way</td>
+          <td>Davis, Allan</td>
+          <td>PACE</td>
+          <td>7500</td>
+          <td class="good">7</td>
+          <td class="good">6/1</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="good">60</td>
+          <td class="">-5.2</td>
+          <td>Declining</td>
+          <td class="good">0.9</td>
+          <td class="">604</td>
+          <td class="">10.6</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Showmemagic</td>
+          <td>Berry, Pat</td>
+          <td>PACE</td>
+          <td>7500</td>
+          <td class="">4</td>
+          <td class="">3/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">50</td>
+          <td class="good">5.1</td>
+          <td>Improving</td>
+          <td class="">-0.8</td>
+          <td class="">577</td>
+          <td class="">9.5</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Southwind Gin</td>
+          <td>Cole, Mike</td>
+          <td>PACE</td>
+          <td>7500</td>
+          <td class="good">21</td>
+          <td class="good">20/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">1</td>
+          <td class="">14</td>
+          <td class="">30</td>
+          <td class="good">5.0</td>
+          <td>Improving</td>
+          <td class="">-0.3</td>
+          <td class="">560</td>
+          <td class="">7.6</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Rockinwithdave</td>
+          <td>Morgan, Anthony</td>
+          <td>PACE</td>
+          <td>7500</td>
+          <td class="">7</td>
+          <td class="">6/1</td>
+          <td class="good">3</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">30</td>
+          <td class="good">3.9</td>
+          <td>Improving</td>
+          <td class="good">1.2</td>
+          <td class="">411</td>
+          <td class="">6.8</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Faithoverfear</td>
+          <td>Still, Rick</td>
+          <td>PACE</td>
+          <td>7500</td>
+          <td class="">9</td>
+          <td class="">8/1</td>
+          <td class="good">1</td>
+          <td class="bad">-1</td>
+          <td class="">7</td>
+          <td class="">22</td>
+          <td class="good">6.6</td>
+          <td>Strong Improving</td>
+          <td class="">-0.5</td>
+          <td class="">359</td>
+          <td class="">4.0</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">Here We Go Bb</td>
+          <td>Green, Jason</td>
+          <td>PACE</td>
+          <td>7500</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">10</td>
+          <td class="good">3.2</td>
+          <td>Improving</td>
+          <td class="good">1.2</td>
+          <td class="">178</td>
+          <td class="">2.9</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-7">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 7</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">6:18</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$8000</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-playable">Playable</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">24</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#8</div>
+    <div class="horse-main">
+      <div class="horse-name">Cake Pop</div>
+      <div class="horse-meta">Driver: Poliseno, Cody · ML: 9/1</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:88%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#6</div>
+    <div class="horse-main">
+      <div class="horse-name">Pretty Pricey</div>
+      <div class="horse-meta">Driver: Callahan, Corey · ML: 4/1</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:80%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#7</div>
+    <div class="horse-main">
+      <div class="horse-name">She'Sagoldengirl</div>
+      <div class="horse-meta">Driver: Foster, Russell · ML: 4/1</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:64%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#2</div>
+    <div class="horse-main">
+      <div class="horse-name">The Last Tale</div>
+      <div class="horse-meta">Driver: Dalious, Barton · ML: 6/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#1</div>
+    <div class="horse-main">
+      <div class="horse-name">Mackenzie Mac</div>
+      <div class="horse-meta">Driver: Griffith, Shane · ML: 9/2</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 7 - $2 SHOW - #6</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Pretty Pricey</td>
+          <td>Callahan, Corey</td>
+          <td>PACE</td>
+          <td>8000</td>
+          <td class="">5</td>
+          <td class="">4/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">6</td>
+          <td class="good">100</td>
+          <td class="good">5.4</td>
+          <td>Improving</td>
+          <td class="">-1.4</td>
+          <td class="">583</td>
+          <td class="">12.0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Cake Pop</td>
+          <td>Poliseno, Cody</td>
+          <td>PACE</td>
+          <td>8000</td>
+          <td class="good">10</td>
+          <td class="good">9/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">33</td>
+          <td class="good">7.5</td>
+          <td>Strong Improving</td>
+          <td class="">-1.2</td>
+          <td class="good">686</td>
+          <td class="">10.8</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">She'Sagoldengirl</td>
+          <td>Foster, Russell</td>
+          <td>PACE</td>
+          <td>8000</td>
+          <td class="">5</td>
+          <td class="">4/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="good">60</td>
+          <td class="good">2.3</td>
+          <td>Improving</td>
+          <td class="">-0.4</td>
+          <td class="">632</td>
+          <td class="">10.7</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">The Last Tale</td>
+          <td>Dalious, Barton</td>
+          <td>PACE</td>
+          <td>8000</td>
+          <td class="">7</td>
+          <td class="">6/1</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="">20</td>
+          <td class="good">3.0</td>
+          <td>Improving</td>
+          <td class="good">0.9</td>
+          <td class="">489</td>
+          <td class="">8.6</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Mackenzie Mac</td>
+          <td>Griffith, Shane</td>
+          <td>PACE</td>
+          <td>8000</td>
+          <td class="">5.50</td>
+          <td class="">9/2</td>
+          <td class="good">3</td>
+          <td class="bad">0</td>
+          <td class="">7</td>
+          <td class="good">60</td>
+          <td class="good">2.8</td>
+          <td>Improving</td>
+          <td class="good">1.1</td>
+          <td class="">478</td>
+          <td class="">7.8</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Ridin The Rodeo</td>
+          <td>Givens, Brandon</td>
+          <td>PACE</td>
+          <td>8000</td>
+          <td class="">8</td>
+          <td class="">7/1</td>
+          <td class="good">1</td>
+          <td class="bad">-1</td>
+          <td class="">7</td>
+          <td class="">30</td>
+          <td class="good">5.2</td>
+          <td>Improving</td>
+          <td class="good">0.3</td>
+          <td class="">456</td>
+          <td class="">7.3</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Officer Hopps</td>
+          <td>Stafford, Art Jr</td>
+          <td>PACE</td>
+          <td>8000</td>
+          <td class="">4</td>
+          <td class="">3/1</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">30</td>
+          <td class="good">4.7</td>
+          <td>Improving</td>
+          <td class="good">1.3</td>
+          <td class="">433</td>
+          <td class="">4.7</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Jin Bag</td>
+          <td>Green, Jason</td>
+          <td>PACE</td>
+          <td>8000</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="good">3</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="">10</td>
+          <td class="">-0.7</td>
+          <td>Stable / Neutral</td>
+          <td class="good">1.6</td>
+          <td class="">243</td>
+          <td class="">3.1</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-8">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 8</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">6:36</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$8500</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-playable">Playable</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">41</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#4</div>
+    <div class="horse-main">
+      <div class="horse-name">Dance With Tabby</div>
+      <div class="horse-meta">Driver: Davis, Eric · ML: 4/1</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Positive Setup</div>
+  <div class="meter"><div style="width:96%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#7</div>
+    <div class="horse-main">
+      <div class="horse-name">Amelia Maximus</div>
+      <div class="horse-meta">Driver: Givens, Brandon · ML: 2/1</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:80%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig on">✓ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#2</div>
+    <div class="horse-main">
+      <div class="horse-name">River Of Fear</div>
+      <div class="horse-meta">Driver: Porter, Trae · ML: 4/1</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:72%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#5</div>
+    <div class="horse-main">
+      <div class="horse-name">Sweet Caroline Ir</div>
+      <div class="horse-meta">Driver: Malone, Joseph · ML: 15/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Positive Setup</div>
+  <div class="meter"><div style="width:40%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 8 - $2 SHOW - #4</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Dance With Tabby</td>
+          <td>Davis, Eric</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="good">5</td>
+          <td class="good">4/1</td>
+          <td class="good">3</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="good">60</td>
+          <td class="">-0.5</td>
+          <td>Stable / Neutral</td>
+          <td class="good">1.0</td>
+          <td class="">620</td>
+          <td class="">12.8</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">Amelia Maximus</td>
+          <td>Givens, Brandon</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="">3</td>
+          <td class="">2/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">-1</td>
+          <td class="">7</td>
+          <td class="good">67</td>
+          <td class="good">1.6</td>
+          <td>Stable / Neutral</td>
+          <td class="">-0.8</td>
+          <td class="good">711</td>
+          <td class="">11.7</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">River Of Fear</td>
+          <td>Porter, Trae</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="">5</td>
+          <td class="">4/1</td>
+          <td class="good">2</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">40</td>
+          <td class="good">1.0</td>
+          <td>Stable / Neutral</td>
+          <td class="good">1.1</td>
+          <td class="">649</td>
+          <td class="">11.2</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Lenna</td>
+          <td>Stafford, Art Jr</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="">3.50</td>
+          <td class="">5/2</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="">50</td>
+          <td class="">-1.3</td>
+          <td>Stable / Neutral</td>
+          <td class="">-1.2</td>
+          <td class="">563</td>
+          <td class="">9.4</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">P L Rinchenia</td>
+          <td>Thompson, Jason</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="">9</td>
+          <td class="">8/1</td>
+          <td class="good">1</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">33</td>
+          <td class="">-3.3</td>
+          <td>Declining</td>
+          <td class="">-0.0</td>
+          <td class="">509</td>
+          <td class="">7.7</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Sweet Caroline Ir</td>
+          <td>Malone, Joseph</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="good">16</td>
+          <td class="good">15/1</td>
+          <td class="good">2</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">30</td>
+          <td class="">-3.9</td>
+          <td>Declining</td>
+          <td class="good">0.4</td>
+          <td class="">457</td>
+          <td class="">6.3</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Im Won Last Wiser</td>
+          <td>Cole, Mike</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">1</td>
+          <td class="">14</td>
+          <td class="">20</td>
+          <td class="">-5.6</td>
+          <td>Declining</td>
+          <td class="">-0.3</td>
+          <td class="">385</td>
+          <td class="">3.4</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Aruba Ray'S</td>
+          <td>Deaton, Tim</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="good">3</td>
+          <td class="bad">-1</td>
+          <td class="">14</td>
+          <td class="">0</td>
+          <td class="">-6.2</td>
+          <td>Strong Declining</td>
+          <td class="good">0.6</td>
+          <td class="">107</td>
+          <td class="">2.1</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-9">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 9</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">6:54</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$7000</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-playable">Playable</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">46</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#3</div>
+    <div class="horse-main">
+      <div class="horse-name">Philly View</div>
+      <div class="horse-meta">Driver: Davis, Allan · ML: 8/5</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Major Contender</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig on">✓ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#2</div>
+    <div class="horse-main">
+      <div class="horse-name">Front And Center</div>
+      <div class="horse-meta">Driver: Thompson, Jason · ML: 3/1</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Positive Setup</div>
+  <div class="meter"><div style="width:80%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#1</div>
+    <div class="horse-main">
+      <div class="horse-name">Imaginethechecks</div>
+      <div class="horse-meta">Driver: Roglitz, Jacob · ML: 3/1</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:72%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#5</div>
+    <div class="horse-main">
+      <div class="horse-name">Rockford Peaches</div>
+      <div class="horse-meta">Driver: Callahan, Corey · ML: 9/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#7</div>
+    <div class="horse-main">
+      <div class="horse-name">Miss Bombsaway</div>
+      <div class="horse-meta">Driver: Green, Jason · ML: 20/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:40%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 9 - $2 WIN - #3</div><div class="wager-line">Race 9 - $2 WIN-PLACE - #3</div><div class="wager-line">Race 9 - $2 EXACTA BOX - Horses 3, 2, 1</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Philly View</td>
+          <td>Davis, Allan</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="">2.60</td>
+          <td class="">8/5</td>
+          <td class="good">1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">20</td>
+          <td class="">-2.4</td>
+          <td>Declining</td>
+          <td class="good">0.8</td>
+          <td class="good">704</td>
+          <td class="good">14.7</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">Front And Center</td>
+          <td>Thompson, Jason</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="">4</td>
+          <td class="">3/1</td>
+          <td class="good">2</td>
+          <td class="bad">1</td>
+          <td class="bad">22</td>
+          <td class="">38</td>
+          <td class="">-15.6</td>
+          <td>Strong Declining</td>
+          <td class="good">1.7</td>
+          <td class="good">677</td>
+          <td class="">10.2</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Imaginethechecks</td>
+          <td>Roglitz, Jacob</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="">4</td>
+          <td class="">3/1</td>
+          <td class="good">3</td>
+          <td class="bad">0</td>
+          <td class="">7</td>
+          <td class="">30</td>
+          <td class="good">4.1</td>
+          <td>Improving</td>
+          <td class="good">0.9</td>
+          <td class="">645</td>
+          <td class="">10.1</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Coastal Cowgirl</td>
+          <td>Parker, Justin</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="">13</td>
+          <td class="">12/1</td>
+          <td class="good">3</td>
+          <td class="bad">-1</td>
+          <td class="">14</td>
+          <td class="">0</td>
+          <td class="">-4.3</td>
+          <td>Declining</td>
+          <td class="good">0.9</td>
+          <td class="">478</td>
+          <td class="">7.8</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">Miss Bombsaway</td>
+          <td>Green, Jason</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="good">21</td>
+          <td class="good">20/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="bad">21</td>
+          <td class="">11</td>
+          <td class="good">3.5</td>
+          <td>Improving</td>
+          <td class="">-0.7</td>
+          <td class="">515</td>
+          <td class="">6.6</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Dapper Miss</td>
+          <td>Cole, Mike</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">1</td>
+          <td class="">14</td>
+          <td class="">0</td>
+          <td class="good">9.9</td>
+          <td>Strong Improving</td>
+          <td class="">-0.6</td>
+          <td class="">456</td>
+          <td class="">4.6</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Parisian Chic</td>
+          <td>Dalious, Barton</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">0</td>
+          <td class="good">1.7</td>
+          <td>Stable / Neutral</td>
+          <td class="">-0.2</td>
+          <td class="">423</td>
+          <td class="">4.3</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Rockford Peaches</td>
+          <td>Callahan, Corey</td>
+          <td>PACE</td>
+          <td>7000</td>
+          <td class="good">10</td>
+          <td class="good">9/1</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">13</td>
+          <td class="">0</td>
+          <td class="good">1.6</td>
+          <td>Stable / Neutral</td>
+          <td class="">0</td>
+          <td class="">102</td>
+          <td class="">4.3</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-10">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 10</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">7:12</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$6500</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-playable">Playable</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">41</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#5</div>
+    <div class="horse-main">
+      <div class="horse-name">Cntnobdytelmenothn</div>
+      <div class="horse-meta">Driver: Teague, Montrell · ML: 3/1</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Major Contender</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig on">✓ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#3</div>
+    <div class="horse-main">
+      <div class="horse-name">Caliber</div>
+      <div class="horse-meta">Driver: Stafford, Art Jr · ML: 5/2</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:88%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#7</div>
+    <div class="horse-main">
+      <div class="horse-name">Truthfinder</div>
+      <div class="horse-meta">Driver: Morgan, Anthony · ML: 8/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:56%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#4</div>
+    <div class="horse-main">
+      <div class="horse-name">Something Bettor A</div>
+      <div class="horse-meta">Driver: Foster, Russell · ML: 7/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#1</div>
+    <div class="horse-main">
+      <div class="horse-name">Premier On Stage</div>
+      <div class="horse-meta">Driver: Beyer, Troy · ML: 9/2</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 10 - $2 WIN - #5</div><div class="wager-line">Race 10 - $2 WIN-PLACE - #5</div><div class="wager-line">Race 10 - $2 EXACTA BOX - Horses 5, 3, 7</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Cntnobdytelmenothn</td>
+          <td>Teague, Montrell</td>
+          <td>PACE</td>
+          <td>6500</td>
+          <td class="good">4</td>
+          <td class="good">3/1</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">44</td>
+          <td class="">-1.4</td>
+          <td>Stable / Neutral</td>
+          <td class="">-0.0</td>
+          <td class="good">718</td>
+          <td class="good">15.0</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Caliber</td>
+          <td>Stafford, Art Jr</td>
+          <td>PACE</td>
+          <td>6500</td>
+          <td class="">3.50</td>
+          <td class="">5/2</td>
+          <td class="good">1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">44</td>
+          <td class="good">0.9</td>
+          <td>Stable / Neutral</td>
+          <td class="good">0.6</td>
+          <td class="">565</td>
+          <td class="">10.8</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">Truthfinder</td>
+          <td>Morgan, Anthony</td>
+          <td>PACE</td>
+          <td>6500</td>
+          <td class="">9</td>
+          <td class="">8/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">22</td>
+          <td class="good">5.2</td>
+          <td>Improving</td>
+          <td class="">-1.3</td>
+          <td class="">556</td>
+          <td class="">9.5</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">The Bizzness N</td>
+          <td>Berry, Pat</td>
+          <td>PACE</td>
+          <td>6500</td>
+          <td class="">11</td>
+          <td class="">10/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">13</td>
+          <td class="">20</td>
+          <td class="">-2.5</td>
+          <td>Declining</td>
+          <td class="">-0.4</td>
+          <td class="">522</td>
+          <td class="">8.4</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Something Bettor A</td>
+          <td>Foster, Russell</td>
+          <td>PACE</td>
+          <td>6500</td>
+          <td class="">8</td>
+          <td class="">7/1</td>
+          <td class="good">3</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">40</td>
+          <td class="good">0.7</td>
+          <td>Stable / Neutral</td>
+          <td class="good">1.8</td>
+          <td class="">500</td>
+          <td class="">8.1</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Premier On Stage</td>
+          <td>Beyer, Troy</td>
+          <td>PACE</td>
+          <td>6500</td>
+          <td class="">5.50</td>
+          <td class="">9/2</td>
+          <td class="good">3</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">30</td>
+          <td class="good">4.3</td>
+          <td>Improving</td>
+          <td class="good">1.2</td>
+          <td class="">428</td>
+          <td class="">6.3</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">Short Order</td>
+          <td>Griffith, Shane</td>
+          <td>PACE</td>
+          <td>6500</td>
+          <td class="">7</td>
+          <td class="">6/1</td>
+          <td class="good">2</td>
+          <td class="bad">0</td>
+          <td class="bad">20</td>
+          <td class="">30</td>
+          <td class="good">0.8</td>
+          <td>Stable / Neutral</td>
+          <td class="good">1.1</td>
+          <td class="">495</td>
+          <td class="">6.1</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Always Flashing A</td>
+          <td>Callahan, Corey</td>
+          <td>PACE</td>
+          <td>6500</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">20</td>
+          <td class="good">3.1</td>
+          <td>Improving</td>
+          <td class="">-0.6</td>
+          <td class="">217</td>
+          <td class="">3.8</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-11">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 11</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">7:30</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$18000</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-playable">Playable</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">29</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#4</div>
+    <div class="horse-main">
+      <div class="horse-name">Pasta Delight</div>
+      <div class="horse-meta">Driver: Morgan, Anthony · ML: 5/2</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:96%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#6</div>
+    <div class="horse-main">
+      <div class="horse-name">Phoenix Rising</div>
+      <div class="horse-meta">Driver: Foster, Russell · ML: 7/1</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Core Contender</div>
+  <div class="meter"><div style="width:64%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#2</div>
+    <div class="horse-main">
+      <div class="horse-name">Scrivener Hanover</div>
+      <div class="horse-meta">Driver: Thompson, Jason · ML: 6/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Positive Setup</div>
+  <div class="meter"><div style="width:56%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 11 - $2 SHOW - #4</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Pasta Delight</td>
+          <td>Morgan, Anthony</td>
+          <td>PACE</td>
+          <td>18000</td>
+          <td class="">3.50</td>
+          <td class="">5/2</td>
+          <td class="good">3</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">44</td>
+          <td class="good">0.5</td>
+          <td>Stable / Neutral</td>
+          <td class="good">1.1</td>
+          <td class="">557</td>
+          <td class="">10.4</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Phoenix Rising</td>
+          <td>Foster, Russell</td>
+          <td>PACE</td>
+          <td>18000</td>
+          <td class="good">8</td>
+          <td class="good">7/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">50</td>
+          <td class="">-0.8</td>
+          <td>Stable / Neutral</td>
+          <td class="">-0.2</td>
+          <td class="">563</td>
+          <td class="">10.2</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">Scrivener Hanover</td>
+          <td>Thompson, Jason</td>
+          <td>PACE</td>
+          <td>18000</td>
+          <td class="">7</td>
+          <td class="">6/1</td>
+          <td class="good">2</td>
+          <td class="bad">1</td>
+          <td class="bad">21</td>
+          <td class="">33</td>
+          <td class="">-4.9</td>
+          <td>Declining</td>
+          <td class="good">0.4</td>
+          <td class="">592</td>
+          <td class="">10.2</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Feeling Sweet</td>
+          <td>Cole, Mike</td>
+          <td>PACE</td>
+          <td>18000</td>
+          <td class="">5.50</td>
+          <td class="">9/2</td>
+          <td class="good">3</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">20</td>
+          <td class="">-4.3</td>
+          <td>Declining</td>
+          <td class="good">0.6</td>
+          <td class="">512</td>
+          <td class="">10.0</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Lofty Treasure</td>
+          <td>Davis, Allan</td>
+          <td>PACE</td>
+          <td>18000</td>
+          <td class="">6</td>
+          <td class="">5/1</td>
+          <td class="good">1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">40</td>
+          <td class="">-2.3</td>
+          <td>Declining</td>
+          <td class="good">0.5</td>
+          <td class="">512</td>
+          <td class="">8.9</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Always B Merry</td>
+          <td>Callahan, Corey</td>
+          <td>PACE</td>
+          <td>18000</td>
+          <td class="">16</td>
+          <td class="">15/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">50</td>
+          <td class="good">1.5</td>
+          <td>Stable / Neutral</td>
+          <td class="">-1.0</td>
+          <td class="">480</td>
+          <td class="">6.3</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Linemup Knockmback</td>
+          <td>Wolfenden, Ross</td>
+          <td>PACE</td>
+          <td>18000</td>
+          <td class="">13</td>
+          <td class="">12/1</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">20</td>
+          <td class="">-3.6</td>
+          <td>Declining</td>
+          <td class="good">0.7</td>
+          <td class="">394</td>
+          <td class="">5.7</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">Bequeath</td>
+          <td>Stafford, Art Jr</td>
+          <td>PACE</td>
+          <td>18000</td>
+          <td class="">5.50</td>
+          <td class="">9/2</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="good">60</td>
+          <td class="good">3.9</td>
+          <td>Improving</td>
+          <td class="">-0.2</td>
+          <td class="">391</td>
+          <td class="">5.5</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-12">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 12</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">7:48</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$5000</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-playable">Playable</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">29</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#3</div>
+    <div class="horse-main">
+      <div class="horse-name">Free Flying Freddy</div>
+      <div class="horse-meta">Driver: Roglitz, Jacob · ML: 9/5</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Major Contender</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig on">✓ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#8</div>
+    <div class="horse-main">
+      <div class="horse-name">Rock Lights</div>
+      <div class="horse-meta">Driver: Griffith, Shane · ML: 4/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:56%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#2</div>
+    <div class="horse-main">
+      <div class="horse-name">Stroman</div>
+      <div class="horse-meta">Driver: Givens, Brandon · ML: 4/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Form Upside</div>
+  <div class="meter"><div style="width:56%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#1</div>
+    <div class="horse-main">
+      <div class="horse-name">Foxbriar Romeo</div>
+      <div class="horse-meta">Driver: Poliseno, Cody · ML: 6/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:40%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 12 - $2 WIN - #3</div><div class="wager-line">Race 12 - $2 WIN-PLACE - #3</div><div class="wager-line">Race 12 - $2 EXACTA BOX - Horses 3, 8, 2</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Free Flying Freddy</td>
+          <td>Roglitz, Jacob</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">2.80</td>
+          <td class="">9/5</td>
+          <td class="good">1</td>
+          <td class="bad">0</td>
+          <td class="">6</td>
+          <td class="">20</td>
+          <td class="good">5.9</td>
+          <td>Improving</td>
+          <td class="good">0.0</td>
+          <td class="good">678</td>
+          <td class="good">14.2</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Rock Lights</td>
+          <td>Griffith, Shane</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">5</td>
+          <td class="">4/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">0</td>
+          <td class="">7</td>
+          <td class="">22</td>
+          <td class="good">5.1</td>
+          <td>Improving</td>
+          <td class="">-1.3</td>
+          <td class="">615</td>
+          <td class="">10.3</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">Stroman</td>
+          <td>Givens, Brandon</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">5</td>
+          <td class="">4/1</td>
+          <td class="good">2</td>
+          <td class="bad">-1</td>
+          <td class="">14</td>
+          <td class="">10</td>
+          <td class="good">5.5</td>
+          <td>Improving</td>
+          <td class="">-0.2</td>
+          <td class="">506</td>
+          <td class="">9.1</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Mom'S Little World</td>
+          <td>Thompson, Jason</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">8</td>
+          <td class="">7/1</td>
+          <td class="good">2</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">10</td>
+          <td class="">-0.0</td>
+          <td>Stable / Neutral</td>
+          <td class="good">0.7</td>
+          <td class="">492</td>
+          <td class="">7.8</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Foxbriar Romeo</td>
+          <td>Poliseno, Cody</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">7</td>
+          <td class="">6/1</td>
+          <td class="good">3</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">25</td>
+          <td class="good">1.3</td>
+          <td>Stable / Neutral</td>
+          <td class="good">1.1</td>
+          <td class="">478</td>
+          <td class="">7.4</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Step On Over</td>
+          <td>Cole, Mike</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="good">13</td>
+          <td class="good">12/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">1</td>
+          <td class="">13</td>
+          <td class="">0</td>
+          <td class="">-3.4</td>
+          <td>Declining</td>
+          <td class="">-0.5</td>
+          <td class="">457</td>
+          <td class="">5.9</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Capital Builder</td>
+          <td>Shahan, Mark Jr</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">16</td>
+          <td class="">15/1</td>
+          <td class="good">3</td>
+          <td class="bad">-1</td>
+          <td class="bad">23</td>
+          <td class="">33</td>
+          <td class="">-4.4</td>
+          <td>Declining</td>
+          <td class="good">0.0</td>
+          <td class="">478</td>
+          <td class="">5.3</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">Riot</td>
+          <td>Green, Jason</td>
+          <td>PACE</td>
+          <td>5000</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">0</td>
+          <td class="good">2.5</td>
+          <td>Improving</td>
+          <td class="">-1.1</td>
+          <td class="">296</td>
+          <td class="">3.8</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-13">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 13</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">8:06</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$10000</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-playable">Playable</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">46</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#1</div>
+    <div class="horse-main">
+      <div class="horse-name">Talkingatthetable</div>
+      <div class="horse-meta">Driver: Dalious, Barton · ML: 9/2</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Major Contender</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig on">✓ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#3</div>
+    <div class="horse-main">
+      <div class="horse-name">Mama Matcha</div>
+      <div class="horse-meta">Driver: Green, Jason · ML: 4/1</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:80%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#7</div>
+    <div class="horse-main">
+      <div class="horse-name">Pure Decision</div>
+      <div class="horse-meta">Driver: Morgan, Anthony · ML: 5/2</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Core Contender</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig off">□ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig off">□ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#5</div>
+    <div class="horse-main">
+      <div class="horse-name">Shake Rattlenroyal</div>
+      <div class="horse-meta">Driver: Beyer, Troy · ML: 4/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#2</div>
+    <div class="horse-main">
+      <div class="horse-name">Sweet Samsara</div>
+      <div class="horse-meta">Driver: Rearic, David H · ML: 20/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:40%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 13 - $2 SHOW - #1</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Talkingatthetable</td>
+          <td>Dalious, Barton</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="good">5.50</td>
+          <td class="good">9/2</td>
+          <td class="good">3</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="">20</td>
+          <td class="">-6.2</td>
+          <td>Strong Declining</td>
+          <td class="good">1.5</td>
+          <td class="">610</td>
+          <td class="good">14.7</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">Pure Decision</td>
+          <td>Morgan, Anthony</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="">3.50</td>
+          <td class="">5/2</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">50</td>
+          <td class="">-6.9</td>
+          <td>Strong Declining</td>
+          <td class="">-0.8</td>
+          <td class="">582</td>
+          <td class="">10.6</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Mama Matcha</td>
+          <td>Green, Jason</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="">5</td>
+          <td class="">4/1</td>
+          <td class="good">1</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="">40</td>
+          <td class="good">0.8</td>
+          <td>Stable / Neutral</td>
+          <td class="good">0.3</td>
+          <td class="">539</td>
+          <td class="">9.2</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Atomic Bet</td>
+          <td>Cole, Mike</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="">16</td>
+          <td class="">15/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">50</td>
+          <td class="">-17.1</td>
+          <td>Strong Declining</td>
+          <td class="">-0.6</td>
+          <td class="">553</td>
+          <td class="">8.5</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Bc'S Image</td>
+          <td>Givens, Brandon</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="">5.50</td>
+          <td class="">9/2</td>
+          <td class="good">3</td>
+          <td class="bad">-1</td>
+          <td class="">7</td>
+          <td class="">30</td>
+          <td class="good">2.6</td>
+          <td>Improving</td>
+          <td class="">-0.5</td>
+          <td class="">497</td>
+          <td class="">7.3</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Seboomook Ohh Lala</td>
+          <td>Wolfenden, Ross</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="">30</td>
+          <td class="">-3.5</td>
+          <td>Declining</td>
+          <td class="">-0.7</td>
+          <td class="">500</td>
+          <td class="">6.6</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Shake Rattlenroyal</td>
+          <td>Beyer, Troy</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="">5</td>
+          <td class="">4/1</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">33</td>
+          <td class="good">8.6</td>
+          <td>Strong Improving</td>
+          <td class="good">0.8</td>
+          <td class="">371</td>
+          <td class="">5.7</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">Sweet Samsara</td>
+          <td>Rearic, David H</td>
+          <td>PACE</td>
+          <td>10000</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="good">2</td>
+          <td class="bad">0</td>
+          <td class="">14</td>
+          <td class="">22</td>
+          <td class="good">3.6</td>
+          <td>Improving</td>
+          <td class="good">0.4</td>
+          <td class="">347</td>
+          <td class="">2.9</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-14">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 14</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">8:24</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$8500</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-playable">Playable</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">46</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#1</div>
+    <div class="horse-main">
+      <div class="horse-name">Pure Princess</div>
+      <div class="horse-meta">Driver: Skinner, Ryder · ML: 2/1</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Major Contender</div>
+  <div class="meter"><div style="width:96%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig on">✓ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#2</div>
+    <div class="horse-main">
+      <div class="horse-name">Seriously Fearless</div>
+      <div class="horse-meta">Driver: Cole, Mike · ML: 7/2</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Positive Setup</div>
+  <div class="meter"><div style="width:64%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-b">
+  <div class="horse-row">
+    <div class="pp-bubble">#3</div>
+    <div class="horse-main">
+      <div class="horse-name">Pd'S Gem</div>
+      <div class="horse-meta">Driver: Morgan, Anthony · ML: 5/2</div>
+    </div>
+    <div class="grade">B</div>
+  </div>
+  <div class="role">Positive Setup</div>
+  <div class="meter"><div style="width:64%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#4</div>
+    <div class="horse-main">
+      <div class="horse-name">Earth Angel</div>
+      <div class="horse-meta">Driver: Beyer, Troy · ML: 6/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Positive Setup</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig off">□ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 14 - $2 WIN - #1</div><div class="wager-line">Race 14 - $2 WIN-PLACE - #1</div><div class="wager-line">Race 14 - $2 EXACTA BOX - Horses 1, 2, 3</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Pure Princess</td>
+          <td>Skinner, Ryder</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="">3</td>
+          <td class="">2/1</td>
+          <td class="good">3</td>
+          <td class="bad">0</td>
+          <td class="">7</td>
+          <td class="">10</td>
+          <td class="">-6.1</td>
+          <td>Strong Declining</td>
+          <td class="good">0.5</td>
+          <td class="">648</td>
+          <td class="good">14.6</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">Seriously Fearless</td>
+          <td>Cole, Mike</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="">4.50</td>
+          <td class="">7/2</td>
+          <td class="good">2</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">30</td>
+          <td class="">-2.6</td>
+          <td>Declining</td>
+          <td class="good">0.4</td>
+          <td class="">628</td>
+          <td class="">11.1</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Pd'S Gem</td>
+          <td>Morgan, Anthony</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="">3.50</td>
+          <td class="">5/2</td>
+          <td class="good">1</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="">14</td>
+          <td class="">-7.7</td>
+          <td>Strong Declining</td>
+          <td class="good">0.2</td>
+          <td class="">598</td>
+          <td class="">10.7</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Earth Angel</td>
+          <td>Beyer, Troy</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="good">7</td>
+          <td class="good">6/1</td>
+          <td class="good">3</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">30</td>
+          <td class="">-0.9</td>
+          <td>Stable / Neutral</td>
+          <td class="good">1.1</td>
+          <td class="">520</td>
+          <td class="">9.1</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Duffy'S Opinion</td>
+          <td>Porter, Trae</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="">10</td>
+          <td class="">9/1</td>
+          <td class="good">2</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">40</td>
+          <td class="">-0.1</td>
+          <td>Stable / Neutral</td>
+          <td class="good">0.5</td>
+          <td class="">460</td>
+          <td class="">6.8</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">Emdoubleakay</td>
+          <td>Foster, Russell</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="">10</td>
+          <td class="">-6.6</td>
+          <td>Strong Declining</td>
+          <td class="">-0.9</td>
+          <td class="">427</td>
+          <td class="">5.4</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Zipper Sweater</td>
+          <td>Poliseno, Cody</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">44</td>
+          <td class="good">7.4</td>
+          <td>Strong Improving</td>
+          <td class="">-0.6</td>
+          <td class="">363</td>
+          <td class="">3.9</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Kamala</td>
+          <td>Teague, Montrell</td>
+          <td>PACE</td>
+          <td>8500</td>
+          <td class="">16</td>
+          <td class="">15/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="">30</td>
+          <td class="good">1.6</td>
+          <td>Stable / Neutral</td>
+          <td class="">-0.7</td>
+          <td class="">356</td>
+          <td class="">3.9</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="race-card" id="race-15">
+    <div class="race-top">
+      <div>
+        <div class="race-title">Race 15</div>
+        
+      </div>
+      <div class="overview-grid">
+        <div class="stat"><div class="stat-label">Post</div><div class="stat-value">8:42</div></div>
+        <div class="stat"><div class="stat-label">Gait</div><div class="stat-value">PACE</div></div>
+        <div class="stat"><div class="stat-label">Purse</div><div class="stat-value">$6000</div></div>
+        <div class="stat"><div class="stat-label">Field</div><div class="stat-value">8</div></div>
+        <div class="stat"><div class="stat-label">Race Shape</div><div class="stat-value shape-chaos">Chaos Risk</div></div>
+        <div class="stat"><div class="stat-label">Comp.</div><div class="stat-value">51</div></div>
+        <div class="stat"><div class="stat-label">View</div><div class="stat-value">Contenders</div></div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="section-title">Core Contenders</div>
+      <div class="contender-grid">
+        
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#5</div>
+    <div class="horse-main">
+      <div class="horse-name">Lyons Black Magic</div>
+      <div class="horse-meta">Driver: Dalious, Barton · ML: 5/2</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:100%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#1</div>
+    <div class="horse-main">
+      <div class="horse-name">Shady'S Shark Bait</div>
+      <div class="horse-meta">Driver: Berry, Pat · ML: 3/1</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:96%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-a">
+  <div class="horse-row">
+    <div class="pp-bubble">#3</div>
+    <div class="horse-main">
+      <div class="horse-name">Aidan</div>
+      <div class="horse-meta">Driver: Porter, Trae · ML: 5/1</div>
+    </div>
+    <div class="grade">A</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:88%"></div></div>
+  <div class="signals">
+    <span class="sig on">✓ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig on">✓ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#2</div>
+    <div class="horse-main">
+      <div class="horse-name">The Rocketeer</div>
+      <div class="horse-meta">Driver: Teague, Montrell · ML: 9/2</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:48%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig on">✓ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+<div class="contender-card grade-c">
+  <div class="horse-row">
+    <div class="pp-bubble">#4</div>
+    <div class="horse-main">
+      <div class="horse-name">Racketeering</div>
+      <div class="horse-meta">Driver: Givens, Brandon · ML: 8/1</div>
+    </div>
+    <div class="grade">C</div>
+  </div>
+  <div class="role">Live Improver</div>
+  <div class="meter"><div style="width:40%"></div></div>
+  <div class="signals">
+    <span class="sig off">□ Top 3</span>
+    <span class="sig off">□ Dominant</span>
+    <span class="sig on">✓ FA+</span>
+    <span class="sig on">✓ Sit+</span>
+    <span class="sig off">□ Value</span>
+    <span class="sig on">✓ Post+</span>
+    <span class="sig off">□ Driver+</span>
+    <span class="sig off">□ ITM+</span>
+  </div>
+</div>
+
+      </div>
+      <div class="wager-box">
+        <div class="section-title">Basic Wagers to Consider</div>
+        <div class="wager-line">Race 15 - $2 SHOW - #1</div>
+              </div>
+      
+      <div class="full-grid-panel">
+        <div class="section-title">Full Race Grid</div>
+        <div class="detail-table-wrap">
+          <table class="detail-table">
+            <thead>
+              <tr>
+                <th>PP</th>
+                <th>Horse</th>
+                <th>Driver</th>
+                <th>Gait</th>
+                <th>Purse</th>
+                <th>ML Dec</th>
+                <th>ML Frac</th>
+                <th>PostRt</th>
+                <th>DrvRt</th>
+                <th>Days</th>
+                <th>ITM%</th>
+                <th>FA</th>
+                <th>FA Label</th>
+                <th>Sit</th>
+                <th>HER</th>
+                <th>Top</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td>1</td>
+          <td class="horse-name full-name">Shady'S Shark Bait</td>
+          <td>Berry, Pat</td>
+          <td>PACE</td>
+          <td>6000</td>
+          <td class="">4</td>
+          <td class="">3/1</td>
+          <td class="good">3</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">30</td>
+          <td class="good">2.4</td>
+          <td>Improving</td>
+          <td class="good">1.7</td>
+          <td class="">613</td>
+          <td class="">12.7</td>
+          <td>1</td>
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          <td class="horse-name full-name">Lyons Black Magic</td>
+          <td>Dalious, Barton</td>
+          <td>PACE</td>
+          <td>6000</td>
+          <td class="good">3.50</td>
+          <td class="good">5/2</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">14</td>
+          <td class="">30</td>
+          <td class="good">5.1</td>
+          <td>Improving</td>
+          <td class="good">0.7</td>
+          <td class="good">739</td>
+          <td class="">12.4</td>
+          <td>2</td>
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          <td class="horse-name full-name">Aidan</td>
+          <td>Porter, Trae</td>
+          <td>PACE</td>
+          <td>6000</td>
+          <td class="good">6</td>
+          <td class="good">5/1</td>
+          <td class="good">1</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">40</td>
+          <td class="good">1.4</td>
+          <td>Stable / Neutral</td>
+          <td class="good">0.4</td>
+          <td class="">635</td>
+          <td class="">11.1</td>
+          <td>3</td>
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          <td class="horse-name full-name">Zeke Dont Care</td>
+          <td>Poliseno, Cody</td>
+          <td>PACE</td>
+          <td>6000</td>
+          <td class="">21</td>
+          <td class="">20/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">1</td>
+          <td class="">7</td>
+          <td class="">40</td>
+          <td class="">-1.0</td>
+          <td>Stable / Neutral</td>
+          <td class="">-1.0</td>
+          <td class="">534</td>
+          <td class="">7.5</td>
+          <td>4</td>
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          <td class="horse-name full-name">Rockmyster N</td>
+          <td>Morgan, Anthony</td>
+          <td>PACE</td>
+          <td>6000</td>
+          <td class="">10</td>
+          <td class="">9/1</td>
+          <td class="bad">-1</td>
+          <td class="good">2</td>
+          <td class="">8</td>
+          <td class="">0</td>
+          <td class="good">12.1</td>
+          <td>Strong Improving</td>
+          <td class="">-1.1</td>
+          <td class="">421</td>
+          <td class="">6.7</td>
+          <td>5</td>
+        </tr>
+        
+        <tr>
+          <td>4</td>
+          <td class="horse-name full-name">Racketeering</td>
+          <td>Givens, Brandon</td>
+          <td>PACE</td>
+          <td>6000</td>
+          <td class="">9</td>
+          <td class="">8/1</td>
+          <td class="good">3</td>
+          <td class="bad">-1</td>
+          <td class="">7</td>
+          <td class="">20</td>
+          <td class="good">4.9</td>
+          <td>Improving</td>
+          <td class="good">1.2</td>
+          <td class="">419</td>
+          <td class="">5.6</td>
+          <td>6</td>
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          <td class="horse-name full-name">The Rocketeer</td>
+          <td>Teague, Montrell</td>
+          <td>PACE</td>
+          <td>6000</td>
+          <td class="">5.50</td>
+          <td class="">9/2</td>
+          <td class="good">2</td>
+          <td class="good">2</td>
+          <td class="">7</td>
+          <td class="">40</td>
+          <td class="good">6.2</td>
+          <td>Strong Improving</td>
+          <td class="good">0.3</td>
+          <td class="">418</td>
+          <td class="">5.3</td>
+          <td>7</td>
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          <td class="horse-name full-name">Zip Time</td>
+          <td>Horsey, Ceba</td>
+          <td>PACE</td>
+          <td>6000</td>
+          <td class="">16</td>
+          <td class="">15/1</td>
+          <td class="bad">-1</td>
+          <td class="bad">-1</td>
+          <td class="">8</td>
+          <td class="">10</td>
+          <td class="good">10.7</td>
+          <td>Strong Improving</td>
+          <td class="">-2.0</td>
+          <td class="">221</td>
+          <td class="">4.2</td>
+          <td>8</td>
+        </tr>
+        </tbody>
+          </table>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
