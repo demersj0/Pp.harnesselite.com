@@ -1,1 +1,223 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harness Elite Tip Sheet Index</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #07111f;
+      color: #f5f7fb;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 34px;
+      color: #ffffff;
+    }
+
+    .sub {
+      margin: 0 0 28px;
+      color: #b8c3d6;
+      font-size: 15px;
+    }
+
+    .notice {
+      background: #101d31;
+      border: 1px solid #263855;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      color: #dce6f8;
+    }
+
+    .status {
+      color: #ffd166;
+      margin-bottom: 18px;
+    }
+
+    .date-section {
+      background: #0d182a;
+      border: 1px solid #20324f;
+      border-radius: 14px;
+      padding: 18px;
+      margin: 18px 0;
+    }
+
+    .date-section h2 {
+      margin: 0 0 14px;
+      font-size: 22px;
+      color: #ffffff;
+      border-bottom: 1px solid #263855;
+      padding-bottom: 10px;
+    }
+
+    .links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+      gap: 10px;
+    }
+
+    a.report-link {
+      display: block;
+      text-decoration: none;
+      color: #ffffff;
+      background: #172842;
+      border: 1px solid #2f466a;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-weight: bold;
+      transition: 0.15s ease;
+    }
+
+    a.report-link:hover {
+      background: #224068;
+      transform: translateY(-1px);
+    }
+
+    .count {
+      font-size: 13px;
+      color: #9fb0ca;
+      font-weight: normal;
+    }
+
+    footer {
+      margin-top: 34px;
+      color: #91a2bd;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Harness Elite Tip Sheet Index</h1>
+    <p class="sub">Tip sheets grouped by race date. Each link opens in a new browser tab/window.</p>
+
+    <div class="notice">
+      <strong>Premium Subscriber Access Notice:</strong>
+      Access to this information is strictly limited to paid Premium Subscribers.
+      Do not copy, share, redistribute, publish, forward, or commercially exploit these materials.
+    </div>
+
+    <div id="status" class="status">Loading tip sheets...</div>
+    <div id="index"></div>
+
+    <footer>
+      Advanced Wagering Strategies LLC d/b/a Harness Elite. All rights reserved.
+      Harness Elite reports, ratings, rankings, labels, formats, naming conventions, and proprietary analysis are protected intellectual property.
+    </footer>
+  </div>
+
+  <script>
+    /*
+      Simple setup:
+      1. Put this index.html in the same GitHub Pages folder as the TipSheet_*.html files.
+      2. Confirm OWNER / REPO / BRANCH below match your GitHub Pages repo.
+      3. The page will automatically group every TipSheet_TRACK_YYYYMMDD.html file by date.
+    */
+
+    const OWNER = "demersj0";
+    const REPO = "demersj0.github.io";
+    const BRANCH = "main";
+
+    function formatDate(yyyymmdd) {
+      const y = yyyymmdd.slice(0, 4);
+      const m = yyyymmdd.slice(4, 6);
+      const d = yyyymmdd.slice(6, 8);
+      const date = new Date(`${y}-${m}-${d}T12:00:00`);
+      return date.toLocaleDateString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+    }
+
+    function getCurrentFolderPath() {
+      let path = window.location.pathname;
+      path = path.replace(/\/index\.html$/i, "/");
+      path = path.replace(/^\/+|\/+$/g, "");
+      return path;
+    }
+
+    async function loadFiles() {
+      const folder = getCurrentFolderPath();
+      const apiPath = folder
+        ? `https://api.github.com/repos/${OWNER}/${REPO}/contents/${folder}?ref=${BRANCH}`
+        : `https://api.github.com/repos/${OWNER}/${REPO}/contents?ref=${BRANCH}`;
+
+      const response = await fetch(apiPath);
+      if (!response.ok) {
+        throw new Error("Could not load the GitHub folder contents. Check OWNER, REPO, BRANCH, and folder path.");
+      }
+
+      const items = await response.json();
+
+      return items
+        .filter(item => item.type === "file")
+        .map(item => item.name)
+        .filter(name => /^TipSheet_[A-Z0-9]+_\d{8}\.html$/i.test(name))
+        .sort();
+    }
+
+    function render(files) {
+      const grouped = {};
+
+      files.forEach(file => {
+        const match = file.match(/^TipSheet_([A-Z0-9]+)_(\d{8})\.html$/i);
+        if (!match) return;
+
+        const track = match[1].toUpperCase();
+        const date = match[2];
+
+        if (!grouped[date]) grouped[date] = [];
+        grouped[date].push({ track, file });
+      });
+
+      const dates = Object.keys(grouped).sort().reverse();
+      const index = document.getElementById("index");
+      const status = document.getElementById("status");
+
+      if (!dates.length) {
+        status.textContent = "No TipSheet HTML files found in this folder.";
+        return;
+      }
+
+      status.textContent = `${files.length} tip sheets found.`;
+
+      index.innerHTML = dates.map(date => {
+        const links = grouped[date]
+          .sort((a, b) => a.track.localeCompare(b.track))
+          .map(item => `
+            <a class="report-link" href="${item.file}" target="_blank" rel="noopener noreferrer">
+              ${item.track}
+            </a>
+          `).join("");
+
+        return `
+          <section class="date-section">
+            <h2>${formatDate(date)} <span class="count">(${grouped[date].length} tracks)</span></h2>
+            <div class="links">${links}</div>
+          </section>
+        `;
+      }).join("");
+    }
+
+    loadFiles()
+      .then(render)
+      .catch(error => {
+        document.getElementById("status").textContent = error.message;
+      });
+  </script>
+</body>
+</html>
