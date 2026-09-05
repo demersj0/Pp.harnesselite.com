@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harness Elite Today's Contenders</title>
+<style>
+:root {
+  --ink:#0f172a;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --blue:#1d4ed8;
+  --green:#16a34a;
+  --green-soft:#dcfce7;
+  --panel:#ffffff;
+  --bg:#f8fafc;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+}
+.he-wrapper {
+  max-width:1180px;
+  margin:0 auto;
+  padding:20px;
+}
+.hero {
+  background:linear-gradient(135deg,#0f172a,#1e3a8a);
+  color:white;
+  border-radius:22px;
+  padding:26px;
+  margin-bottom:22px;
+  box-shadow:0 18px 40px rgba(15,23,42,.18);
+}
+.hero { text-align:center; }
+.hero-kicker { font-size:15px; letter-spacing:.18em; text-transform:uppercase; opacity:.82; font-weight:900; }
+.hero-title { font-size:42px; line-height:1.05; font-weight:900; margin:14px 0 8px; }
+.hero-date { font-size:64px; line-height:1; font-weight:900; letter-spacing:-.04em; margin-top:10px; }
+.front-card {
+  background:white;
+  border:1px solid var(--line);
+  border-radius:22px;
+  margin:0 0 22px;
+  overflow:hidden;
+  box-shadow:0 10px 28px rgba(15,23,42,.07);
+}
+.front-head {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  padding:18px;
+  border-bottom:1px solid var(--line);
+}
+.section-title {
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.front-title { font-size:24px; font-weight:900; }
+.front-note { color:var(--muted); font-size:13px; font-weight:800; }
+.selection-table-wrap { width:100%; overflow-x:auto; }
+.selection-table { width:100%; border-collapse:collapse; font-size:13px; }
+.selection-table th, .selection-table td {
+  border-bottom:1px solid var(--line);
+  padding:10px;
+  vertical-align:top;
+  text-align:left;
+}
+.selection-table th { background:#f1f5f9; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:#475569; }
+.race-cell { width:115px; font-weight:900; color:#1d4ed8; }
+.best-cell { background:#f0fdf4; }
+.pick-chip { min-width:190px; border:1px solid var(--line); border-radius:14px; padding:9px 10px; background:white; }
+.pick-chip.grade-a { border-color:#86efac; background:linear-gradient(180deg,#f0fdf4,#fff); }
+.pick-chip.grade-b { border-color:#bfdbfe; background:linear-gradient(180deg,#eff6ff,#fff); }
+.pick-chip.grade-c { border-color:#fde68a; background:linear-gradient(180deg,#fffbeb,#fff); }
+.pick-main { display:flex; align-items:center; gap:8px; }
+.pick-pp { background:#0f172a; color:white; border-radius:999px; padding:4px 8px; font-weight:900; }
+.pick-horse { font-weight:900; color:#0f172a; flex:1; }
+.pick-grade { background:#e0f2fe; color:#075985; border-radius:10px; padding:4px 8px; font-weight:900; }
+.pick-meta { color:#64748b; font-size:11px; margin-top:6px; line-height:1.35; }
+@media screen and (max-width: 860px) {
+  .he-wrapper { padding:10px; }
+  .hero-title { font-size:30px; }
+  .hero-date { font-size:42px; }
+}
+@media print {
+  body { background:white; }
+  .front-card { break-inside:avoid; box-shadow:none; }
+}
+</style>
+</head>
+<body>
+<div class="he-wrapper">
+  <div class="hero">
+    <div class="hero-kicker">Harness Elite</div>
+    <div class="hero-title">Today's Contenders</div>
+    <div class="hero-date">September 5, 2026</div>
+  </div>
+
+  
+  <div class="front-card">
+    <div class="front-head">
+      <div>
+        <div class="section-title">Contender List</div>
+        <div class="front-title">A/B/C contenders by race</div>
+      </div>
+      <div class="front-note">A = Best · B = Better · C = Good</div>
+    </div>
+    <div class="selection-table-wrap">
+      <table class="selection-table">
+        <thead><tr><th>Race</th><th>A - Best</th><th>B - Better</th><th>C - Good</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="race-cell">Race 1</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#6</span>
+          <span class="pick-horse">Sea Monster</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Major Contender · Score 14 · HER 731 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#1</span>
+          <span class="pick-horse">Wagon Train</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Live Improver · Score 13 · HER 527 · Rank 3</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#8</span>
+          <span class="pick-horse">Passing Gear</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Form Upside · Score 11 · HER 738 · Rank 2</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 2</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#5</span>
+          <span class="pick-horse">Sunnys In The Sea</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Major Contender · Score 18 · HER 686 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#1</span>
+          <span class="pick-horse">The Great Escape</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Live Improver · Score 15 · HER 666 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#2</span>
+          <span class="pick-horse">Jafar</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Form Upside · Score 8 · HER 572 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 3</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#1</span>
+          <span class="pick-horse">Joelsyy Hanover</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Major Contender · Score 14 · HER 664 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#5</span>
+          <span class="pick-horse">Roy Kent N</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Live Improver · Score 12 · HER 576 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#3</span>
+          <span class="pick-horse">Swaggy Cal</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Positive Setup · Score 8 · HER 571 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 4</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#8</span>
+          <span class="pick-horse">Wicked Character</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Core Contender · Score 15 · HER 707 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#3</span>
+          <span class="pick-horse">Race Me Celtic</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Live Improver · Score 12 · HER 596 · Rank 3</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#10</span>
+          <span class="pick-horse">Higher Ground</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Form Upside · Score 11 · HER 725 · Rank 2</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 5</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#2</span>
+          <span class="pick-horse">Jimmy Connor B</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Major Contender · Score 20 · HER 697 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#1</span>
+          <span class="pick-horse">Primary Driver</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Live Improver · Score 12 · HER 622 · Rank 3</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#8</span>
+          <span class="pick-horse">Creekside Johnny</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Form Upside · Score 8 · HER 650 · Rank 2</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 6</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#5</span>
+          <span class="pick-horse">Revolt</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Major Contender · Score 14 · HER 710 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#2</span>
+          <span class="pick-horse">General Dolan</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Live Improver · Score 13 · HER 658 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-c">
+        <div class="pick-main">
+          <span class="pick-pp">#1</span>
+          <span class="pick-horse">Keep Score</span>
+          <span class="pick-grade">C</span>
+        </div>
+        <div class="pick-meta">Live Improver · Score 5 · HER 491 · Rank 5</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 7</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#5</span>
+          <span class="pick-horse">Later Dudes</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Major Contender · Score 15 · HER 703 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#3</span>
+          <span class="pick-horse">Medoland Terror</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Live Improver · Score 12 · HER 635 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-c">
+        <div class="pick-main">
+          <span class="pick-pp">#8</span>
+          <span class="pick-horse">Hecandancencruise</span>
+          <span class="pick-grade">C</span>
+        </div>
+        <div class="pick-meta">Core Contender · Score 7 · HER 592 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 8</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#6</span>
+          <span class="pick-horse">Rock Shines Again</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Core Contender · Score 15 · HER 658 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#7</span>
+          <span class="pick-horse">Twisted Destiny</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Form Upside · Score 11 · HER 661 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#4</span>
+          <span class="pick-horse">Martins Millions</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Positive Setup · Score 8 · HER 556 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 9</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#6</span>
+          <span class="pick-horse">I Did It Myway</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Major Contender · Score 16 · HER 724 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#9</span>
+          <span class="pick-horse">Damn The Torpedoes</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Core Contender · Score 9 · HER 686 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#3</span>
+          <span class="pick-horse">Extra Suds</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Live Improver · Score 9 · HER 573 · Rank 4</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 10</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#3</span>
+          <span class="pick-horse">I'M The One</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Live Improver · Score 15 · HER 731 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#10</span>
+          <span class="pick-horse">Fear The Hate</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Form Upside · Score 9 · HER 646 · Rank 3</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#6</span>
+          <span class="pick-horse">Why Not Now</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Core Contender · Score 8 · HER 611 · Rank 2</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 11</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#7</span>
+          <span class="pick-horse">Inflation Proof</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Major Contender · Score 16 · HER 680 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#5</span>
+          <span class="pick-horse">Dont Tell Rosa</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Positive Setup · Score 10 · HER 542 · Rank 3</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#6</span>
+          <span class="pick-horse">Baleville Bomber</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Form Upside · Score 9 · HER 546 · Rank 2</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 12</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#6</span>
+          <span class="pick-horse">Regal Escape</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Primary Win/Underneath Anchor · Score 15 · HER 798 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-c">
+        <div class="pick-main">
+          <span class="pick-pp">#2</span>
+          <span class="pick-horse">Courtship</span>
+          <span class="pick-grade">C</span>
+        </div>
+        <div class="pick-meta">Core Contender · Score 7 · HER 638 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-c">
+        <div class="pick-main">
+          <span class="pick-pp">#4</span>
+          <span class="pick-horse">Bettor Way To Rock</span>
+          <span class="pick-grade">C</span>
+        </div>
+        <div class="pick-meta">Positive Setup · Score 7 · HER 471 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 13</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#2</span>
+          <span class="pick-horse">Boomerang</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Primary Win/Underneath Anchor · Score 18 · HER 796 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#3</span>
+          <span class="pick-horse">Around Midnight</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Form Upside · Score 8 · HER 623 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#1</span>
+          <span class="pick-horse">Dancing Stranger</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Positive Setup · Score 8 · HER 602 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 14</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#3</span>
+          <span class="pick-horse">Currys Flurry</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Live Improver · Score 15 · HER 619 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#5</span>
+          <span class="pick-horse">Skipper N</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Positive Setup · Score 14 · HER 698 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#4</span>
+          <span class="pick-horse">Shadow Cove</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Positive Setup · Score 10 · HER 524 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 15</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#1</span>
+          <span class="pick-horse">Starblazer</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Live Improver · Score 16 · HER 604 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#6</span>
+          <span class="pick-horse">Mossy'S Dragon</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Form Upside · Score 12 · HER 695 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-b">
+        <div class="pick-main">
+          <span class="pick-pp">#4</span>
+          <span class="pick-horse">Touchedbythesea</span>
+          <span class="pick-grade">B</span>
+        </div>
+        <div class="pick-meta">Live Improver · Score 8 · HER 373 · Rank 7</div>
+      </div>
+    </td>
+        </tr>
+        
+        <tr>
+          <td class="race-cell">Race 16</td>
+          <td class="best-cell">
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#5</span>
+          <span class="pick-horse">Odds On Mister X</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Major Contender · Score 20 · HER 728 · Rank 1</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-a">
+        <div class="pick-main">
+          <span class="pick-pp">#2</span>
+          <span class="pick-horse">Shining Moment</span>
+          <span class="pick-grade">A</span>
+        </div>
+        <div class="pick-meta">Positive Setup · Score 12 · HER 694 · Rank 2</div>
+      </div>
+    </td>
+          <td>
+      <div class="pick-chip grade-c">
+        <div class="pick-main">
+          <span class="pick-pp">#9</span>
+          <span class="pick-horse">Cruiser With Class</span>
+          <span class="pick-grade">C</span>
+        </div>
+        <div class="pick-meta">Form Upside · Score 6 · HER 544 · Rank 3</div>
+      </div>
+    </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+    
+
+</div>
+</body>
+</html>
