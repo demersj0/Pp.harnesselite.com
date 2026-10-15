@@ -40,6 +40,7 @@ def build_html(date_code, teasers):
         cards.append(f'''<div class="track-card">
 <h3><span>{teaser["track"]}</span></h3>
 <a href="{teaser["href"]}" target="_blank">Teaser Tip</a>
+<a href="/tracks/{teaser["track"]}/">All {teaser["track"]} Reports</a>
 </div>''')
 
     return f'''<!DOCTYPE html>
@@ -71,6 +72,7 @@ a:hover{{text-decoration:underline}}
 <strong>Race Date:</strong> {date_long}<br>
 <strong>Available Teasers:</strong> {len(teasers)}
 </div>
+<p><a href="/tracks/">Browse all track archives</a></p>
 <h2>Teasers</h2>
 <div class="grid">
 {chr(10).join(cards)}

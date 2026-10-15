@@ -1,25 +1,37 @@
-name: Update teaser index
+name: Update teaser index and track pages
 
 on:
   push:
     branches: [main]
     paths:
-      - "**/*teaser*.html"
-      - "**/*Teaser*.html"
-      - "scripts/build_teaser_index.py"
-      - ".github/workflows/update-teaser-index.yml"
+      - '**/*.html'
+      - '**/*.pdf'
+      - '**/*.csv'
+      - '**/*.xlsx'
+      - '**/*.xls'
+      - '**/*.txt'
+      - '**/*.zip'
+      - 'scripts/build_teaser_index.py'
+      - 'scripts/build_track_pages.py'
+      - '.github/workflows/update-teaser-index.yml'
+      - 'CNAME'
   workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: teaser-index-main
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   update-index:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -27,20 +39,32 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.12'
 
       - name: Generate teaser index
         run: python scripts/build_teaser_index.py
 
-      - name: Commit updated index
-        run: |
-          if git diff --quiet -- index.html; then
-            echo "No index change required."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
-          git commit -m "Update teaser index [skip ci]"
-          git push
+      - name: Generate permanent track pages
+        run: python scripts/build_track_pages.py
 
+      - name: Commit generated pages
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html tracks/
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update teaser index and track archives [skip ci]'
+            git push
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy site
+        id: deployment
+        uses: actions/deploy-pages@v4
