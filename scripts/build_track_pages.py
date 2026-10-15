@@ -16,7 +16,7 @@ PATTERNS = [
     r'^(?P<track>[A-Z0-9]{1,8})_TeaserTip_(?P<date>\d{8})\.html$',
     r'^TipSheet_(?P<track>[A-Z0-9]{1,8})_(?P<date>\d{8})\.html$',
     r'^(?P<track>[A-Z0-9]{1,8})_LeadThreatIndex_(?P<date>\d{8})\.pdf$',
-    r'^Racecards_Intelligence_Report_(?P<date>\d{8})_Readable_v\d+_(?P<track>[A-Z0-9]{1,8})\.pdf$',
+    r'^Racecards_Intelligence_Report_(?P<date>\d{8})_Readable_v\d+_(?P<track>[A-Z0-9]{1,8})(?: - Copy)?\.pdf$',
     r'^(?P<track>[A-Z0-9]{1,8})_Race_Report_(?P<date>\d{8})\.pdf$',
     r'^(?:\d+-)?(?P<track>[A-Z0-9]{1,8})-RACE\d+-(?:PACE|TROT)\.pdf$',
 ]
