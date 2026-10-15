@@ -81,7 +81,7 @@ def document(title, body):
 
 
 def build(root, paths):
-    candidates = sorted(set(p for p in paths if not p.startswith(('tracks/', '.git/', '.github/', 'scripts/')) and PurePosixPath(p).suffix.lower() in EXTENSIONS and PurePosixPath(p).name.lower() != 'index.html'))
+    candidates = sorted(set(p for p in paths if not p.startswith(('.git/', '.github/', 'scripts/')) and PurePosixPath(p).suffix.lower() in EXTENSIONS and PurePosixPath(p).name.lower() != 'index.html'))
     known = {classify(p)[0] for p in candidates if classify(p)}
     tracks = defaultdict(list)
     unmatched = []
