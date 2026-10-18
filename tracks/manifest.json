@@ -193,6 +193,11 @@
         "path": "tracks/BANG/20261017-BANG-teasertip.html",
         "date": "2026-10-17",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/BANG/20261018-BANG-teasertip.html",
+        "date": "2026-10-18",
+        "label": "Teaser Tip"
       }
     ],
     "BR": [
@@ -559,6 +564,11 @@
         "path": "tracks/CBRN/20261017-CBRN-teasertip.html",
         "date": "2026-10-17",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/CBRN/20261018-CBRN-teasertip.html",
+        "date": "2026-10-18",
+        "label": "Teaser Tip"
       }
     ],
     "CHRTN": [
@@ -850,6 +860,11 @@
       {
         "path": "tracks/CHRTN/20261017-CHRTN-teasertip.html",
         "date": "2026-10-17",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/CHRTN/20261018-CHRTN-teasertip.html",
+        "date": "2026-10-18",
         "label": "Teaser Tip"
       }
     ],
@@ -1673,6 +1688,13 @@
         "label": "Racecards Intelligence\u2122"
       }
     ],
+    "DEP": [
+      {
+        "path": "tracks/DEP/20261018-DEP-teasertip.html",
+        "date": "2026-10-18",
+        "label": "Teaser Tip"
+      }
+    ],
     "DRES": [
       {
         "path": "archive/TipSheet_DRES_20260524.html",
@@ -2066,6 +2088,11 @@
       {
         "path": "tracks/FLMD/20261015-FLMD-teasertip.html",
         "date": "2026-10-15",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/FLMD/20261018-FLMD-teasertip.html",
+        "date": "2026-10-18",
         "label": "Teaser Tip"
       }
     ],
@@ -2651,6 +2678,11 @@
         "path": "archive/TipSheet_INVRN_20260621.html",
         "date": "2026-06-21",
         "label": "Tip Sheet"
+      },
+      {
+        "path": "tracks/INVRN/20261018-INVRN-teasertip.html",
+        "date": "2026-10-18",
+        "label": "Teaser Tip"
       }
     ],
     "KD": [
@@ -2673,6 +2705,13 @@
         "path": "archive/TipSheet_KD_20260620.html",
         "date": "2026-06-20",
         "label": "Tip Sheet"
+      }
+    ],
+    "LEAM": [
+      {
+        "path": "tracks/LEAM/20261018-LEAM-teasertip.html",
+        "date": "2026-10-18",
+        "label": "Teaser Tip"
       }
     ],
     "LEX": [
@@ -5379,6 +5418,11 @@
         "path": "tracks/NFLD/20261017-NFLD-teasertip.html",
         "date": "2026-10-17",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/NFLD/20261018-NFLD-teasertip.html",
+        "date": "2026-10-18",
+        "label": "Teaser Tip"
       }
     ],
     "NTSD": [
@@ -6073,6 +6117,11 @@
       {
         "path": "tracks/PHL/20261016-PHL-teasertip.html",
         "date": "2026-10-16",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/PHL/20261018-PHL-teasertip.html",
+        "date": "2026-10-18",
         "label": "Teaser Tip"
       }
     ],
@@ -6881,6 +6930,11 @@
         "path": "tracks/STGA/20261017-STGA-teasertip.html",
         "date": "2026-10-17",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/STGA/20261018-STGA-teasertip.html",
+        "date": "2026-10-18",
+        "label": "Teaser Tip"
       }
     ],
     "SUMM": [
@@ -7219,6 +7273,11 @@
         "path": "archive/TipSheet_TRRVS_20260621.html",
         "date": "2026-06-21",
         "label": "Tip Sheet"
+      },
+      {
+        "path": "tracks/TRRVS/20261018-TRRVS-teasertip.html",
+        "date": "2026-10-18",
+        "label": "Teaser Tip"
       }
     ],
     "TRURO": [
@@ -7246,6 +7305,11 @@
         "path": "archive/TipSheet_TRURO_20260619.html",
         "date": "2026-06-19",
         "label": "Tip Sheet"
+      },
+      {
+        "path": "tracks/TRURO/20261018-TRURO-teasertip.html",
+        "date": "2026-10-18",
+        "label": "Teaser Tip"
       }
     ],
     "VD": [
@@ -7890,6 +7954,11 @@
         "path": "tracks/WBSB/20261017-WBSB-teasertip.html",
         "date": "2026-10-17",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/WBSB/20261018-WBSB-teasertip.html",
+        "date": "2026-10-18",
+        "label": "Teaser Tip"
       }
     ],
     "WDSTK": [
@@ -7936,6 +8005,11 @@
       {
         "path": "tracks/WDSTK/20261017-WDSTK-teasertip.html",
         "date": "2026-10-17",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/WDSTK/20261018-WDSTK-teasertip.html",
+        "date": "2026-10-18",
         "label": "Teaser Tip"
       }
     ],
