@@ -567,6 +567,11 @@
         "path": "tracks/BTVA/20261021-BTVA-teasertip.html",
         "date": "2026-10-21",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/BTVA/20261022-BTVA-teasertip.html",
+        "date": "2026-10-22",
+        "label": "Teaser Tip"
       }
     ],
     "CBRN": [
@@ -885,6 +890,11 @@
       {
         "path": "tracks/CHRTN/20261018-CHRTN-teasertip.html",
         "date": "2026-10-18",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/CHRTN/20261022-CHRTN-teasertip.html",
+        "date": "2026-10-22",
         "label": "Teaser Tip"
       }
     ],
@@ -1887,6 +1897,11 @@
         "path": "tracks/DTN/20261021-DTN-teasertip.html",
         "date": "2026-10-21",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/DTN/20261022-DTN-teasertip.html",
+        "date": "2026-10-22",
+        "label": "Teaser Tip"
       }
     ],
     "FLMD": [
@@ -2133,6 +2148,11 @@
       {
         "path": "tracks/FLMD/20261018-FLMD-teasertip.html",
         "date": "2026-10-18",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/FLMD/20261022-FLMD-teasertip.html",
+        "date": "2026-10-22",
         "label": "Teaser Tip"
       }
     ],
@@ -2670,6 +2690,11 @@
       {
         "path": "tracks/HOP/20261021-HOP-teasertip.html",
         "date": "2026-10-21",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/HOP/20261022-HOP-teasertip.html",
+        "date": "2026-10-22",
         "label": "Teaser Tip"
       }
     ],
@@ -4187,6 +4212,11 @@
         "path": "tracks/MEA/20261021-MEA-teasertip.html",
         "date": "2026-10-21",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/MEA/20261022-MEA-teasertip.html",
+        "date": "2026-10-22",
+        "label": "Teaser Tip"
       }
     ],
     "MR": [
@@ -4658,6 +4688,11 @@
       {
         "path": "tracks/MR/20261021-MR-teasertip.html",
         "date": "2026-10-21",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/MR/20261022-MR-teasertip.html",
+        "date": "2026-10-22",
         "label": "Teaser Tip"
       }
     ],
@@ -6233,6 +6268,11 @@
         "path": "tracks/PHL/20261018-PHL-teasertip.html",
         "date": "2026-10-18",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/PHL/20261022-PHL-teasertip.html",
+        "date": "2026-10-22",
+        "label": "Teaser Tip"
       }
     ],
     "PRC": [
@@ -6480,6 +6520,11 @@
         "path": "tracks/PRC/20261020-PRC-teasertip.html",
         "date": "2026-10-20",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/PRC/20261022-PRC-teasertip.html",
+        "date": "2026-10-22",
+        "label": "Teaser Tip"
       }
     ],
     "RCR": [
@@ -6621,6 +6666,11 @@
       {
         "path": "tracks/RCR/20261019-RCR-teasertip.html",
         "date": "2026-10-19",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/RCR/20261022-RCR-teasertip.html",
+        "date": "2026-10-22",
         "label": "Teaser Tip"
       }
     ],
@@ -8551,6 +8601,11 @@
       {
         "path": "tracks/YR/20261021-YR-teasertip.html",
         "date": "2026-10-21",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/YR/20261022-YR-teasertip.html",
+        "date": "2026-10-22",
         "label": "Teaser Tip"
       }
     ]
