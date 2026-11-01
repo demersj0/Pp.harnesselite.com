@@ -127,8 +127,29 @@ def load_source(race_date):
     blob = github_json('/git/blobs/' + paths[index_path]['sha'])
     html = base64.b64decode(blob['content']).decode('utf-8-sig')
     candidates = eligible_cards(html, index_path, paths, race_date)
+    method = 'regular_index'
+    if not candidates:
+        # A daily index can accidentally retain yesterday's template. Never follow
+        # stale links: reconstruct only complete current-day sets in THIS folder.
+        date_code = race_date.replace('-', '')
+        codes = sorted({m.group(1) for path in paths
+                        if path.startswith(race_date + '/')
+                        and '/' not in path[len(race_date) + 1:]
+                        and (m := re.fullmatch(r'TipSheet_([A-Z0-9]{1,8})_' + date_code + r'\.html', PurePosixPath(path).name))})
+        synthetic_cards = []
+        for code in codes:
+            reports = [race_date + '/' + f'TipSheet_{code}_{date_code}.html',
+                       race_date + '/' + f'{code}_LeadThreatIndex_{date_code}.pdf']
+            intelligence = sorted(path for path in paths if re.fullmatch(
+                re.escape(race_date) + r'/Racecards_Intelligence_Report_' + date_code + r'_Readable_v\d+_' + re.escape(code) + r'\.pdf', path))
+            if intelligence: reports.append(intelligence[-1])
+            if len(reports) != 3 or not all(path in paths for path in reports): continue
+            anchors = ''.join(f'<a href="{escape(SOURCE_ORIGIN + quote(path, safe="/"), quote=True)}">Report</a>' for path in reports)
+            synthetic_cards.append(f'<div class="track-card"><h3>{code}</h3>{anchors}</div>')
+        candidates = eligible_cards(''.join(synthetic_cards), index_path, paths, race_date)
+        method = 'verified_current_day_files' if candidates else 'regular_index'
     return candidates, {'reason': 'ready' if candidates else 'no_complete_current_day_track_blocks',
-                        'index_path': index_path, 'source_commit': head}
+                        'index_path': index_path, 'source_commit': head, 'source_method': method}
 
 
 def render_daily_sample(root, race_date=None, source_loader=load_source, chooser=secrets.choice):
@@ -152,7 +173,7 @@ def render_daily_sample(root, race_date=None, source_loader=load_source, chooser
             state['selections'][race_date] = selection
             state_file.write_text(json.dumps(state, indent=2, ensure_ascii=False) + '\n')
             status = {'date': race_date, 'status': 'ready', 'track': chosen['track'],
-                      'source_index': selection['source_index']}
+                      'source_index': selection['source_index'], 'source_method': evidence.get('source_method', 'regular_index')}
             links = ''.join(f'<a href="{escape(item["href"], quote=True)}" target="_blank" rel="noopener noreferrer">{escape(item["label"])}</a>' for item in chosen['links'])
             block = f'''<section id="todays-free-sample" class="notice" style="margin-top:24px;border:2px solid #7db8ff">
 <h2>Today's Free Sample: {escape(chosen['track_name'])} ({escape(chosen['track'])}), {long_date}</h2>
