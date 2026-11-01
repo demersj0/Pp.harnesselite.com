@@ -9,6 +9,7 @@ from pathlib import Path, PurePosixPath
 import re
 import subprocess
 from urllib.parse import quote
+from build_free_sample import cached_daily_sample
 
 PATTERNS = [
     r'^(?P<date>\d{8})-(?P<track>[A-Z0-9]{1,8})-teaser(?:tip)?\.html$',
@@ -23,6 +24,7 @@ PATTERNS = [
 PATTERNS = [re.compile(p, re.I) for p in PATTERNS]
 EXTENSIONS = {'.html', '.pdf', '.csv', '.xlsx', '.xls', '.txt', '.zip'}
 CSS = '''body{font-family:Arial,sans-serif;background:#0f141c;color:#eee;margin:0;padding:24px}main{max-width:1200px;margin:auto;background:#171b22;padding:28px;border-radius:14px}h1,h2,h3{color:#7db8ff}a{color:#dbe9ff}nav{margin-bottom:24px}nav a{margin-right:20px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.card,section{background:#202636;border:1px solid #343d50;border-radius:12px;padding:18px;margin-bottom:18px}.card a{font-size:1.3rem;font-weight:bold}li{margin:14px 0;overflow-wrap:anywhere}small,.muted{color:#b9c7d8}input{box-sizing:border-box;width:100%;padding:12px;margin:16px 0;background:#202636;color:#eee;border:1px solid #343d50;border-radius:8px}.legal{line-height:1.6;margin-top:30px}footer{text-align:center;color:#aaa;margin-top:24px}[hidden]{display:none!important}'''
+CSS += '#todays-free-sample .track-card{border:1px solid #343d50;border-radius:10px;padding:16px;background:#202636}#todays-free-sample .track-card a{display:block;background:#171b22;color:#dbe9ff;padding:10px;margin-top:10px;border-radius:8px;text-decoration:none;font-weight:bold}#todays-free-sample .track-card a:hover{text-decoration:underline}'
 LEGAL = '''<div class="legal"><h2>Risk Disclosure</h2><p>Horse racing wagering involves substantial risk and may result in the loss of some or all funds wagered. Past performance, selections, rankings, projections, and other information provided by Harness Elite do not guarantee future results. Users are solely responsible for their own wagering decisions.</p><h2>Copyright, Trademark, and Ownership Notice</h2><p>Harness Elite™, LeadThreatIndex™, Racecards Intelligence™, HarnessElite.com™, and related proprietary materials are the intellectual property of Advanced Wagering Strategies LLC d/b/a Harness Elite. Reports remain subject to applicable subscription and licensing requirements.</p></div><footer>© Advanced Wagering Strategies LLC d/b/a Harness Elite. All Rights Reserved.</footer>'''
 
 
@@ -102,11 +104,12 @@ def build(root, paths):
         if previous.get('generator') == manifest['generator']:
             for code in previous['tracks']:
                 if re.fullmatch(r'[A-Z0-9]{1,8}', code) and code not in {'OVERALL', 'ALL', 'TOTAL'}: tracks.setdefault(code, [])
+    sample_block = cached_daily_sample(root)
     cards = []
     for code, records in sorted(tracks.items()):
         groups = defaultdict(list)
         for row in records: groups[row['date']].append(row)
-        body = f'<p class="muted">{len(records)} related files. Dates are newest first. This permanent page updates automatically after repository uploads, moves, or deletions.</p><label for="search">Filter files or dates</label><input id="search" type="search" placeholder="Search filenames or dates">'
+        body = sample_block + f'<p class="muted">{len(records)} related files. Dates are newest first. This permanent page updates automatically after repository uploads, moves, or deletions.</p><label for="search">Filter files or dates</label><input id="search" type="search" placeholder="Search filenames or dates">'
         for date in sorted(groups, key=lambda d: (d != 'Undated', d), reverse=True):
             items=[]
             for row in sorted(groups[date], key=lambda r:(r['label'],r['path'])):

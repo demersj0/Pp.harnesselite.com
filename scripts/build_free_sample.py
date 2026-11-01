@@ -13,6 +13,7 @@ import secrets
 from urllib.parse import quote, unquote, urljoin, urlsplit
 from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
+from add_membership_links import ensure_membership_link, strip_membership_banner
 
 SOURCE_REPO = 'demersj0/Odds.harnesselite.com'
 SOURCE_ORIGIN = 'https://odds.harnesselite.com/'
@@ -185,6 +186,8 @@ def publish_public_sample(root, selection):
         relative = f'samples/{date}/{code}/{filename}'
         destination = Path(root) / relative
         content = destination.read_bytes() if destination.is_file() else None
+        if content is not None and filename.lower().endswith('.html'):
+            content = strip_membership_banner(content.decode('utf-8')).encode('utf-8')
         if content is None or git_blob_hash(content) != blob_sha:
             blob = github_json('/git/blobs/' + blob_sha)
             if blob.get('encoding') != 'base64' or blob.get('size', 0) > 25_000_000:
@@ -199,6 +202,7 @@ def publish_public_sample(root, selection):
             text = content.decode('utf-8-sig')
             if '<html' not in text.lower() or '</html>' not in text.lower():
                 raise ValueError('Incomplete source HTML')
+            content = ensure_membership_link(content.decode('utf-8')).encode('utf-8')
         else:
             raise ValueError('Only the selected HTML/PDF reports can be published')
         public_links.append({'label': item['label'], 'href': '/' + quote(relative, safe='/'),
@@ -267,5 +271,18 @@ def render_daily_sample(root, race_date=None, source_loader=load_source, chooser
 <p>We are checking today's reports. Please check back shortly for today's full sample.</p>
 </section>'''
     (data_dir / 'free_sample_status.json').write_text(json.dumps(status, indent=2) + '\n')
+    (data_dir / 'free_sample_block.json').write_text(json.dumps({'date': race_date, 'html': block}, ensure_ascii=False, indent=2) + '\n')
     print('Daily free sample:', json.dumps(status))
     return block
+
+
+def cached_daily_sample(root, race_date=None):
+    """Reuse the one already-published sample across all track pages, with no network calls."""
+    race_date = race_date or datetime.now(ZoneInfo(TIMEZONE)).date().isoformat()
+    cache = Path(root) / 'data/free_sample_block.json'
+    if cache.exists():
+        saved = json.loads(cache.read_text())
+        if saved.get('date') == race_date and isinstance(saved.get('html'), str):
+            return saved['html']
+    long_date = datetime.fromisoformat(race_date).strftime('%B %-d, %Y')
+    return f"<section id=\"todays-free-sample\" class=\"notice\"><h2>Today's Free Sample: {long_date}</h2><p>Today's complete free sample will appear here automatically after the daily reports are available.</p></section>"

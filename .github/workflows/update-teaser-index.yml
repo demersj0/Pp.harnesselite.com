@@ -14,6 +14,7 @@ on:
       - 'scripts/build_teaser_index.py'
       - 'scripts/build_track_pages.py'
       - 'scripts/build_free_sample.py'
+      - 'scripts/add_membership_links.py'
       - '.github/workflows/update-teaser-index.yml'
       - 'CNAME'
   schedule:
@@ -52,11 +53,15 @@ jobs:
       - name: Generate permanent track pages
         run: python scripts/build_track_pages.py
 
+      - name: Add Purchase Membership to all HTML pages
+        run: python scripts/add_membership_links.py
+
       - name: Commit generated pages
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add index.html tracks/ data/
+          git add -- ":(glob)**/*.html" ":(glob)*.html"
           if [ -d samples ]; then git add samples/; fi
           if ! git diff --cached --quiet; then
             git commit -m 'Update teaser index and track archives [skip ci]'
