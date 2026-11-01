@@ -4,6 +4,7 @@
 import re
 from datetime import datetime
 from pathlib import Path
+from build_free_sample import render_daily_sample
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "index.html"
@@ -43,6 +44,8 @@ def build_html(date_code, teasers):
 <a href="/tracks/{teaser["track"]}/">All {teaser["track"]} Reports</a>
 </div>''')
 
+    sample_block = render_daily_sample(ROOT)
+
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,6 +75,7 @@ a:hover{{text-decoration:underline}}
 <strong>Race Date:</strong> {date_long}<br>
 <strong>Available Teasers:</strong> {len(teasers)}
 </div>
+{sample_block}
 <p><a href="/tracks/">Browse all track archives</a></p>
 <h2>Teasers</h2>
 <div class="grid">

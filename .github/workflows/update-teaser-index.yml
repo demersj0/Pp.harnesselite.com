@@ -13,8 +13,11 @@ on:
       - '**/*.zip'
       - 'scripts/build_teaser_index.py'
       - 'scripts/build_track_pages.py'
+      - 'scripts/build_free_sample.py'
       - '.github/workflows/update-teaser-index.yml'
       - 'CNAME'
+  schedule:
+    - cron: '17 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -42,6 +45,8 @@ jobs:
           python-version: '3.12'
 
       - name: Generate teaser index
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/build_teaser_index.py
 
       - name: Generate permanent track pages
@@ -51,7 +56,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add index.html tracks/
+          git add index.html tracks/ data/
           if ! git diff --cached --quiet; then
             git commit -m 'Update teaser index and track archives [skip ci]'
             git push
@@ -64,7 +69,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Deploy site
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
