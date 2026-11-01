@@ -172,12 +172,13 @@ def render_daily_sample(root, race_date=None, source_loader=load_source, chooser
                          'source_index': SOURCE_ORIGIN + evidence['index_path']}
             state['selections'][race_date] = selection
             state_file.write_text(json.dumps(state, indent=2, ensure_ascii=False) + '\n')
-            status = {'date': race_date, 'status': 'ready', 'track': chosen['track'],
+            status = {'date': race_date, 'status': 'awaiting_public_access', 'track': chosen['track'],
                       'source_index': selection['source_index'], 'source_method': evidence.get('source_method', 'regular_index')}
             links = ''.join(f'<a href="{escape(item["href"], quote=True)}" target="_blank" rel="noopener noreferrer">{escape(item["label"])}</a>' for item in chosen['links'])
             block = f'''<section id="todays-free-sample" class="notice" style="margin-top:24px;border:2px solid #7db8ff">
 <h2>Today's Free Sample: {escape(chosen['track_name'])} ({escape(chosen['track'])}), {long_date}</h2>
 <p>One complete track block, randomly selected for today. This pick stays the same all day.</p>
+<p><strong>Public access pending:</strong> These source reports currently require a member login. Free public access has not yet been enabled.</p>
 <div class="track-card"><h3><span>{escape(chosen['track'])}</span></h3>{links}</div>
 <p>These three links open the original reports at odds.harnesselite.com. No premium report files are copied to this teaser site. Applicable data-license requirements still apply.</p>
 </section>'''
