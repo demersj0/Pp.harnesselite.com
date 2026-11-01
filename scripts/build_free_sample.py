@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""One stable random complete current-day track sample, linking to original reports."""
+"""One stable daily track sample, publishing only its three authorized public reports."""
 import base64
+import hashlib
 from datetime import datetime
 from html import escape
 from html.parser import HTMLParser
@@ -109,7 +110,8 @@ def eligible_cards(html, index_path, paths, race_date):
                 if path not in paths or '..' in PurePosixPath(path).parts:
                     invalid = True
                     break
-                links[kind] = {'label': kind, 'href': absolute, 'source_path': path}
+                links[kind] = {'label': kind, 'href': absolute, 'source_path': path,
+                               'source_blob_sha': paths[path].get('sha') if isinstance(paths, dict) else None}
         if not invalid and len(links) == 3:
             result[code] = {'track': code, 'track_name': TRACK_NAMES.get(code, code),
                             'links': [links[kind] for kind in required]}
@@ -152,7 +154,72 @@ def load_source(race_date):
                         'index_path': index_path, 'source_commit': head, 'source_method': method}
 
 
-def render_daily_sample(root, race_date=None, source_loader=load_source, chooser=secrets.choice):
+def git_blob_hash(content):
+    return hashlib.sha1(b'blob ' + str(len(content)).encode() + b'\0' + content).hexdigest()
+
+
+def publish_public_sample(root, selection):
+    """Materialize exactly the chosen three files. Never mirror a whole directory."""
+    if len(selection['links']) != 3:
+        raise ValueError('A public sample must contain exactly three reports')
+    date = selection['date']
+    code = selection['track']
+    if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', date) or not re.fullmatch(r'[A-Z0-9]{1,8}', code):
+        raise ValueError('Invalid sample destination')
+    patterns = [rf'TipSheet_{re.escape(code)}_{date.replace("-", "")}\.html',
+                rf'{re.escape(code)}_LeadThreatIndex_{date.replace("-", "")}\.pdf',
+                rf'Racecards_Intelligence_Report_{date.replace("-", "")}_Readable_v\d+_{re.escape(code)}\.pdf']
+    names = [PurePosixPath(item['source_path']).name for item in selection['links']]
+    if len(set(names)) != 3 or not all(any(re.fullmatch(pattern, name) for name in names) for pattern in patterns):
+        raise ValueError('Only one report of each allowed type from the chosen track is authorized')
+    prepared = []
+    public_links = []
+    for item in selection['links']:
+        source_path = item['source_path']
+        filename = PurePosixPath(source_path).name
+        blob_sha = item.get('source_blob_sha')
+        if not blob_sha or not re.fullmatch(r'[a-f0-9]{40}', blob_sha):
+            raise ValueError('A source blob identifier is required')
+        if selection['date'].replace('-', '') not in filename or '..' in PurePosixPath(source_path).parts:
+            raise ValueError('Wrong-date or unsafe sample path')
+        relative = f'samples/{date}/{code}/{filename}'
+        destination = Path(root) / relative
+        content = destination.read_bytes() if destination.is_file() else None
+        if content is None or git_blob_hash(content) != blob_sha:
+            blob = github_json('/git/blobs/' + blob_sha)
+            if blob.get('encoding') != 'base64' or blob.get('size', 0) > 25_000_000:
+                raise ValueError('Unsupported report encoding or size')
+            content = base64.b64decode(blob['content'])
+            if git_blob_hash(content) != blob_sha:
+                raise ValueError('Source report integrity check failed')
+        if filename.lower().endswith('.pdf'):
+            if not content.startswith(b'%PDF-') or b'%%EOF' not in content[-2048:]:
+                raise ValueError('Incomplete source PDF')
+        elif filename.lower().endswith('.html'):
+            text = content.decode('utf-8-sig')
+            if '<html' not in text.lower() or '</html>' not in text.lower():
+                raise ValueError('Incomplete source HTML')
+        else:
+            raise ValueError('Only the selected HTML/PDF reports can be published')
+        public_links.append({'label': item['label'], 'href': '/' + quote(relative, safe='/'),
+                             'public_url': 'https://pp.harnesselite.com/' + quote(relative, safe='/'),
+                             'public_path': relative, 'source_path': source_path,
+                             'source_url': item['href'], 'source_blob_sha': blob_sha,
+                             'sha256': hashlib.sha256(content).hexdigest()})
+        prepared.append((destination, content))
+    # Validate all three before writing any one of them.
+    for destination, content in prepared:
+        if destination.exists() and destination.read_bytes() == content:
+            continue
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        temporary = destination.with_suffix(destination.suffix + '.part')
+        temporary.write_bytes(content)
+        temporary.replace(destination)
+    return public_links
+
+
+def render_daily_sample(root, race_date=None, source_loader=load_source, chooser=secrets.choice,
+                        sample_publisher=publish_public_sample):
     root = Path(root)
     race_date = race_date or datetime.now(ZoneInfo(TIMEZONE)).date().isoformat()
     long_date = datetime.fromisoformat(race_date).strftime('%B %-d, %Y')
@@ -169,18 +236,21 @@ def render_daily_sample(root, race_date=None, source_loader=load_source, chooser
             chosen = candidates[chooser(sorted(candidates))] if candidates else None
         if chosen:
             selection = {'date': race_date, **chosen,
-                         'source_index': SOURCE_ORIGIN + evidence['index_path']}
+                         'source_index': SOURCE_ORIGIN + evidence['index_path'],
+                         'source_commit': evidence.get('source_commit')}
+            selection['public_links'] = sample_publisher(root, selection)
             state['selections'][race_date] = selection
             state_file.write_text(json.dumps(state, indent=2, ensure_ascii=False) + '\n')
-            status = {'date': race_date, 'status': 'awaiting_public_access', 'track': chosen['track'],
-                      'source_index': selection['source_index'], 'source_method': evidence.get('source_method', 'regular_index')}
-            links = ''.join(f'<a href="{escape(item["href"], quote=True)}" target="_blank" rel="noopener noreferrer">{escape(item["label"])}</a>' for item in chosen['links'])
+            status = {'date': race_date, 'status': 'ready', 'track': chosen['track'],
+                      'source_index': selection['source_index'], 'source_method': evidence.get('source_method', 'regular_index'),
+                      'public_access': True, 'published_reports': len(selection['public_links'])}
+            links = ''.join(f'<a href="{escape(item["href"], quote=True)}" target="_blank" rel="noopener noreferrer">{escape(item["label"])}</a>' for item in selection['public_links'])
             block = f'''<section id="todays-free-sample" class="notice" style="margin-top:24px;border:2px solid #7db8ff">
 <h2>Today's Free Sample: {escape(chosen['track_name'])} ({escape(chosen['track'])}), {long_date}</h2>
 <p>One complete track block, randomly selected for today. This pick stays the same all day.</p>
-<p><strong>Public access pending:</strong> These source reports currently require a member login. Free public access has not yet been enabled.</p>
+<p><strong>Free public access:</strong> Open all three full reports below. No member login is required.</p>
 <div class="track-card"><h3><span>{escape(chosen['track'])}</span></h3>{links}</div>
-<p>These three links open the original reports at odds.harnesselite.com. No premium report files are copied to this teaser site. Applicable data-license requirements still apply.</p>
+<p>Only this selected track’s three reports are provided as public samples from the regular Harness Elite reports. Applicable data-license requirements still apply.</p>
 </section>'''
         else:
             status = {'date': race_date, 'status': 'waiting', 'reason': 'selected_track_not_currently_complete' if previous else evidence['reason']}
@@ -190,7 +260,7 @@ def render_daily_sample(root, race_date=None, source_loader=load_source, chooser
 </section>'''
     except Exception as exc:
         # Do not present yesterday's choice or stale URLs as today's free sample.
-        status = {'date': race_date, 'status': 'waiting', 'reason': 'source_temporarily_unavailable'}
+        status = {'date': race_date, 'status': 'waiting', 'reason': 'source_or_publication_temporarily_unavailable'}
         print('Free sample source check failed:', type(exc).__name__)
         block = f'''<section id="todays-free-sample" class="notice" style="margin-top:24px">
 <h2>Today's Free Sample: {long_date}</h2>
