@@ -6852,6 +6852,21 @@
         "label": "Tip Sheet"
       },
       {
+        "path": "samples/2026-11-02/PRC/PRC_LeadThreatIndex_20261102.pdf",
+        "date": "2026-11-02",
+        "label": "LeadThreatIndex\u2122"
+      },
+      {
+        "path": "samples/2026-11-02/PRC/Racecards_Intelligence_Report_20261102_Readable_v18_PRC.pdf",
+        "date": "2026-11-02",
+        "label": "Racecards Intelligence\u2122"
+      },
+      {
+        "path": "samples/2026-11-02/PRC/TipSheet_PRC_20261102.html",
+        "date": "2026-11-02",
+        "label": "Tip Sheet"
+      },
+      {
         "path": "tracks/PRC/20261015-PRC-teasertip.html",
         "date": "2026-10-15",
         "label": "Teaser Tip"
