@@ -58,6 +58,65 @@
           "sha256": "03ef97742f9403b6ccb36a1aabedebb21b4ad5cbc3869c490d7809d937b928d4"
         }
       ]
+    },
+    "2026-11-02": {
+      "date": "2026-11-02",
+      "track": "PRC",
+      "track_name": "Plainridge Park",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-02/TipSheet_PRC_20261102.html",
+          "source_path": "2026-11-02/TipSheet_PRC_20261102.html",
+          "source_blob_sha": "9452335225b0f10703b97618ee5bc856b4b61ae5"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-02/PRC_LeadThreatIndex_20261102.pdf",
+          "source_path": "2026-11-02/PRC_LeadThreatIndex_20261102.pdf",
+          "source_blob_sha": "d12343119f1e6bccef3000da65318fcc6ad4df86"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-02/Racecards_Intelligence_Report_20261102_Readable_v18_PRC.pdf",
+          "source_path": "2026-11-02/Racecards_Intelligence_Report_20261102_Readable_v18_PRC.pdf",
+          "source_blob_sha": "05d902b8279eb533fb5fb307b5a0a6812d19fee6"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-02/index.html",
+      "source_commit": "692d29a9f55d9ace2e155ebd0c9685df2cf2c566",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-02/PRC/TipSheet_PRC_20261102.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-02/PRC/TipSheet_PRC_20261102.html",
+          "public_path": "samples/2026-11-02/PRC/TipSheet_PRC_20261102.html",
+          "source_path": "2026-11-02/TipSheet_PRC_20261102.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-02/TipSheet_PRC_20261102.html",
+          "source_blob_sha": "9452335225b0f10703b97618ee5bc856b4b61ae5",
+          "sha256": "19d8678353fd93a6f790c79b5092e24d6a5e7b6c6fe03a3d3c44dbccb3e4541c"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-02/PRC/PRC_LeadThreatIndex_20261102.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-02/PRC/PRC_LeadThreatIndex_20261102.pdf",
+          "public_path": "samples/2026-11-02/PRC/PRC_LeadThreatIndex_20261102.pdf",
+          "source_path": "2026-11-02/PRC_LeadThreatIndex_20261102.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-02/PRC_LeadThreatIndex_20261102.pdf",
+          "source_blob_sha": "d12343119f1e6bccef3000da65318fcc6ad4df86",
+          "sha256": "f853428c6e73ee1b1e610952f1cef29c8eff85d675233465205c12a7468d43f2"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-02/PRC/Racecards_Intelligence_Report_20261102_Readable_v18_PRC.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-02/PRC/Racecards_Intelligence_Report_20261102_Readable_v18_PRC.pdf",
+          "public_path": "samples/2026-11-02/PRC/Racecards_Intelligence_Report_20261102_Readable_v18_PRC.pdf",
+          "source_path": "2026-11-02/Racecards_Intelligence_Report_20261102_Readable_v18_PRC.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-02/Racecards_Intelligence_Report_20261102_Readable_v18_PRC.pdf",
+          "source_blob_sha": "05d902b8279eb533fb5fb307b5a0a6812d19fee6",
+          "sha256": "d9ae436261f90066fbe2402aabbbdde8c3f60b5954258581bb8606d7d8ac612f"
+        }
+      ]
     }
   }
 }
