@@ -117,6 +117,65 @@
           "sha256": "d9ae436261f90066fbe2402aabbbdde8c3f60b5954258581bb8606d7d8ac612f"
         }
       ]
+    },
+    "2026-11-04": {
+      "date": "2026-11-04",
+      "track": "NFLD",
+      "track_name": "Northfield Park",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-04/TipSheet_NFLD_20261104.html",
+          "source_path": "2026-11-04/TipSheet_NFLD_20261104.html",
+          "source_blob_sha": "45f05f7f16226d43bafbfed4ef41201cc33dfded"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-04/NFLD_LeadThreatIndex_20261104.pdf",
+          "source_path": "2026-11-04/NFLD_LeadThreatIndex_20261104.pdf",
+          "source_blob_sha": "50d244e63cdd2a2d7536b1d0f883b665b7acf727"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-04/Racecards_Intelligence_Report_20261104_Readable_v18_NFLD.pdf",
+          "source_path": "2026-11-04/Racecards_Intelligence_Report_20261104_Readable_v18_NFLD.pdf",
+          "source_blob_sha": "ae30264d2921c5619e781061a883cf5071a20a28"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-04/index.html",
+      "source_commit": "21d3c59d51f8e6f5829c7c3498b5ef9c389819c3",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-04/NFLD/TipSheet_NFLD_20261104.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-04/NFLD/TipSheet_NFLD_20261104.html",
+          "public_path": "samples/2026-11-04/NFLD/TipSheet_NFLD_20261104.html",
+          "source_path": "2026-11-04/TipSheet_NFLD_20261104.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-04/TipSheet_NFLD_20261104.html",
+          "source_blob_sha": "45f05f7f16226d43bafbfed4ef41201cc33dfded",
+          "sha256": "437d4e91912b8f9330f5e599aa706800af214d25ab6e602bfd69d8fb23110848"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-04/NFLD/NFLD_LeadThreatIndex_20261104.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-04/NFLD/NFLD_LeadThreatIndex_20261104.pdf",
+          "public_path": "samples/2026-11-04/NFLD/NFLD_LeadThreatIndex_20261104.pdf",
+          "source_path": "2026-11-04/NFLD_LeadThreatIndex_20261104.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-04/NFLD_LeadThreatIndex_20261104.pdf",
+          "source_blob_sha": "50d244e63cdd2a2d7536b1d0f883b665b7acf727",
+          "sha256": "b73079835d53eea0af9b1bc72d1d11df3707461627dff9fae3f0b656ac3a44de"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-04/NFLD/Racecards_Intelligence_Report_20261104_Readable_v18_NFLD.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-04/NFLD/Racecards_Intelligence_Report_20261104_Readable_v18_NFLD.pdf",
+          "public_path": "samples/2026-11-04/NFLD/Racecards_Intelligence_Report_20261104_Readable_v18_NFLD.pdf",
+          "source_path": "2026-11-04/Racecards_Intelligence_Report_20261104_Readable_v18_NFLD.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-04/Racecards_Intelligence_Report_20261104_Readable_v18_NFLD.pdf",
+          "source_blob_sha": "ae30264d2921c5619e781061a883cf5071a20a28",
+          "sha256": "61378cdaaa5334e442cabca39a7e1032ef7197499dbc6d2d211ac45dd3b204b7"
+        }
+      ]
     }
   }
 }
