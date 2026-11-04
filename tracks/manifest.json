@@ -5895,6 +5895,21 @@
         "label": "Tip Sheet"
       },
       {
+        "path": "samples/2026-11-04/NFLD/NFLD_LeadThreatIndex_20261104.pdf",
+        "date": "2026-11-04",
+        "label": "LeadThreatIndex\u2122"
+      },
+      {
+        "path": "samples/2026-11-04/NFLD/Racecards_Intelligence_Report_20261104_Readable_v18_NFLD.pdf",
+        "date": "2026-11-04",
+        "label": "Racecards Intelligence\u2122"
+      },
+      {
+        "path": "samples/2026-11-04/NFLD/TipSheet_NFLD_20261104.html",
+        "date": "2026-11-04",
+        "label": "Tip Sheet"
+      },
+      {
         "path": "tracks/NFLD/20261016-NFLD-teasertip.html",
         "date": "2026-10-16",
         "label": "Teaser Tip"
