@@ -1,9 +1,5 @@
 {
-  "date": "2026-11-04",
-  "status": "ready",
-  "track": "NFLD",
-  "source_index": "https://odds.harnesselite.com/2026-11-04/index.html",
-  "source_method": "regular_index",
-  "public_access": true,
-  "published_reports": 3
+  "date": "2026-11-05",
+  "status": "waiting",
+  "reason": "current_day_index_missing"
 }
