@@ -1,9 +1,5 @@
 {
-  "date": "2026-11-05",
-  "status": "ready",
-  "track": "HOP",
-  "source_index": "https://odds.harnesselite.com/2026-11-05/index.html",
-  "source_method": "regular_index",
-  "public_access": true,
-  "published_reports": 3
+  "date": "2026-11-06",
+  "status": "waiting",
+  "reason": "no_complete_current_day_track_blocks"
 }
