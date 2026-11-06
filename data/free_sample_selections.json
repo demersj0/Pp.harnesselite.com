@@ -235,6 +235,65 @@
           "sha256": "656c4849bb3b42c0aa7f029d4e05c8b3b6829de71567d857012edc8f673b7ba7"
         }
       ]
+    },
+    "2026-11-06": {
+      "date": "2026-11-06",
+      "track": "HOP",
+      "track_name": "Harrah's Hoosier Park",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-06/TipSheet_HOP_20261106.html",
+          "source_path": "2026-11-06/TipSheet_HOP_20261106.html",
+          "source_blob_sha": "0deaea95dd05881d5c1899fa215602e3a0908bae"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-06/HOP_LeadThreatIndex_20261106.pdf",
+          "source_path": "2026-11-06/HOP_LeadThreatIndex_20261106.pdf",
+          "source_blob_sha": "2aa7dd73592f17f842981ce81bc14f8970eedfca"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-06/Racecards_Intelligence_Report_20261106_Readable_v18_HOP.pdf",
+          "source_path": "2026-11-06/Racecards_Intelligence_Report_20261106_Readable_v18_HOP.pdf",
+          "source_blob_sha": "030af9b4115b3d3c2c5f8eb4a126337de746e9ff"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-06/index.html",
+      "source_commit": "72adf334dc958706736e9cf63128571fdeef862f",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-06/HOP/TipSheet_HOP_20261106.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-06/HOP/TipSheet_HOP_20261106.html",
+          "public_path": "samples/2026-11-06/HOP/TipSheet_HOP_20261106.html",
+          "source_path": "2026-11-06/TipSheet_HOP_20261106.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-06/TipSheet_HOP_20261106.html",
+          "source_blob_sha": "0deaea95dd05881d5c1899fa215602e3a0908bae",
+          "sha256": "46a13fa3626405cc57b0b5bf3c34c00c2450be69b18b6f5f4bf5d69c04ed0f7b"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-06/HOP/HOP_LeadThreatIndex_20261106.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-06/HOP/HOP_LeadThreatIndex_20261106.pdf",
+          "public_path": "samples/2026-11-06/HOP/HOP_LeadThreatIndex_20261106.pdf",
+          "source_path": "2026-11-06/HOP_LeadThreatIndex_20261106.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-06/HOP_LeadThreatIndex_20261106.pdf",
+          "source_blob_sha": "2aa7dd73592f17f842981ce81bc14f8970eedfca",
+          "sha256": "bd08370bd5a87f9b181ab7d4cc994f6822eb2731092fe2e4b170ec114585db7a"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-06/HOP/Racecards_Intelligence_Report_20261106_Readable_v18_HOP.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-06/HOP/Racecards_Intelligence_Report_20261106_Readable_v18_HOP.pdf",
+          "public_path": "samples/2026-11-06/HOP/Racecards_Intelligence_Report_20261106_Readable_v18_HOP.pdf",
+          "source_path": "2026-11-06/Racecards_Intelligence_Report_20261106_Readable_v18_HOP.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-06/Racecards_Intelligence_Report_20261106_Readable_v18_HOP.pdf",
+          "source_blob_sha": "030af9b4115b3d3c2c5f8eb4a126337de746e9ff",
+          "sha256": "b018c9431d926a6c92d90bffc929a80bfb136da98696f359b9fdfa4f9f7fed27"
+        }
+      ]
     }
   }
 }
