@@ -294,6 +294,65 @@
           "sha256": "b018c9431d926a6c92d90bffc929a80bfb136da98696f359b9fdfa4f9f7fed27"
         }
       ]
+    },
+    "2026-11-07": {
+      "date": "2026-11-07",
+      "track": "FLMD",
+      "track_name": "Flamboro Downs",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-07/TipSheet_FLMD_20261107.html",
+          "source_path": "2026-11-07/TipSheet_FLMD_20261107.html",
+          "source_blob_sha": "a2055ea2e7c750d62154f44e7829328449b48699"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-07/FLMD_LeadThreatIndex_20261107.pdf",
+          "source_path": "2026-11-07/FLMD_LeadThreatIndex_20261107.pdf",
+          "source_blob_sha": "77782181226cfe1ee046a982f5873d7cf4c59881"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-07/Racecards_Intelligence_Report_20261107_Readable_v18_FLMD.pdf",
+          "source_path": "2026-11-07/Racecards_Intelligence_Report_20261107_Readable_v18_FLMD.pdf",
+          "source_blob_sha": "6380505a424df336c960df7ee4678cfccdc8a94a"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-07/index.html",
+      "source_commit": "6bb55c376b440b568afb94ac92e2c002bdacf3e5",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-07/FLMD/TipSheet_FLMD_20261107.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-07/FLMD/TipSheet_FLMD_20261107.html",
+          "public_path": "samples/2026-11-07/FLMD/TipSheet_FLMD_20261107.html",
+          "source_path": "2026-11-07/TipSheet_FLMD_20261107.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-07/TipSheet_FLMD_20261107.html",
+          "source_blob_sha": "a2055ea2e7c750d62154f44e7829328449b48699",
+          "sha256": "94414c74f314b8e4081b883843f9b355c90a6088977a2cc5a88b69aadc1527d2"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-07/FLMD/FLMD_LeadThreatIndex_20261107.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-07/FLMD/FLMD_LeadThreatIndex_20261107.pdf",
+          "public_path": "samples/2026-11-07/FLMD/FLMD_LeadThreatIndex_20261107.pdf",
+          "source_path": "2026-11-07/FLMD_LeadThreatIndex_20261107.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-07/FLMD_LeadThreatIndex_20261107.pdf",
+          "source_blob_sha": "77782181226cfe1ee046a982f5873d7cf4c59881",
+          "sha256": "407fd487b5517f8ff7757a0b1810151b2bd46211d92b4c99d8c684fd74d8b28e"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-07/FLMD/Racecards_Intelligence_Report_20261107_Readable_v18_FLMD.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-07/FLMD/Racecards_Intelligence_Report_20261107_Readable_v18_FLMD.pdf",
+          "public_path": "samples/2026-11-07/FLMD/Racecards_Intelligence_Report_20261107_Readable_v18_FLMD.pdf",
+          "source_path": "2026-11-07/Racecards_Intelligence_Report_20261107_Readable_v18_FLMD.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-07/Racecards_Intelligence_Report_20261107_Readable_v18_FLMD.pdf",
+          "source_blob_sha": "6380505a424df336c960df7ee4678cfccdc8a94a",
+          "sha256": "0f54ca859e485bc476452f3008cb4a803c0e0827af5e5fae85168d0721d63476"
+        }
+      ]
     }
   }
 }
