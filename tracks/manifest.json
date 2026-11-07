@@ -699,6 +699,11 @@
         "path": "tracks/CBRN/20261103-CBRN-teasertip.html",
         "date": "2026-11-03",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/CBRN/20261108-CBRN-teasertip.html",
+        "date": "2026-11-08",
+        "label": "Teaser Tip"
       }
     ],
     "CHRTN": [
@@ -1519,6 +1524,11 @@
         "path": "archive/TipSheet_CUMB_20260621.html",
         "date": "2026-06-21",
         "label": "Tip Sheet"
+      },
+      {
+        "path": "tracks/CUMB/20261108-CUMB-teasertip.html",
+        "date": "2026-11-08",
+        "label": "Teaser Tip"
       }
     ],
     "DD": [
@@ -1922,6 +1932,11 @@
       {
         "path": "tracks/DEP/20261102-DEP-teasertip.html",
         "date": "2026-11-02",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/DEP/20261108-DEP-teasertip.html",
+        "date": "2026-11-08",
         "label": "Teaser Tip"
       }
     ],
@@ -2443,6 +2458,11 @@
       {
         "path": "tracks/FLMD/20261107-FLMD-teasertip.html",
         "date": "2026-11-07",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/FLMD/20261108-FLMD-teasertip.html",
+        "date": "2026-11-08",
         "label": "Teaser Tip"
       }
     ],
@@ -6118,6 +6138,11 @@
         "path": "tracks/NFLD/20261104-NFLD-teasertip.html",
         "date": "2026-11-04",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/NFLD/20261108-NFLD-teasertip.html",
+        "date": "2026-11-08",
+        "label": "Teaser Tip"
       }
     ],
     "NTSD": [
@@ -6918,6 +6943,11 @@
         "path": "tracks/PHL/20261106-PHL-teasertip.html",
         "date": "2026-11-06",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/PHL/20261108-PHL-teasertip.html",
+        "date": "2026-11-08",
+        "label": "Teaser Tip"
       }
     ],
     "PRC": [
@@ -7391,6 +7421,11 @@
       {
         "path": "tracks/RCR/20261105-RCR-teasertip.html",
         "date": "2026-11-05",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/RCR/20261108-RCR-teasertip.html",
+        "date": "2026-11-08",
         "label": "Teaser Tip"
       }
     ],
@@ -7880,6 +7915,11 @@
         "path": "tracks/STGA/20261107-STGA-teasertip.html",
         "date": "2026-11-07",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/STGA/20261108-STGA-teasertip.html",
+        "date": "2026-11-08",
+        "label": "Teaser Tip"
       }
     ],
     "SUMM": [
@@ -8304,6 +8344,11 @@
       {
         "path": "tracks/TRURO/20261101-TRURO-teasertip.html",
         "date": "2026-11-01",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/TRURO/20261108-TRURO-teasertip.html",
+        "date": "2026-11-08",
         "label": "Teaser Tip"
       }
     ],
@@ -9038,6 +9083,11 @@
       {
         "path": "tracks/WBSB/20261107-WBSB-teasertip.html",
         "date": "2026-11-07",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/WBSB/20261108-WBSB-teasertip.html",
+        "date": "2026-11-08",
         "label": "Teaser Tip"
       }
     ],
