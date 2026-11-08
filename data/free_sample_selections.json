@@ -353,6 +353,65 @@
           "sha256": "0f54ca859e485bc476452f3008cb4a803c0e0827af5e5fae85168d0721d63476"
         }
       ]
+    },
+    "2026-11-08": {
+      "date": "2026-11-08",
+      "track": "WBSB",
+      "track_name": "Woodbine Mohawk Park",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-08/TipSheet_WBSB_20261108.html",
+          "source_path": "2026-11-08/TipSheet_WBSB_20261108.html",
+          "source_blob_sha": "15a86c438260cf1663b107e0e2944e3ae5e21245"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-08/WBSB_LeadThreatIndex_20261108.pdf",
+          "source_path": "2026-11-08/WBSB_LeadThreatIndex_20261108.pdf",
+          "source_blob_sha": "8d3e5d0a326f528eee87e12ca20eefb2aa05ef21"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-08/Racecards_Intelligence_Report_20261108_Readable_v18_WBSB.pdf",
+          "source_path": "2026-11-08/Racecards_Intelligence_Report_20261108_Readable_v18_WBSB.pdf",
+          "source_blob_sha": "2aaae427395eee526c9b462b056b1745f47d308a"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-08/index.html",
+      "source_commit": "f95bbb85807c2ae5006d57799739b50dc419f8f9",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-08/WBSB/TipSheet_WBSB_20261108.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-08/WBSB/TipSheet_WBSB_20261108.html",
+          "public_path": "samples/2026-11-08/WBSB/TipSheet_WBSB_20261108.html",
+          "source_path": "2026-11-08/TipSheet_WBSB_20261108.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-08/TipSheet_WBSB_20261108.html",
+          "source_blob_sha": "15a86c438260cf1663b107e0e2944e3ae5e21245",
+          "sha256": "b01c97dacbcadaa7465ef02e3d6456ffaa78232c6e860bb167e63001a6e3be7f"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-08/WBSB/WBSB_LeadThreatIndex_20261108.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-08/WBSB/WBSB_LeadThreatIndex_20261108.pdf",
+          "public_path": "samples/2026-11-08/WBSB/WBSB_LeadThreatIndex_20261108.pdf",
+          "source_path": "2026-11-08/WBSB_LeadThreatIndex_20261108.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-08/WBSB_LeadThreatIndex_20261108.pdf",
+          "source_blob_sha": "8d3e5d0a326f528eee87e12ca20eefb2aa05ef21",
+          "sha256": "5645527b07d73ccc4f321bf6f457575bd600a3e9d0f5c44a23353287ebdff6d7"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-08/WBSB/Racecards_Intelligence_Report_20261108_Readable_v18_WBSB.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-08/WBSB/Racecards_Intelligence_Report_20261108_Readable_v18_WBSB.pdf",
+          "public_path": "samples/2026-11-08/WBSB/Racecards_Intelligence_Report_20261108_Readable_v18_WBSB.pdf",
+          "source_path": "2026-11-08/Racecards_Intelligence_Report_20261108_Readable_v18_WBSB.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-08/Racecards_Intelligence_Report_20261108_Readable_v18_WBSB.pdf",
+          "source_blob_sha": "2aaae427395eee526c9b462b056b1745f47d308a",
+          "sha256": "515f407aca274d635e8da0a0b24dab8b63e4ed09c6f91a10f196d54745d09dbf"
+        }
+      ]
     }
   }
 }
