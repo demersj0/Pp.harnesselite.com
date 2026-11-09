@@ -3673,6 +3673,21 @@
         "label": "Tip Sheet"
       },
       {
+        "path": "samples/2026-11-09/LON/LON_LeadThreatIndex_20261109.pdf",
+        "date": "2026-11-09",
+        "label": "LeadThreatIndex\u2122"
+      },
+      {
+        "path": "samples/2026-11-09/LON/Racecards_Intelligence_Report_20261109_Readable_v18_LON.pdf",
+        "date": "2026-11-09",
+        "label": "Racecards Intelligence\u2122"
+      },
+      {
+        "path": "samples/2026-11-09/LON/TipSheet_LON_20261109.html",
+        "date": "2026-11-09",
+        "label": "Tip Sheet"
+      },
+      {
         "path": "tracks/LON/20261016-LON-teasertip.html",
         "date": "2026-10-16",
         "label": "Teaser Tip"
