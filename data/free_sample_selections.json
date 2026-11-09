@@ -412,6 +412,65 @@
           "sha256": "515f407aca274d635e8da0a0b24dab8b63e4ed09c6f91a10f196d54745d09dbf"
         }
       ]
+    },
+    "2026-11-09": {
+      "date": "2026-11-09",
+      "track": "LON",
+      "track_name": "Western Fair Raceway",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-09/TipSheet_LON_20261109.html",
+          "source_path": "2026-11-09/TipSheet_LON_20261109.html",
+          "source_blob_sha": "41acaa582595fb74a5b3b4d616a7dd6acc869828"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-09/LON_LeadThreatIndex_20261109.pdf",
+          "source_path": "2026-11-09/LON_LeadThreatIndex_20261109.pdf",
+          "source_blob_sha": "76d3709a4ff0ebf8de4af8301b1c79198ba7ddf9"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-09/Racecards_Intelligence_Report_20261109_Readable_v18_LON.pdf",
+          "source_path": "2026-11-09/Racecards_Intelligence_Report_20261109_Readable_v18_LON.pdf",
+          "source_blob_sha": "26bc1aa931a99a357688e116ff65da9df8492be0"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-09/index.html",
+      "source_commit": "236b0f5e8957b41823a9c613274af9f16000ab1d",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-09/LON/TipSheet_LON_20261109.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-09/LON/TipSheet_LON_20261109.html",
+          "public_path": "samples/2026-11-09/LON/TipSheet_LON_20261109.html",
+          "source_path": "2026-11-09/TipSheet_LON_20261109.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-09/TipSheet_LON_20261109.html",
+          "source_blob_sha": "41acaa582595fb74a5b3b4d616a7dd6acc869828",
+          "sha256": "ba6ffa4c94f8639bed7335f869a513f0dbb30635b239a0b87bcd24ebde21a3c4"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-09/LON/LON_LeadThreatIndex_20261109.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-09/LON/LON_LeadThreatIndex_20261109.pdf",
+          "public_path": "samples/2026-11-09/LON/LON_LeadThreatIndex_20261109.pdf",
+          "source_path": "2026-11-09/LON_LeadThreatIndex_20261109.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-09/LON_LeadThreatIndex_20261109.pdf",
+          "source_blob_sha": "76d3709a4ff0ebf8de4af8301b1c79198ba7ddf9",
+          "sha256": "270d10c52de6df48b0a24d4680d9eb45b79719f6242ef3bd3f7482eaf669f873"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-09/LON/Racecards_Intelligence_Report_20261109_Readable_v18_LON.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-09/LON/Racecards_Intelligence_Report_20261109_Readable_v18_LON.pdf",
+          "public_path": "samples/2026-11-09/LON/Racecards_Intelligence_Report_20261109_Readable_v18_LON.pdf",
+          "source_path": "2026-11-09/Racecards_Intelligence_Report_20261109_Readable_v18_LON.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-09/Racecards_Intelligence_Report_20261109_Readable_v18_LON.pdf",
+          "source_blob_sha": "26bc1aa931a99a357688e116ff65da9df8492be0",
+          "sha256": "e1b601654b9206ea99fbdc264e6700c2a02d1d7867a50cf3c8798875b638794b"
+        }
+      ]
     }
   }
 }
