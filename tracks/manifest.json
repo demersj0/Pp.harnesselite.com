@@ -642,6 +642,11 @@
         "path": "tracks/BTVA/20261107-BTVA-teasertip.html",
         "date": "2026-11-07",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/BTVA/20261111-BTVA-teasertip.html",
+        "date": "2026-11-11",
+        "label": "Teaser Tip"
       }
     ],
     "CBRN": [
@@ -1926,6 +1931,11 @@
         "path": "tracks/DD/20261110-DD-teasertip.html",
         "date": "2026-11-10",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/DD/20261111-DD-teasertip.html",
+        "date": "2026-11-11",
+        "label": "Teaser Tip"
       }
     ],
     "DEP": [
@@ -2186,6 +2196,11 @@
       {
         "path": "tracks/DTN/20261110-DTN-teasertip.html",
         "date": "2026-11-10",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/DTN/20261111-DTN-teasertip.html",
+        "date": "2026-11-11",
         "label": "Teaser Tip"
       }
     ],
@@ -2493,6 +2508,11 @@
       {
         "path": "tracks/FLMD/20261108-FLMD-teasertip.html",
         "date": "2026-11-08",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/FLMD/20261111-FLMD-teasertip.html",
+        "date": "2026-11-11",
         "label": "Teaser Tip"
       }
     ],
@@ -4762,6 +4782,11 @@
         "path": "tracks/MEA/20261106-MEA-teasertip.html",
         "date": "2026-11-06",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/MEA/20261111-MEA-teasertip.html",
+        "date": "2026-11-11",
+        "label": "Teaser Tip"
       }
     ],
     "MR": [
@@ -5283,6 +5308,11 @@
       {
         "path": "tracks/MR/20261110-MR-teasertip.html",
         "date": "2026-11-10",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/MR/20261111-MR-teasertip.html",
+        "date": "2026-11-11",
         "label": "Teaser Tip"
       }
     ],
@@ -6208,6 +6238,11 @@
         "path": "tracks/NFLD/20261110-NFLD-teasertip.html",
         "date": "2026-11-10",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/NFLD/20261111-NFLD-teasertip.html",
+        "date": "2026-11-11",
+        "label": "Teaser Tip"
       }
     ],
     "NTSD": [
@@ -6269,6 +6304,11 @@
       {
         "path": "tracks/NTSD/20261107-NTSD-teasertip.html",
         "date": "2026-11-07",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/NTSD/20261111-NTSD-teasertip.html",
+        "date": "2026-11-11",
         "label": "Teaser Tip"
       }
     ],
@@ -9771,6 +9811,11 @@
       {
         "path": "tracks/YR/20261110-YR-teasertip.html",
         "date": "2026-11-10",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/YR/20261111-YR-teasertip.html",
+        "date": "2026-11-11",
         "label": "Teaser Tip"
       }
     ]
