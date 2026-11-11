@@ -594,6 +594,21 @@
         "label": "Teaser Tip"
       },
       {
+        "path": "samples/2026-11-11/BTVA/BTVA_LeadThreatIndex_20261111.pdf",
+        "date": "2026-11-11",
+        "label": "LeadThreatIndex\u2122"
+      },
+      {
+        "path": "samples/2026-11-11/BTVA/Racecards_Intelligence_Report_20261111_Readable_v18_BTVA.pdf",
+        "date": "2026-11-11",
+        "label": "Racecards Intelligence\u2122"
+      },
+      {
+        "path": "samples/2026-11-11/BTVA/TipSheet_BTVA_20261111.html",
+        "date": "2026-11-11",
+        "label": "Tip Sheet"
+      },
+      {
         "path": "tracks/BTVA/20261017-BTVA-teasertip.html",
         "date": "2026-10-17",
         "label": "Teaser Tip"
