@@ -530,6 +530,65 @@
           "sha256": "8a752b9c0c5850fe72a31af6c0dcd44a643b3bd4fa758b72a9371d7958d0d940"
         }
       ]
+    },
+    "2026-11-11": {
+      "date": "2026-11-11",
+      "track": "BTVA",
+      "track_name": "Batavia Downs",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-11/TipSheet_BTVA_20261111.html",
+          "source_path": "2026-11-11/TipSheet_BTVA_20261111.html",
+          "source_blob_sha": "663090b14f00904e8fe983e4a4e40881a9d5ea83"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-11/BTVA_LeadThreatIndex_20261111.pdf",
+          "source_path": "2026-11-11/BTVA_LeadThreatIndex_20261111.pdf",
+          "source_blob_sha": "405d388b6b6b49e4c67d589372006d2aefbcc9b2"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-11/Racecards_Intelligence_Report_20261111_Readable_v18_BTVA.pdf",
+          "source_path": "2026-11-11/Racecards_Intelligence_Report_20261111_Readable_v18_BTVA.pdf",
+          "source_blob_sha": "3699b10465fd5a22afc5710811d924576ed7f671"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-11/index.html",
+      "source_commit": "3f0fb4a991a50bb145b738d46d3d6947cd869ae3",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-11/BTVA/TipSheet_BTVA_20261111.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-11/BTVA/TipSheet_BTVA_20261111.html",
+          "public_path": "samples/2026-11-11/BTVA/TipSheet_BTVA_20261111.html",
+          "source_path": "2026-11-11/TipSheet_BTVA_20261111.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-11/TipSheet_BTVA_20261111.html",
+          "source_blob_sha": "663090b14f00904e8fe983e4a4e40881a9d5ea83",
+          "sha256": "3cffa05c0f8d48a0ec80cbaa10b7b5fe7686b28901366f07732c718cc055086c"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-11/BTVA/BTVA_LeadThreatIndex_20261111.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-11/BTVA/BTVA_LeadThreatIndex_20261111.pdf",
+          "public_path": "samples/2026-11-11/BTVA/BTVA_LeadThreatIndex_20261111.pdf",
+          "source_path": "2026-11-11/BTVA_LeadThreatIndex_20261111.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-11/BTVA_LeadThreatIndex_20261111.pdf",
+          "source_blob_sha": "405d388b6b6b49e4c67d589372006d2aefbcc9b2",
+          "sha256": "2e126daad3c5d077ea350451fa37ff0a2ae7e53606f138bf26d7320675741333"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-11/BTVA/Racecards_Intelligence_Report_20261111_Readable_v18_BTVA.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-11/BTVA/Racecards_Intelligence_Report_20261111_Readable_v18_BTVA.pdf",
+          "public_path": "samples/2026-11-11/BTVA/Racecards_Intelligence_Report_20261111_Readable_v18_BTVA.pdf",
+          "source_path": "2026-11-11/Racecards_Intelligence_Report_20261111_Readable_v18_BTVA.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-11/Racecards_Intelligence_Report_20261111_Readable_v18_BTVA.pdf",
+          "source_blob_sha": "3699b10465fd5a22afc5710811d924576ed7f671",
+          "sha256": "a6f92d7998db4d17e1ffbb8b366a25f18c23ca8c1f75442d2eff9eb2fa112424"
+        }
+      ]
     }
   }
 }
