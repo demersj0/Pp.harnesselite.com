@@ -1,5 +1,5 @@
 {
   "date": "2026-11-12",
   "status": "waiting",
-  "reason": "current_day_index_missing"
+  "reason": "no_complete_current_day_track_blocks"
 }
