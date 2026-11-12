@@ -1,9 +1,5 @@
 {
-  "date": "2026-11-11",
-  "status": "ready",
-  "track": "BTVA",
-  "source_index": "https://odds.harnesselite.com/2026-11-11/index.html",
-  "source_method": "regular_index",
-  "public_access": true,
-  "published_reports": 3
+  "date": "2026-11-12",
+  "status": "waiting",
+  "reason": "current_day_index_missing"
 }
