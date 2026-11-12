@@ -2491,6 +2491,21 @@
         "label": "Tip Sheet"
       },
       {
+        "path": "samples/2026-11-12/FLMD/FLMD_LeadThreatIndex_20261112.pdf",
+        "date": "2026-11-12",
+        "label": "LeadThreatIndex\u2122"
+      },
+      {
+        "path": "samples/2026-11-12/FLMD/Racecards_Intelligence_Report_20261112_Readable_v18_FLMD.pdf",
+        "date": "2026-11-12",
+        "label": "Racecards Intelligence\u2122"
+      },
+      {
+        "path": "samples/2026-11-12/FLMD/TipSheet_FLMD_20261112.html",
+        "date": "2026-11-12",
+        "label": "Tip Sheet"
+      },
+      {
         "path": "tracks/FLMD/20261015-FLMD-teasertip.html",
         "date": "2026-10-15",
         "label": "Teaser Tip"
