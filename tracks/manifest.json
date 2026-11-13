@@ -3133,6 +3133,21 @@
         "label": "Tip Sheet"
       },
       {
+        "path": "samples/2026-11-13/HOP/HOP_LeadThreatIndex_20261113.pdf",
+        "date": "2026-11-13",
+        "label": "LeadThreatIndex\u2122"
+      },
+      {
+        "path": "samples/2026-11-13/HOP/Racecards_Intelligence_Report_20261113_Readable_v18_HOP.pdf",
+        "date": "2026-11-13",
+        "label": "Racecards Intelligence\u2122"
+      },
+      {
+        "path": "samples/2026-11-13/HOP/TipSheet_HOP_20261113.html",
+        "date": "2026-11-13",
+        "label": "Tip Sheet"
+      },
+      {
         "path": "tracks/HOP/20261015-HOP-teasertip.html",
         "date": "2026-10-15",
         "label": "Teaser Tip"
