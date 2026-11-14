@@ -707,6 +707,65 @@
           "sha256": "1319ae72e17efb03f04c12aab6a6b09e6f2b72347425e743300ee2eda4592b31"
         }
       ]
+    },
+    "2026-11-14": {
+      "date": "2026-11-14",
+      "track": "CNML",
+      "track_name": "Century Mile",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-14/TipSheet_CNML_20261114.html",
+          "source_path": "2026-11-14/TipSheet_CNML_20261114.html",
+          "source_blob_sha": "a97c577b1c480c879127032941373746a02320c9"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-14/CNML_LeadThreatIndex_20261114.pdf",
+          "source_path": "2026-11-14/CNML_LeadThreatIndex_20261114.pdf",
+          "source_blob_sha": "748d8257cb09ea6d24e5ce4d62b52b20f8d95ef8"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-14/Racecards_Intelligence_Report_20261114_Readable_v18_CNML.pdf",
+          "source_path": "2026-11-14/Racecards_Intelligence_Report_20261114_Readable_v18_CNML.pdf",
+          "source_blob_sha": "23bc2a6687210da86acf0d37ed36da3f5df13914"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-14/index.html",
+      "source_commit": "6b1a924a25db31dc525b6c125bfe4e9fbcd2e50c",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-14/CNML/TipSheet_CNML_20261114.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-14/CNML/TipSheet_CNML_20261114.html",
+          "public_path": "samples/2026-11-14/CNML/TipSheet_CNML_20261114.html",
+          "source_path": "2026-11-14/TipSheet_CNML_20261114.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-14/TipSheet_CNML_20261114.html",
+          "source_blob_sha": "a97c577b1c480c879127032941373746a02320c9",
+          "sha256": "55272ab733c86a00d524762f8febded9a487f17bc94960234322d76092edb3ad"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-14/CNML/CNML_LeadThreatIndex_20261114.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-14/CNML/CNML_LeadThreatIndex_20261114.pdf",
+          "public_path": "samples/2026-11-14/CNML/CNML_LeadThreatIndex_20261114.pdf",
+          "source_path": "2026-11-14/CNML_LeadThreatIndex_20261114.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-14/CNML_LeadThreatIndex_20261114.pdf",
+          "source_blob_sha": "748d8257cb09ea6d24e5ce4d62b52b20f8d95ef8",
+          "sha256": "dfe0ce489c8ef990b73c0b2913e59562b4b8eb491b439ebf807595857eaf9fb0"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-14/CNML/Racecards_Intelligence_Report_20261114_Readable_v18_CNML.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-14/CNML/Racecards_Intelligence_Report_20261114_Readable_v18_CNML.pdf",
+          "public_path": "samples/2026-11-14/CNML/Racecards_Intelligence_Report_20261114_Readable_v18_CNML.pdf",
+          "source_path": "2026-11-14/Racecards_Intelligence_Report_20261114_Readable_v18_CNML.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-14/Racecards_Intelligence_Report_20261114_Readable_v18_CNML.pdf",
+          "source_blob_sha": "23bc2a6687210da86acf0d37ed36da3f5df13914",
+          "sha256": "50019e94a3e28a0827fab8fa8e7804e63e6d3b9f2876ff5283461af2f093264a"
+        }
+      ]
     }
   }
 }
