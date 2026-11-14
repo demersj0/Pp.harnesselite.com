@@ -1409,6 +1409,21 @@
         "label": "Racecards Intelligence\u2122"
       },
       {
+        "path": "samples/2026-11-14/CNML/CNML_LeadThreatIndex_20261114.pdf",
+        "date": "2026-11-14",
+        "label": "LeadThreatIndex\u2122"
+      },
+      {
+        "path": "samples/2026-11-14/CNML/Racecards_Intelligence_Report_20261114_Readable_v18_CNML.pdf",
+        "date": "2026-11-14",
+        "label": "Racecards Intelligence\u2122"
+      },
+      {
+        "path": "samples/2026-11-14/CNML/TipSheet_CNML_20261114.html",
+        "date": "2026-11-14",
+        "label": "Tip Sheet"
+      },
+      {
         "path": "tracks/CNML/20261016-CNML-teasertip.html",
         "date": "2026-10-16",
         "label": "Teaser Tip"
