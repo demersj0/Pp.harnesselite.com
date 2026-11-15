@@ -9431,6 +9431,21 @@
         "label": "LeadThreatIndex\u2122"
       },
       {
+        "path": "samples/2026-11-15/WBSB/Racecards_Intelligence_Report_20261115_Readable_v18_WBSB.pdf",
+        "date": "2026-11-15",
+        "label": "Racecards Intelligence\u2122"
+      },
+      {
+        "path": "samples/2026-11-15/WBSB/TipSheet_WBSB_20261115.html",
+        "date": "2026-11-15",
+        "label": "Tip Sheet"
+      },
+      {
+        "path": "samples/2026-11-15/WBSB/WBSB_LeadThreatIndex_20261115.pdf",
+        "date": "2026-11-15",
+        "label": "LeadThreatIndex\u2122"
+      },
+      {
         "path": "tracks/WBSB/20261016-WBSB-teasertip.html",
         "date": "2026-10-16",
         "label": "Teaser Tip"
