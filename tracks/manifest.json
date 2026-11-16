@@ -1978,6 +1978,21 @@
         "label": "Racecards Intelligence\u2122"
       },
       {
+        "path": "samples/2026-11-16/DD/DD_LeadThreatIndex_20261116.pdf",
+        "date": "2026-11-16",
+        "label": "LeadThreatIndex\u2122"
+      },
+      {
+        "path": "samples/2026-11-16/DD/Racecards_Intelligence_Report_20261116_Readable_v18_DD.pdf",
+        "date": "2026-11-16",
+        "label": "Racecards Intelligence\u2122"
+      },
+      {
+        "path": "samples/2026-11-16/DD/TipSheet_DD_20261116.html",
+        "date": "2026-11-16",
+        "label": "Tip Sheet"
+      },
+      {
         "path": "tracks/DD/20261102-DD-teasertip.html",
         "date": "2026-11-02",
         "label": "Teaser Tip"
