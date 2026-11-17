@@ -3913,6 +3913,21 @@
         "label": "Tip Sheet"
       },
       {
+        "path": "samples/2026-11-17/LON/LON_LeadThreatIndex_20261117.pdf",
+        "date": "2026-11-17",
+        "label": "LeadThreatIndex\u2122"
+      },
+      {
+        "path": "samples/2026-11-17/LON/Racecards_Intelligence_Report_20261117_Readable_v18_LON.pdf",
+        "date": "2026-11-17",
+        "label": "Racecards Intelligence\u2122"
+      },
+      {
+        "path": "samples/2026-11-17/LON/TipSheet_LON_20261117.html",
+        "date": "2026-11-17",
+        "label": "Tip Sheet"
+      },
+      {
         "path": "tracks/LON/20261016-LON-teasertip.html",
         "date": "2026-10-16",
         "label": "Teaser Tip"
