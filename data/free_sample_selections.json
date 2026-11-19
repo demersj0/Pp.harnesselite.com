@@ -1002,6 +1002,65 @@
           "sha256": "6a19de3d40e232e83342360fa28c7c00b6624e17e74eb4ac70f0d65b1c0bdc4c"
         }
       ]
+    },
+    "2026-11-19": {
+      "date": "2026-11-19",
+      "track": "RCR",
+      "track_name": "Rosecroft Raceway",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-19/TipSheet_RCR_20261119.html",
+          "source_path": "2026-11-19/TipSheet_RCR_20261119.html",
+          "source_blob_sha": "1ed6690617a9353dd473dd3038e68880de8d7542"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-19/RCR_LeadThreatIndex_20261119.pdf",
+          "source_path": "2026-11-19/RCR_LeadThreatIndex_20261119.pdf",
+          "source_blob_sha": "390d877c5e8cdd80b47c40627745c63cddf62f88"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-19/Racecards_Intelligence_Report_20261119_Readable_v18_RCR.pdf",
+          "source_path": "2026-11-19/Racecards_Intelligence_Report_20261119_Readable_v18_RCR.pdf",
+          "source_blob_sha": "fbc81db88fa9dcfcc63a847f21483af2b408e14f"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-19/index.html",
+      "source_commit": "c73239883116e1d756b87cc4997356ccd5643ad6",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-19/RCR/TipSheet_RCR_20261119.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-19/RCR/TipSheet_RCR_20261119.html",
+          "public_path": "samples/2026-11-19/RCR/TipSheet_RCR_20261119.html",
+          "source_path": "2026-11-19/TipSheet_RCR_20261119.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-19/TipSheet_RCR_20261119.html",
+          "source_blob_sha": "1ed6690617a9353dd473dd3038e68880de8d7542",
+          "sha256": "3d3220820c844e92133e984292a5e2f06d9c1e3b89513df740a13db344ab3e28"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-19/RCR/RCR_LeadThreatIndex_20261119.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-19/RCR/RCR_LeadThreatIndex_20261119.pdf",
+          "public_path": "samples/2026-11-19/RCR/RCR_LeadThreatIndex_20261119.pdf",
+          "source_path": "2026-11-19/RCR_LeadThreatIndex_20261119.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-19/RCR_LeadThreatIndex_20261119.pdf",
+          "source_blob_sha": "390d877c5e8cdd80b47c40627745c63cddf62f88",
+          "sha256": "c4a707bdc53f357fbe450a0cc754d613d8e883946e3e958363abea298fb418ef"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-19/RCR/Racecards_Intelligence_Report_20261119_Readable_v18_RCR.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-19/RCR/Racecards_Intelligence_Report_20261119_Readable_v18_RCR.pdf",
+          "public_path": "samples/2026-11-19/RCR/Racecards_Intelligence_Report_20261119_Readable_v18_RCR.pdf",
+          "source_path": "2026-11-19/Racecards_Intelligence_Report_20261119_Readable_v18_RCR.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-19/Racecards_Intelligence_Report_20261119_Readable_v18_RCR.pdf",
+          "source_blob_sha": "fbc81db88fa9dcfcc63a847f21483af2b408e14f",
+          "sha256": "c8cdabb265079d28ea757b0ebbe1406ca535f6c39427b03ba2b588314bcdce7f"
+        }
+      ]
     }
   }
 }
