@@ -1674,6 +1674,11 @@
         "path": "tracks/CUMB/20261121-CUMB-teasertip.html",
         "date": "2026-11-21",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/CUMB/20261122-CUMB-teasertip.html",
+        "date": "2026-11-22",
+        "label": "Teaser Tip"
       }
     ],
     "DD": [
@@ -2152,6 +2157,11 @@
       {
         "path": "tracks/DEP/20261116-DEP-teasertip.html",
         "date": "2026-11-16",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/DEP/20261122-DEP-teasertip.html",
+        "date": "2026-11-22",
         "label": "Teaser Tip"
       }
     ],
@@ -2783,6 +2793,11 @@
       {
         "path": "tracks/FLMD/20261119-FLMD-teasertip.html",
         "date": "2026-11-19",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/FLMD/20261122-FLMD-teasertip.html",
+        "date": "2026-11-22",
         "label": "Teaser Tip"
       }
     ],
@@ -6703,6 +6718,11 @@
         "path": "tracks/NFLD/20261118-NFLD-teasertip.html",
         "date": "2026-11-18",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/NFLD/20261122-NFLD-teasertip.html",
+        "date": "2026-11-22",
+        "label": "Teaser Tip"
       }
     ],
     "NTSD": [
@@ -7572,6 +7592,11 @@
       {
         "path": "tracks/PHL/20261120-PHL-teasertip.html",
         "date": "2026-11-20",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/PHL/20261122-PHL-teasertip.html",
+        "date": "2026-11-22",
         "label": "Teaser Tip"
       }
     ],
@@ -8624,6 +8649,11 @@
       {
         "path": "tracks/STGA/20261121-STGA-teasertip.html",
         "date": "2026-11-21",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/STGA/20261122-STGA-teasertip.html",
+        "date": "2026-11-22",
         "label": "Teaser Tip"
       }
     ],
@@ -9893,6 +9923,11 @@
       {
         "path": "tracks/WBSB/20261121-WBSB-teasertip.html",
         "date": "2026-11-21",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/WBSB/20261122-WBSB-teasertip.html",
+        "date": "2026-11-22",
         "label": "Teaser Tip"
       }
     ],
