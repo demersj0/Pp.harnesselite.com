@@ -1120,6 +1120,65 @@
           "sha256": "8b0b533035393a9cd3595ca14721d51a3c9ae9e1c94a098943834c2f082d1a98"
         }
       ]
+    },
+    "2026-11-21": {
+      "date": "2026-11-21",
+      "track": "DTN",
+      "track_name": "Dayton Raceway",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-21/TipSheet_DTN_20261121.html",
+          "source_path": "2026-11-21/TipSheet_DTN_20261121.html",
+          "source_blob_sha": "45188260e28b8b0fb1614b986ac6d5ed61a5c38d"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-21/DTN_LeadThreatIndex_20261121.pdf",
+          "source_path": "2026-11-21/DTN_LeadThreatIndex_20261121.pdf",
+          "source_blob_sha": "b92082cdfd320103502c7c578b053a9474891fdd"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-21/Racecards_Intelligence_Report_20261121_Readable_v18_DTN.pdf",
+          "source_path": "2026-11-21/Racecards_Intelligence_Report_20261121_Readable_v18_DTN.pdf",
+          "source_blob_sha": "bd1ea6fd664197f3fb0835b49579825f4eaa33c1"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-21/index.html",
+      "source_commit": "b59a27ef69eec97453c6178de2ddc7eec9cc6b00",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-21/DTN/TipSheet_DTN_20261121.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-21/DTN/TipSheet_DTN_20261121.html",
+          "public_path": "samples/2026-11-21/DTN/TipSheet_DTN_20261121.html",
+          "source_path": "2026-11-21/TipSheet_DTN_20261121.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-21/TipSheet_DTN_20261121.html",
+          "source_blob_sha": "45188260e28b8b0fb1614b986ac6d5ed61a5c38d",
+          "sha256": "aff58d5877038bf80ca97619a9ba4f725211dfc501945391beceb0a0cb2f0236"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-21/DTN/DTN_LeadThreatIndex_20261121.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-21/DTN/DTN_LeadThreatIndex_20261121.pdf",
+          "public_path": "samples/2026-11-21/DTN/DTN_LeadThreatIndex_20261121.pdf",
+          "source_path": "2026-11-21/DTN_LeadThreatIndex_20261121.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-21/DTN_LeadThreatIndex_20261121.pdf",
+          "source_blob_sha": "b92082cdfd320103502c7c578b053a9474891fdd",
+          "sha256": "f0d4ca64767f4ea51270c226e7613739a01f295b74b20108729fc89294a2df3f"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-21/DTN/Racecards_Intelligence_Report_20261121_Readable_v18_DTN.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-21/DTN/Racecards_Intelligence_Report_20261121_Readable_v18_DTN.pdf",
+          "public_path": "samples/2026-11-21/DTN/Racecards_Intelligence_Report_20261121_Readable_v18_DTN.pdf",
+          "source_path": "2026-11-21/Racecards_Intelligence_Report_20261121_Readable_v18_DTN.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-21/Racecards_Intelligence_Report_20261121_Readable_v18_DTN.pdf",
+          "source_blob_sha": "bd1ea6fd664197f3fb0835b49579825f4eaa33c1",
+          "sha256": "7e75b1d61c112aa021cf86e1dc380dfcab271fe5bc56279a4aef67fc8ab07e99"
+        }
+      ]
     }
   }
 }
