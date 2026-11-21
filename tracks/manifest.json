@@ -2304,6 +2304,21 @@
         "label": "Racecards Intelligence\u2122"
       },
       {
+        "path": "samples/2026-11-21/DTN/DTN_LeadThreatIndex_20261121.pdf",
+        "date": "2026-11-21",
+        "label": "LeadThreatIndex\u2122"
+      },
+      {
+        "path": "samples/2026-11-21/DTN/Racecards_Intelligence_Report_20261121_Readable_v18_DTN.pdf",
+        "date": "2026-11-21",
+        "label": "Racecards Intelligence\u2122"
+      },
+      {
+        "path": "samples/2026-11-21/DTN/TipSheet_DTN_20261121.html",
+        "date": "2026-11-21",
+        "label": "Tip Sheet"
+      },
+      {
         "path": "tracks/DTN/20261015-DTN-teasertip.html",
         "date": "2026-10-15",
         "label": "Teaser Tip"
