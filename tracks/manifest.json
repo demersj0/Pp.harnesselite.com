@@ -8577,6 +8577,21 @@
         "label": "Tip Sheet"
       },
       {
+        "path": "samples/2026-11-22/STGA/Racecards_Intelligence_Report_20261122_Readable_v18_STGA.pdf",
+        "date": "2026-11-22",
+        "label": "Racecards Intelligence\u2122"
+      },
+      {
+        "path": "samples/2026-11-22/STGA/STGA_LeadThreatIndex_20261122.pdf",
+        "date": "2026-11-22",
+        "label": "LeadThreatIndex\u2122"
+      },
+      {
+        "path": "samples/2026-11-22/STGA/TipSheet_STGA_20261122.html",
+        "date": "2026-11-22",
+        "label": "Tip Sheet"
+      },
+      {
         "path": "tracks/STGA/20261017-STGA-teasertip.html",
         "date": "2026-10-17",
         "label": "Teaser Tip"
