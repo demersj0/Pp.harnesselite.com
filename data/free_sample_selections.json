@@ -1179,6 +1179,65 @@
           "sha256": "7e75b1d61c112aa021cf86e1dc380dfcab271fe5bc56279a4aef67fc8ab07e99"
         }
       ]
+    },
+    "2026-11-22": {
+      "date": "2026-11-22",
+      "track": "STGA",
+      "track_name": "Saratoga Casino Hotel",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-22/TipSheet_STGA_20261122.html",
+          "source_path": "2026-11-22/TipSheet_STGA_20261122.html",
+          "source_blob_sha": "5c240f9459bcbd10980792ef4d544ff99c5ae558"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-22/STGA_LeadThreatIndex_20261122.pdf",
+          "source_path": "2026-11-22/STGA_LeadThreatIndex_20261122.pdf",
+          "source_blob_sha": "5835f4cf3986b966f35422951b3b9260a3d4fe0a"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-22/Racecards_Intelligence_Report_20261122_Readable_v18_STGA.pdf",
+          "source_path": "2026-11-22/Racecards_Intelligence_Report_20261122_Readable_v18_STGA.pdf",
+          "source_blob_sha": "dffa9420371a31c4b96a0b33c054fa5285b3658d"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-22/index.html",
+      "source_commit": "ebe7fc6ab3deb1cf160890fbc42fbe4a87d284ae",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-22/STGA/TipSheet_STGA_20261122.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-22/STGA/TipSheet_STGA_20261122.html",
+          "public_path": "samples/2026-11-22/STGA/TipSheet_STGA_20261122.html",
+          "source_path": "2026-11-22/TipSheet_STGA_20261122.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-22/TipSheet_STGA_20261122.html",
+          "source_blob_sha": "5c240f9459bcbd10980792ef4d544ff99c5ae558",
+          "sha256": "d03b8227b373720fb3b68496d2f3713326a1d3c93cb4c497bb5a872fa8898741"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-22/STGA/STGA_LeadThreatIndex_20261122.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-22/STGA/STGA_LeadThreatIndex_20261122.pdf",
+          "public_path": "samples/2026-11-22/STGA/STGA_LeadThreatIndex_20261122.pdf",
+          "source_path": "2026-11-22/STGA_LeadThreatIndex_20261122.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-22/STGA_LeadThreatIndex_20261122.pdf",
+          "source_blob_sha": "5835f4cf3986b966f35422951b3b9260a3d4fe0a",
+          "sha256": "7f68f9af262a84abaa4c089a3d7378cd0c3fb8b473a7463e896e1457128a4d30"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-22/STGA/Racecards_Intelligence_Report_20261122_Readable_v18_STGA.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-22/STGA/Racecards_Intelligence_Report_20261122_Readable_v18_STGA.pdf",
+          "public_path": "samples/2026-11-22/STGA/Racecards_Intelligence_Report_20261122_Readable_v18_STGA.pdf",
+          "source_path": "2026-11-22/Racecards_Intelligence_Report_20261122_Readable_v18_STGA.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-22/Racecards_Intelligence_Report_20261122_Readable_v18_STGA.pdf",
+          "source_blob_sha": "dffa9420371a31c4b96a0b33c054fa5285b3658d",
+          "sha256": "9e41990958cf274a60a06440b585e55f0c7ad506bbe9d1c786f962786c1efbf7"
+        }
+      ]
     }
   }
 }
