@@ -1297,6 +1297,65 @@
           "sha256": "6e8b47ff492680fd1b85ba6189441c60c25aeee5bd8edb573b1bb473ef22601a"
         }
       ]
+    },
+    "2026-11-24": {
+      "date": "2026-11-24",
+      "track": "MR",
+      "track_name": "Monticello Raceway",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-24/TipSheet_MR_20261124.html",
+          "source_path": "2026-11-24/TipSheet_MR_20261124.html",
+          "source_blob_sha": "0040267e587643047072fbfc08237f7b2c179a93"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-24/MR_LeadThreatIndex_20261124.pdf",
+          "source_path": "2026-11-24/MR_LeadThreatIndex_20261124.pdf",
+          "source_blob_sha": "fcadc2495e9ad662f04a06e505cc43180081a896"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-24/Racecards_Intelligence_Report_20261124_Readable_v18_MR.pdf",
+          "source_path": "2026-11-24/Racecards_Intelligence_Report_20261124_Readable_v18_MR.pdf",
+          "source_blob_sha": "94d0bf4327949d7ccbbac597920ad3b5788ac353"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-24/index.html",
+      "source_commit": "a98a88ac52b8c2e2aed4b32cbd3aeab2a9a1a68f",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-24/MR/TipSheet_MR_20261124.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-24/MR/TipSheet_MR_20261124.html",
+          "public_path": "samples/2026-11-24/MR/TipSheet_MR_20261124.html",
+          "source_path": "2026-11-24/TipSheet_MR_20261124.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-24/TipSheet_MR_20261124.html",
+          "source_blob_sha": "0040267e587643047072fbfc08237f7b2c179a93",
+          "sha256": "4f93bea270a368113950e265d3592fecbdb5238832968b5d2461db1df243897e"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-24/MR/MR_LeadThreatIndex_20261124.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-24/MR/MR_LeadThreatIndex_20261124.pdf",
+          "public_path": "samples/2026-11-24/MR/MR_LeadThreatIndex_20261124.pdf",
+          "source_path": "2026-11-24/MR_LeadThreatIndex_20261124.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-24/MR_LeadThreatIndex_20261124.pdf",
+          "source_blob_sha": "fcadc2495e9ad662f04a06e505cc43180081a896",
+          "sha256": "d6c3be088fbbc0dbf98fa1944986164024c270d18e5956873c61cbf86cb7683e"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-24/MR/Racecards_Intelligence_Report_20261124_Readable_v18_MR.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-24/MR/Racecards_Intelligence_Report_20261124_Readable_v18_MR.pdf",
+          "public_path": "samples/2026-11-24/MR/Racecards_Intelligence_Report_20261124_Readable_v18_MR.pdf",
+          "source_path": "2026-11-24/Racecards_Intelligence_Report_20261124_Readable_v18_MR.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-24/Racecards_Intelligence_Report_20261124_Readable_v18_MR.pdf",
+          "source_blob_sha": "94d0bf4327949d7ccbbac597920ad3b5788ac353",
+          "sha256": "2c308f7f5c1fcc0c371833b45ab599a7310a87ca682a1a52db5e226a6e477705"
+        }
+      ]
     }
   }
 }
