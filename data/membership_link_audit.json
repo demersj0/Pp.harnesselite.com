@@ -1,8 +1,8 @@
 {
   "generator": "harness-membership-v1",
   "membership_url": "https://www.harnesselite.com/purchase-harness-racing-handicapping-tip-sheets-data/p/black-book-89l6j",
-  "html_pages": 1313,
-  "pages_with_membership_link": 1313,
+  "html_pages": 1316,
+  "pages_with_membership_link": 1316,
   "files": {
     "2025-12-14/index.html": "ae1465f825d89cb7fb1f2a20c6831e15660aac78b32cee3e24084b431903ca8b",
     "2025-12-15.index.html": "45e7ba091a871c4ea929fa993d4d978998afb869dbfbbf43e45a2c2326773696",
@@ -794,7 +794,7 @@
     "archive/TipSheet_YR_20260618.html": "e66d595cd32228939136893c8e8c2e137c30aa5c2cd8df60779587afd3748cf0",
     "archive/TipSheet_YR_20260619.html": "ff70255ff69bf8fb8dda43c3a0f343083f58c9d214a7467a81b173fae7efcc2f",
     "archive/index.html": "d07beca813aad76699abc449065d148d0b7a989d762acd756514bb452588df47",
-    "index.html": "44603a5f5925d4e65b4a9050d59fdd8a6f80008dd4bcc11721f72f2027287325",
+    "index.html": "53e4b157b90a285f709090ea1319b0c2c62f912f6734baaea06321a4d07f223d",
     "samples/2026-11-01/TRRVS/TipSheet_TRRVS_20261101.html": "5b9de76f290e71a4fe57a14ee37d3cdbba44d5dc39c1bddb4ad23f19c36700ca",
     "samples/2026-11-02/PRC/TipSheet_PRC_20261102.html": "19d8678353fd93a6f790c79b5092e24d6a5e7b6c6fe03a3d3c44dbccb3e4541c",
     "samples/2026-11-04/NFLD/TipSheet_NFLD_20261104.html": "437d4e91912b8f9330f5e599aa706800af214d25ab6e602bfd69d8fb23110848",
@@ -878,7 +878,8 @@
     "tracks/CHRTN/20261114-CHRTN-teasertip.html": "45a0ac1c56cdbbc7bf02b39540daf0ce7877f8916d468a0536031103b508bb8c",
     "tracks/CHRTN/20261119-CHRTN-teasertip.html": "fcf960c804cb88db30271644663a1e052e08fd2710e4c67889493c4163f3aa91",
     "tracks/CHRTN/20261121-CHRTN-teasertip.html": "22a0959f465eb7302c9463a520cd29ff8e635f63ad2b2d45b93275f5b896e447",
-    "tracks/CHRTN/index.html": "3cfca5715ded1aee0f9b37705455ccd0152aab1af6bae6d1edae94a4eb6f4876",
+    "tracks/CHRTN/20261126-CHRTN-teasertip.html": "f9d917c314c4b1c0b0b9538371c136ce360752ab1be3a29df184b5310f661f04",
+    "tracks/CHRTN/index.html": "caddddd1568298ad26cbee90ed2efa88cb8325f26bc3136d2627c0cc656a65e0",
     "tracks/CLNTN/index.html": "84bfd5668d4065ef1211398f782134ea9acd4ba36a8875a3d366b9ada24a228d",
     "tracks/CND/index.html": "8edb08271e2ab08bf4ea8284e21a499702f340df7df4bea4a0fcd918828597a6",
     "tracks/CNML/20261016-CNML-teasertip.html": "2d95023011fda04dcb1f6be7fbea1e51ce7562dbeaf3bc99720d83241f88314f",
@@ -976,7 +977,8 @@
     "tracks/FLMD/20261119-FLMD-teasertip.html": "a280afa4ffb3140084a50e784bb0183d141f1cb3432a2a89c12c2bfad417b7d3",
     "tracks/FLMD/20261122-FLMD-teasertip.html": "8c653f18e154ff89400b5570f0e7750cf9023740b4be6e5eb98e286bc0c174cf",
     "tracks/FLMD/20261125-FLMD-teasertip.html": "324c56deb133644e54a08ba9d1f8d9da66959a2c23a8748d40940cd695f99d73",
-    "tracks/FLMD/index.html": "e88d27a58ec433b8855fa6c857ee05067ee5c272329fcbbe32a0bf215ce132fa",
+    "tracks/FLMD/20261126-FLMD-teasertip.html": "4391d1d2675ebc5f4a233da2c5db1bae8df99b122865edc0bedfa8581bc99acc",
+    "tracks/FLMD/index.html": "5a573631ac1d10e36beb3de4ecb080422ab8ed2df86533871c351e2de0556ad8",
     "tracks/GEOD/index.html": "d2b2d2de52c9fe4c68518ba575ec327f5370987232479ee564ca9449a36e0bcb",
     "tracks/GRVR/index.html": "828e08cb6ea810b99b2d52ba3252ba560ae97400e0f8a375ef3325bafa57ed37",
     "tracks/HAR/20261019-HAR-teasertip.html": "4ca1a0d4cae50360022c33ede3b9edb275f84754d0c86374028e271e3dbe8c24",
@@ -1271,7 +1273,8 @@
     "tracks/WBSB/20261121-WBSB-teasertip.html": "53462bfda2476570a81ea5b90ed107e6eb06ae57a2260e8d2bd46b5f505477f3",
     "tracks/WBSB/20261122-WBSB-teasertip.html": "a0b8b8e8b99659ca717345a27e7ebcfad63a55ce3c2d2a764cdb7026de1abdae",
     "tracks/WBSB/20261123-WBSB-teasertip.html": "a9951e158df6d33d81aa0985e287ef14dc0f01e48156115f65ddef3fe778e9ce",
-    "tracks/WBSB/index.html": "cfaac9be06b211a75d51168f94351f96efec89aca59ebeb86d5cafb3d33d29c3",
+    "tracks/WBSB/20261126-WBSB-teasertip.html": "9eb6df38cc158cba28bbcbf5353adb847c396034f3d4d6080a8217c6dcfca6b3",
+    "tracks/WBSB/index.html": "efb8838d6dc0389cfaee2ff16a84a0adbef4c45a81472d6892bbce9e09ecb4f5",
     "tracks/WDSTK/20261017-WDSTK-teasertip.html": "a2e2450b81a87a1ee0665fb3fc915128e71f9aaa3717371a353054447b091644",
     "tracks/WDSTK/20261018-WDSTK-teasertip.html": "56e6d101db83781ff7dc11b7dd5e0b6a7a32012da3782d1bc7a8480db5c2f8d1",
     "tracks/WDSTK/20261024-WDSTK-teasertip.html": "6b8f685420b0f4065d9b00e9a2f30b21ad2ae22231355c7b0dfcdbb731959a25",
@@ -1316,6 +1319,6 @@
     "tracks/YR/20261123-YR-teasertip.html": "e5c2d097d3d680c36c1c43f5ea7a1b9621e8f9abe76bec9d1e67f07ff9e4615b",
     "tracks/YR/20261124-YR-teasertip.html": "b10c1f69fba9aa3623d5564581825b219a22a249979034a6a040461ae56293d3",
     "tracks/YR/index.html": "e2f2dfe001bc38c3707cbde1fcba3a48272498dad9a71d4fd42e59fd7afd2fed",
-    "tracks/index.html": "0eb5849e390c734224868755d7d7dd4ac97c726da387d162235a7b1436fffda1"
+    "tracks/index.html": "98ac2ca9a35959618d5c9fd18b60d947964c0a9a54b5b5bdb0ad7bc61e0f49a5"
   }
 }

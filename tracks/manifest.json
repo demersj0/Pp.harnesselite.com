@@ -1126,6 +1126,11 @@
         "path": "tracks/CHRTN/20261121-CHRTN-teasertip.html",
         "date": "2026-11-21",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/CHRTN/20261126-CHRTN-teasertip.html",
+        "date": "2026-11-26",
+        "label": "Teaser Tip"
       }
     ],
     "CLNTN": [
@@ -2873,6 +2878,11 @@
       {
         "path": "tracks/FLMD/20261125-FLMD-teasertip.html",
         "date": "2026-11-25",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/FLMD/20261126-FLMD-teasertip.html",
+        "date": "2026-11-26",
         "label": "Teaser Tip"
       }
     ],
@@ -10103,6 +10113,11 @@
       {
         "path": "tracks/WBSB/20261123-WBSB-teasertip.html",
         "date": "2026-11-23",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/WBSB/20261126-WBSB-teasertip.html",
+        "date": "2026-11-26",
         "label": "Teaser Tip"
       }
     ],
