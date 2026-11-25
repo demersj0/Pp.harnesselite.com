@@ -702,6 +702,11 @@
         "path": "tracks/BTVA/20261121-BTVA-teasertip.html",
         "date": "2026-11-21",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/BTVA/20261125-BTVA-teasertip.html",
+        "date": "2026-11-25",
+        "label": "Teaser Tip"
       }
     ],
     "CBRN": [
@@ -2136,6 +2141,11 @@
         "path": "tracks/DD/20261124-DD-teasertip.html",
         "date": "2026-11-24",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/DD/20261125-DD-teasertip.html",
+        "date": "2026-11-25",
+        "label": "Teaser Tip"
       }
     ],
     "DEP": [
@@ -2486,6 +2496,11 @@
       {
         "path": "tracks/DTN/20261124-DTN-teasertip.html",
         "date": "2026-11-24",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/DTN/20261125-DTN-teasertip.html",
+        "date": "2026-11-25",
         "label": "Teaser Tip"
       }
     ],
@@ -2838,6 +2853,11 @@
       {
         "path": "tracks/FLMD/20261122-FLMD-teasertip.html",
         "date": "2026-11-22",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/FLMD/20261125-FLMD-teasertip.html",
+        "date": "2026-11-25",
         "label": "Teaser Tip"
       }
     ],
@@ -5262,6 +5282,11 @@
         "path": "tracks/MEA/20261120-MEA-teasertip.html",
         "date": "2026-11-20",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/MEA/20261125-MEA-teasertip.html",
+        "date": "2026-11-25",
+        "label": "Teaser Tip"
       }
     ],
     "MR": [
@@ -5843,6 +5868,11 @@
       {
         "path": "tracks/MR/20261124-MR-teasertip.html",
         "date": "2026-11-24",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/MR/20261125-MR-teasertip.html",
+        "date": "2026-11-25",
         "label": "Teaser Tip"
       }
     ],
@@ -6807,6 +6837,11 @@
       {
         "path": "tracks/NFLD/20261124-NFLD-teasertip.html",
         "date": "2026-11-24",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/NFLD/20261125-NFLD-teasertip.html",
+        "date": "2026-11-25",
         "label": "Teaser Tip"
       }
     ],
