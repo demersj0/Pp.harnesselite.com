@@ -1415,6 +1415,65 @@
           "sha256": "22e672b7b5eacb52f2f9640c195e1cabee8b207366a8bfb93587dc56ec095eaa"
         }
       ]
+    },
+    "2026-11-26": {
+      "date": "2026-11-26",
+      "track": "CHRTN",
+      "track_name": "Red Shores Charlottetown",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-26/TipSheet_CHRTN_20261126.html",
+          "source_path": "2026-11-26/TipSheet_CHRTN_20261126.html",
+          "source_blob_sha": "536210a37ee2a9fef347e6b576ac5bd927bb1cb7"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-26/CHRTN_LeadThreatIndex_20261126.pdf",
+          "source_path": "2026-11-26/CHRTN_LeadThreatIndex_20261126.pdf",
+          "source_blob_sha": "b3e69306ade7cdcfa48442eff9a67eae38081359"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-26/Racecards_Intelligence_Report_20261126_Readable_v18_CHRTN.pdf",
+          "source_path": "2026-11-26/Racecards_Intelligence_Report_20261126_Readable_v18_CHRTN.pdf",
+          "source_blob_sha": "c8ec304efd950d02030ccb891698a4b89f04ade6"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-26/index.html",
+      "source_commit": "48e639e665a872c718e296815017b0861d4d3b95",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-26/CHRTN/TipSheet_CHRTN_20261126.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-26/CHRTN/TipSheet_CHRTN_20261126.html",
+          "public_path": "samples/2026-11-26/CHRTN/TipSheet_CHRTN_20261126.html",
+          "source_path": "2026-11-26/TipSheet_CHRTN_20261126.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-26/TipSheet_CHRTN_20261126.html",
+          "source_blob_sha": "536210a37ee2a9fef347e6b576ac5bd927bb1cb7",
+          "sha256": "ea12bb1212715819b0dd19223db0f843676a2292ff64e4d045b47e04b4eddb5f"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-26/CHRTN/CHRTN_LeadThreatIndex_20261126.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-26/CHRTN/CHRTN_LeadThreatIndex_20261126.pdf",
+          "public_path": "samples/2026-11-26/CHRTN/CHRTN_LeadThreatIndex_20261126.pdf",
+          "source_path": "2026-11-26/CHRTN_LeadThreatIndex_20261126.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-26/CHRTN_LeadThreatIndex_20261126.pdf",
+          "source_blob_sha": "b3e69306ade7cdcfa48442eff9a67eae38081359",
+          "sha256": "a9ad22496862871c36de7ec0d593d5e0ddaba537a536a9f9de76f747e3dcbff0"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-26/CHRTN/Racecards_Intelligence_Report_20261126_Readable_v18_CHRTN.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-26/CHRTN/Racecards_Intelligence_Report_20261126_Readable_v18_CHRTN.pdf",
+          "public_path": "samples/2026-11-26/CHRTN/Racecards_Intelligence_Report_20261126_Readable_v18_CHRTN.pdf",
+          "source_path": "2026-11-26/Racecards_Intelligence_Report_20261126_Readable_v18_CHRTN.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-26/Racecards_Intelligence_Report_20261126_Readable_v18_CHRTN.pdf",
+          "source_blob_sha": "c8ec304efd950d02030ccb891698a4b89f04ade6",
+          "sha256": "2604ae73414f52658f311422805fe0edbc5f9712be086f57a392b114abdfae59"
+        }
+      ]
     }
   }
 }
