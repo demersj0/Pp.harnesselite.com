@@ -1063,6 +1063,21 @@
         "label": "Tip Sheet"
       },
       {
+        "path": "samples/2026-11-26/CHRTN/CHRTN_LeadThreatIndex_20261126.pdf",
+        "date": "2026-11-26",
+        "label": "LeadThreatIndex\u2122"
+      },
+      {
+        "path": "samples/2026-11-26/CHRTN/Racecards_Intelligence_Report_20261126_Readable_v18_CHRTN.pdf",
+        "date": "2026-11-26",
+        "label": "Racecards Intelligence\u2122"
+      },
+      {
+        "path": "samples/2026-11-26/CHRTN/TipSheet_CHRTN_20261126.html",
+        "date": "2026-11-26",
+        "label": "Tip Sheet"
+      },
+      {
         "path": "tracks/CHRTN/20261015-CHRTN-teasertip.html",
         "date": "2026-10-15",
         "label": "Teaser Tip"
@@ -10736,41 +10751,7 @@
     ]
   },
   "unclassified_files": [
-    "2025-12-14/cumberland1214.pdf",
-    "2025-12-14/flamboro1214.pdf",
-    "2025-12-14/harrahs1214.pdf",
-    "2025-12-14/hawthorne1214.pdf",
-    "2025-12-14/northfield1214.pdf",
-    "2025-12-14/rideau1214.pdf",
-    "2025-12-14/saratoga1214.pdf",
-    "2025-12-14/woodbine1214.pdf",
     "2025-12-15.index.html",
-    "2025-12-5/centurymile125.pdf",
-    "2025-12-5/cumberland125.pdf",
-    "2025-12-5/dayton125.pdf",
-    "2025-12-5/harrahs125.pdf",
-    "2025-12-5/hawthorne125.pdf",
-    "2025-12-5/meadowlands125.pdf",
-    "2025-12-5/meadows125.pdf",
-    "2025-12-5/westernfair125.pdf",
-    "2025-12-5/woodbine125.pdf",
-    "2025-12-5/yonkers125.pdf",
-    "2025-12-6/batavaisa126.pdf",
-    "2025-12-6/century126.pdf",
-    "2025-12-6/charlotte126.pdf",
-    "2025-12-6/cumberland126.pdf",
-    "2025-12-6/dayton126.pdf",
-    "2025-12-6/flamboro126.pdf",
-    "2025-12-6/hawthorne126.pdf",
-    "2025-12-6/measdowlands126.pdf",
-    "2025-12-6/northfield126.pdf",
-    "2025-12-6/woodboine126.pdf",
-    "2025-12-7/cumberland127.pdf",
-    "2025-12-7/flamboro127.pdf",
-    "2025-12-7/harrahs127.pdf",
-    "2025-12-7/hawthorne127.pdf",
-    "2025-12-7/noirthfield127.pdf",
-    "2025-12-7/woodbine127.pdf",
     "2025-12-8/cumberland128.pdf",
     "2025-12-8/doverdowns128.pdf",
     "2025-12-8/monticello128.pdf",

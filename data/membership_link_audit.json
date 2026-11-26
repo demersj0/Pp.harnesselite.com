@@ -1,14 +1,10 @@
 {
   "generator": "harness-membership-v1",
   "membership_url": "https://www.harnesselite.com/purchase-harness-racing-handicapping-tip-sheets-data/p/black-book-89l6j",
-  "html_pages": 1317,
-  "pages_with_membership_link": 1317,
+  "html_pages": 1313,
+  "pages_with_membership_link": 1313,
   "files": {
-    "2025-12-14/index.html": "ae1465f825d89cb7fb1f2a20c6831e15660aac78b32cee3e24084b431903ca8b",
     "2025-12-15.index.html": "45e7ba091a871c4ea929fa993d4d978998afb869dbfbbf43e45a2c2326773696",
-    "2025-12-5/index.html": "b9d99ce1fee81c640d8934f543412b858cdda18ecf01cdee5a2335ec0825314d",
-    "2025-12-6/index.html": "61e10182fc98f34b545024db62cd2fc91cf58770b7226e150c6b6ec3de5e0e07",
-    "2025-12-7/index.html": "2a7c8b88780ddc2409cedd9f73235a8f34e1acb3954e2469d925f89c8a91394a",
     "2025-12-8/index.html": "b8bc2066bae91ddc2af6f6a0f7aadd6d07b3012c601e3fcad1bab303fb590e0f",
     "2025-12-9/index.html": "51006d820a5727f2c02b418157fb8262bb354f91d0acbea721f09eb1dddc5fcf",
     "2026-01-13/index.html": "8ba1bcd4456e28bbc8eb6f3520e7010f9dc2ef104d1129c00a840ac6facc1037",
@@ -880,7 +876,7 @@
     "tracks/CHRTN/20261119-CHRTN-teasertip.html": "fcf960c804cb88db30271644663a1e052e08fd2710e4c67889493c4163f3aa91",
     "tracks/CHRTN/20261121-CHRTN-teasertip.html": "22a0959f465eb7302c9463a520cd29ff8e635f63ad2b2d45b93275f5b896e447",
     "tracks/CHRTN/20261126-CHRTN-teasertip.html": "f9d917c314c4b1c0b0b9538371c136ce360752ab1be3a29df184b5310f661f04",
-    "tracks/CHRTN/index.html": "b1924d302998cd2cc8153c899c2d27bbdce0d351c99d1a702397c39b9335384e",
+    "tracks/CHRTN/index.html": "1c2f68b52473d849f465abba112b4dfc395c92f4320cd918a8f6db1e7de77a35",
     "tracks/CLNTN/index.html": "9ce69fb3e7e7385ad7f69c845897f097e669959095cb61f26e14ea32534691fe",
     "tracks/CND/index.html": "893515038e96edea90426b514f267d8af60681d30713f132e4647669b34c0d74",
     "tracks/CNML/20261016-CNML-teasertip.html": "2d95023011fda04dcb1f6be7fbea1e51ce7562dbeaf3bc99720d83241f88314f",
@@ -1320,6 +1316,6 @@
     "tracks/YR/20261123-YR-teasertip.html": "e5c2d097d3d680c36c1c43f5ea7a1b9621e8f9abe76bec9d1e67f07ff9e4615b",
     "tracks/YR/20261124-YR-teasertip.html": "b10c1f69fba9aa3623d5564581825b219a22a249979034a6a040461ae56293d3",
     "tracks/YR/index.html": "6e23443f3f3e63594b3b1871b5612dbf59ead7c85c256580052df3bd7a6d1d9a",
-    "tracks/index.html": "98ac2ca9a35959618d5c9fd18b60d947964c0a9a54b5b5bdb0ad7bc61e0f49a5"
+    "tracks/index.html": "6ef4ec0c17a70565d03b43a54124a87c100f3fc4c28bf19c318c37600cd230f2"
   }
 }
