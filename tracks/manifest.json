@@ -1547,6 +1547,11 @@
         "path": "tracks/CNML/20261121-CNML-teasertip.html",
         "date": "2026-11-21",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/CNML/20261127-CNML-teasertip.html",
+        "date": "2026-11-27",
+        "label": "Teaser Tip"
       }
     ],
     "CUMB": [
@@ -1703,6 +1708,11 @@
       {
         "path": "tracks/CUMB/20261122-CUMB-teasertip.html",
         "date": "2026-11-22",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/CUMB/20261127-CUMB-teasertip.html",
+        "date": "2026-11-27",
         "label": "Teaser Tip"
       }
     ],
@@ -2536,6 +2546,11 @@
       {
         "path": "tracks/DTN/20261125-DTN-teasertip.html",
         "date": "2026-11-25",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/DTN/20261127-DTN-teasertip.html",
+        "date": "2026-11-27",
         "label": "Teaser Tip"
       }
     ],
@@ -3561,6 +3576,11 @@
         "path": "tracks/HOP/20261121-HOP-teasertip.html",
         "date": "2026-11-21",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/HOP/20261127-HOP-teasertip.html",
+        "date": "2026-11-27",
+        "label": "Teaser Tip"
       }
     ],
     "INVRN": [
@@ -4251,6 +4271,11 @@
         "path": "tracks/LON/20261124-LON-teasertip.html",
         "date": "2026-11-24",
         "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/LON/20261127-LON-teasertip.html",
+        "date": "2026-11-27",
+        "label": "Teaser Tip"
       }
     ],
     "LOOP": [
@@ -4689,6 +4714,11 @@
       {
         "path": "tracks/M/20261121-M-teasertip.html",
         "date": "2026-11-21",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/M/20261127-M-teasertip.html",
+        "date": "2026-11-27",
         "label": "Teaser Tip"
       }
     ],
@@ -5326,6 +5356,11 @@
       {
         "path": "tracks/MEA/20261125-MEA-teasertip.html",
         "date": "2026-11-25",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/MEA/20261127-MEA-teasertip.html",
+        "date": "2026-11-27",
         "label": "Teaser Tip"
       }
     ],
@@ -10133,6 +10168,11 @@
       {
         "path": "tracks/WBSB/20261126-WBSB-teasertip.html",
         "date": "2026-11-26",
+        "label": "Teaser Tip"
+      },
+      {
+        "path": "tracks/WBSB/20261127-WBSB-teasertip.html",
+        "date": "2026-11-27",
         "label": "Teaser Tip"
       }
     ],
