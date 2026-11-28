@@ -1533,6 +1533,65 @@
           "sha256": "85882b3ac5a2b82139565deb7a03ae05e8983db6be4f47f82c713b563f553e66"
         }
       ]
+    },
+    "2026-11-28": {
+      "date": "2026-11-28",
+      "track": "M",
+      "track_name": "Meadowlands",
+      "links": [
+        {
+          "label": "Tip Sheet",
+          "href": "https://odds.harnesselite.com/2026-11-28/TipSheet_M_20261128.html",
+          "source_path": "2026-11-28/TipSheet_M_20261128.html",
+          "source_blob_sha": "4d2403a0e4c3e096e06a6803e7c9155a75e5889d"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "https://odds.harnesselite.com/2026-11-28/M_LeadThreatIndex_20261128.pdf",
+          "source_path": "2026-11-28/M_LeadThreatIndex_20261128.pdf",
+          "source_blob_sha": "de3ba160b645f143b65455eb6bf42165995c9a44"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "https://odds.harnesselite.com/2026-11-28/Racecards_Intelligence_Report_20261128_Readable_v18_M.pdf",
+          "source_path": "2026-11-28/Racecards_Intelligence_Report_20261128_Readable_v18_M.pdf",
+          "source_blob_sha": "ee07bce1357b9555ad5d73ecf6a03ab8d9c23ed9"
+        }
+      ],
+      "source_index": "https://odds.harnesselite.com/2026-11-28/index.html",
+      "source_commit": "806206da0ed4daf4e665fefa4f053601c4e615ba",
+      "public_links": [
+        {
+          "label": "Tip Sheet",
+          "href": "/samples/2026-11-28/M/TipSheet_M_20261128.html",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-28/M/TipSheet_M_20261128.html",
+          "public_path": "samples/2026-11-28/M/TipSheet_M_20261128.html",
+          "source_path": "2026-11-28/TipSheet_M_20261128.html",
+          "source_url": "https://odds.harnesselite.com/2026-11-28/TipSheet_M_20261128.html",
+          "source_blob_sha": "4d2403a0e4c3e096e06a6803e7c9155a75e5889d",
+          "sha256": "ab4eb7d085901b96d9b122c8c740b1a8882c48b7d33e6b279672c58808e51304"
+        },
+        {
+          "label": "LeadThreatIndex™",
+          "href": "/samples/2026-11-28/M/M_LeadThreatIndex_20261128.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-28/M/M_LeadThreatIndex_20261128.pdf",
+          "public_path": "samples/2026-11-28/M/M_LeadThreatIndex_20261128.pdf",
+          "source_path": "2026-11-28/M_LeadThreatIndex_20261128.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-28/M_LeadThreatIndex_20261128.pdf",
+          "source_blob_sha": "de3ba160b645f143b65455eb6bf42165995c9a44",
+          "sha256": "7046104cc32378534adc56d62d4c97160dd98729ee25c54a461766ad212ff595"
+        },
+        {
+          "label": "Racecards Intelligence™",
+          "href": "/samples/2026-11-28/M/Racecards_Intelligence_Report_20261128_Readable_v18_M.pdf",
+          "public_url": "https://pp.harnesselite.com/samples/2026-11-28/M/Racecards_Intelligence_Report_20261128_Readable_v18_M.pdf",
+          "public_path": "samples/2026-11-28/M/Racecards_Intelligence_Report_20261128_Readable_v18_M.pdf",
+          "source_path": "2026-11-28/Racecards_Intelligence_Report_20261128_Readable_v18_M.pdf",
+          "source_url": "https://odds.harnesselite.com/2026-11-28/Racecards_Intelligence_Report_20261128_Readable_v18_M.pdf",
+          "source_blob_sha": "ee07bce1357b9555ad5d73ecf6a03ab8d9c23ed9",
+          "sha256": "6e80cc4b1fc0fd303649289ffd6826ab0c7c1fbaf78be4a913691bfb0a48fc5a"
+        }
+      ]
     }
   }
 }
